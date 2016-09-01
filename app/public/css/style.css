@@ -1,0 +1,99 @@
+.carousel-bg {
+    //background: url(//d3eaqdewfg2crq.cloudfront.net/wp-content/uploads/carousel/main-fort-gate/background.jpg) no-repeat center center;
+    background: url(http://feelgrafix.com/data/background/background-15.jpg) no-repeat center center;
+}
+.gateway {
+    background: url(//d3eaqdewfg2crq.cloudfront.net/wp-content/uploads/carousel/main-fort-gate/acx-fortGate-h2-359x300.hyperesources/Gate-Opening-Wall.png) no-repeat center center;
+    background-size: 100% 100%;
+    background-origin: content-box;
+}
+.btn-space {
+    margin-right: 5px;
+}
+.carousel {
+    height: 350px;
+    margin-bottom: 0px;
+}
+.logo {
+    width: 100px;
+    margin-top:-10px;
+}
+.navbar-form {
+    padding-right:0px;
+}
+.fa {
+    font-size:34px;
+    margin-left:3px;
+}
+img[src~=floatLeft] {
+    float: left;
+    margin-left: 20px;
+}
+img[src~=floatRight] {
+    float: right;
+    padding-right: 20px;
+}
+img[src~=medium] {
+    margin: auto;
+    width: 50%;
+}
+.jumbotron h1 {
+    font-size:34px;
+    font-weight: 900;
+    
+}
+.jumbotron p {
+    font-size: 18px;
+    font-weight: 100;
+}
+.h2 {
+    font-size:24px;
+}
+.h3 {
+    font-size:20px;
+}
+.h4 {
+    font-size:18px;
+}
+
+.m-t-3 {
+  margin-top:20px
+}
+.p-t-3 {
+  padding-top:20px
+}
+
+.p-3 {
+    padding: 20px;
+}
+.navbar {
+    font-size: 1.1em;    
+}
+
+footer {
+    background-color: #080808;
+    font-weidht: 100;
+    font-size: 1.0em;
+}
+footer h5 {
+    color: white;
+}
+footer ul {
+    list-style-type: none;
+    padding: 0px;
+}
+footer a {
+    color: #5a5a5a;
+    text-decoration: none;
+}
+footer p {
+    font-weidht: 900;    
+}
+.navbar, .carousel{
+    font-family: "Francois One";
+    font-style: normal;
+    font-variant: normal;
+}
+body, footer{
+    font-family: 'Droid Sans'
+}
