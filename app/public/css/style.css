@@ -8,7 +8,7 @@
     background-origin: content-box;
 }
 .btn-space {
-    margin-right: 5px;
+    margin: 2px;
 }
 .carousel {
     height: 350px;
@@ -22,20 +22,8 @@
     padding-right:0px;
 }
 .fa {
-    font-size:34px;
-    margin-left:3px;
-}
-img[src~=floatLeft] {
-    float: left;
-    margin-left: 20px;
-}
-img[src~=floatRight] {
-    float: right;
-    padding-right: 20px;
-}
-img[src~=medium] {
-    margin: auto;
-    width: 50%;
+    font-size:20px;
+    margin-left:5px;
 }
 .jumbotron h1 {
     font-size:34px;
@@ -56,6 +44,10 @@ img[src~=medium] {
     font-size:18px;
 }
 
+hr {
+    width: 30%;
+}
+
 .m-t-3 {
   margin-top:20px
 }
@@ -65,6 +57,11 @@ img[src~=medium] {
 
 .p-3 {
     padding: 20px;
+}
+
+.form-group a {
+    color: #5a5a5a;
+    text-decoration: none;
 }
 .navbar {
     font-size: 1.1em;    

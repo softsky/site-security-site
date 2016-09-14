@@ -18,27 +18,28 @@ var express = require('express')
 , hljs = require('highlight.js')
 , seneca = require('seneca')()
     .client({
-    type: 'http',
-    port: '3000',
-    host: 'localhost',
-    protocol: 'http'
-}).act('role:entity,cmd:list',{name:'ww','q.host':/.*t.*/}, console.log);
+	type: 'http',
+	port: '3000',
+	host: 'localhost',
+	protocol: 'http'
+    })
+    .act('role:entity,cmd:list',{name:'ww','q.host':/.*t.*/}, console.log);
 
-// marked.setOptions({
-//     renderer: new marked.Renderer(),
-//     header: false,
-//     gfm: true,
-//     tables: true,
-//     // breaks: false,
-//     // pedantic: false,
-//     // sanitize: true,
-//     // smartLists: true,
-//     // smartypants: false
-//     highlight: function (code) {
-// 	console.log('CODE:', code);
-// 	return hljs.highlightAuto(code).value;
-//     }
-// });
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    header: false,
+    gfm: true,
+    tables: true,
+    // breaks: false,
+    // pedantic: false,
+    // sanitize: true,
+    // smartLists: true,
+    // smartypants: false
+    highlight: function (code) {
+	console.log('CODE:', code);
+	return hljs.highlightAuto(code).value;
+    }
+});
 
 module.exports = (function () {
     'use strict';
@@ -72,26 +73,30 @@ module.exports = (function () {
 	});
     });
     // Generic section
-    router.get('/:section/:id\.md', (req, res) => {
+    router.get('/:section/:id', (req, res, next) => {
 	var id = req.params.id
 	, section = req.params.section;
 	
-	var mkmd = new MarkedMetaData(`app/views/${section}/${id}.md`);	
-	var md = mkmd.metadata();
-	console.log(md);
-
-	var lexer = new marked.Lexer({});
-	var tokens = lexer.lex(fs.readFileSync(`app/views/${section}/${id}.md`,'utf8'));
-	console.log(tokens);
-	//console.log(lexer.rules);
+	if(['css','img'].indexOf(section) > -1){
+	    next();
+	    return;
+	}
 	
-        res.render('section',{
-            'pathToAssets': '/bootstrap-3.3.1',
-            'pathToSelectedTemplateWithinBootstrap' : '/bootstrap-3.3.1/docs/examples/' + 'carousel',
-	    'carousel': jade.renderFile('app/views/carousel.jade'),	    
-	    'body': fs.existsSync(`app/views/${section}/${id}.jade`)?
+	var mkmd = new MarkedMetaData(`app/views/${section}/${id}.md`);
+	var md = {};
+	try {
+	    md = mkmd.metadata();
+	}catch(e){
+	    console.log('No metadata found');
+	}
+	
+        res.render(md.layout || 'section',{
+	    title: md.title,
+            pathToAssets: '/bootstrap-3.3.1',
+            pathToSelectedTemplateWithinBootstrap : '/bootstrap-3.3.1/docs/examples/' + 'carousel',
+	    carousel: jade.renderFile('app/views/carousel.jade'),
+	    body: fs.existsSync(`app/views/${section}/${id}.jade`)?
 		jade.renderFile(`app/views/${section}/${id}.jade`):mkmd.markdown()
-
         });	
     });
     
