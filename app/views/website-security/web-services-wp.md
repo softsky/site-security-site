@@ -141,7 +141,7 @@ Common Effects: Command execution, data theft and deletion, schema
 poisoning.
 
 [SQL
-Injection](http://www.acunetix.com/vulnerability-scanner/sql-injection/)
+Injection](http://www.softsky.com.ua/vulnerability-scanner/sql-injection/)
 is a high-risk exploit which may be performed using SOAP messages. If a
 server does not validate data correctly, a SOAP message can easily be
 used to create XML data which inserts a parameter into an SQL query and
@@ -190,7 +190,7 @@ enough awareness about the risks which threaten the security of the
 servers hosting Web Services and the data which risks being compromised.
 
 [SOFTSKY Web Vulnerability
-Scanner](http://www.acunetix.com/vulnerability-scanner/) is a
+Scanner](http://www.softsky.com.ua/vulnerability-scanner/) is a
 feature-packed solution for detecting vulnerabilities and securing web
 applications. The Web Services Security scanning tool will allow you to
 run an automated vulnerability assessment against a Web Service with a

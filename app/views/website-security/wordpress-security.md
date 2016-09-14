@@ -68,7 +68,7 @@ with the latest security updates.
 *Themes Update Screen*
 
 SOFTSKY performs [WordPress security
-scans](http://www.acunetix.com/vulnerability-scanner/wordpress-security-scan/),
+scans](http://www.softsky.com.ua/vulnerability-scanner/wordpress-security-scan/),
 identifying WordPress installations, and will launch version specific
 security checks to ensure your website is secure.
 
@@ -89,7 +89,7 @@ When choosing which plugins and themes to use, be selective. Before
 installing a plugin or theme, read about it (ideally on sources other
 than the plugin/theme developer’s site). This prevents you from
 installing malware such as the [Tools Pack malware
-plugin](http://www.acunetix.com/vulnerabilities/vulnerability/ToolsPack_malware_plugin).
+plugin](http://www.softsky.com.ua/vulnerabilities/vulnerability/ToolsPack_malware_plugin).
 
 Check how many downloads the plugin or theme has and when it was last
 updated by its authors. The more downloads and recent updates the plugin
@@ -116,7 +116,7 @@ is strongly advised to try out any configuration in a testing/staging
 environment before changing any configuration on production servers.
 
 [Directory
-Listing](http://www.acunetix.com/blog/articles/directory-listing-information-disclosure/)
+Listing](http://www.softsky.com.ua/blog/articles/directory-listing-information-disclosure/)
 occurs when the web server does not find an index file (i.e. an
 index.php or index.html), if directory listing is turned on, the server
 will display an HTML page listing the contents of the directory.
@@ -133,7 +133,7 @@ server itself.
 While it is not a WordPress-specific security measure to disable
 directory listing, several WordPress sites running on default
 installations of [Apache HTTP
-Server](http://www.acunetix.com/websitesecurity/apache-security/) have
+Server](http://www.softsky.com.ua/websitesecurity/apache-security/) have
 directory listing enabled.
 
 In order to disable directory listing in Apache HTTP Server, you will
@@ -267,7 +267,7 @@ enabled and if the user has published one or more posts.
 
 You can read about WordPress Username Enumeration in greater detail in
 the article [WordPress Username Enumeration using HTTP
-Fuzzer](http://www.acunetix.com/blog/articles/wordpress-username-enumeration-using-http-fuzzer/)
+Fuzzer](http://www.softsky.com.ua/blog/articles/wordpress-username-enumeration-using-http-fuzzer/)
 
 In order to prevent WordPress Username Enumeration you can add the
 following rule to WordPress site’s .htaccess file (this is usually
@@ -280,7 +280,7 @@ located in your website’s root directory).
 
 Strictly speaking, HTTPS is not a protocol in and of itself, but it is
 rather HTTP encapsulated in
-[TLS/SSL](http://www.acunetix.com/blog/articles/tls-ssl-cipher-hardening/).
+[TLS/SSL](http://www.softsky.com.ua/blog/articles/tls-ssl-cipher-hardening/).
 TLS, or SSL, as it is commonly referred to, provides websites and web
 applications with encryption of data being transmitted and
 authentication to verify the identity of a host.

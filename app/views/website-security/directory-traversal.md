@@ -137,12 +137,12 @@ scanner will also check for SQL injection, Cross-site Scripting and
 other web vulnerabilities.
 
 [SOFTSKY Web Vulnerability
-Scanner](http://www.acunetix.com/vulnerability-scanner/) scans for [SQL
-Injection](http://www.acunetix.com/websitesecurity/sql-injection),
+Scanner](http://www.softsky.com.ua/vulnerability-scanner/) scans for [SQL
+Injection](http://www.softsky.com.ua/websitesecurity/sql-injection),
 [Cross Site
-Scripting](http://www.acunetix.com/websitesecurity/cross-site-scripting/),
+Scripting](http://www.softsky.com.ua/websitesecurity/cross-site-scripting/),
 [Google
-Hacking](http://www.acunetix.com/websitesecurity/google-hacking/) and
+Hacking](http://www.softsky.com.ua/websitesecurity/google-hacking/) and
 many more vulnerabilities.
 
 **Preventing Directory Traversal Attacks**
@@ -161,12 +161,12 @@ submitted to the server.
 
 SOFTSKY Web Vulnerability Scanner ensures website security by
 automatically checking for [SQL
-Injection](http://www.acunetix.com/vulnerability-scanner/sql-injection/),
+Injection](http://www.softsky.com.ua/vulnerability-scanner/sql-injection/),
 [Cross Site
-Scripting](http://www.acunetix.com/cross-site-scripting/scanner-download/),
+Scripting](http://www.softsky.com.ua/cross-site-scripting/scanner-download/),
 Directory Traversal and other vulnerabilities. It checks password
 strength on authentication pages and automatically audits shopping
 carts, forms, dynamic content and other web applications. As the scan is
 being completed, the software produces detailed reports that pinpoint
 where vulnerabilities exist. [Download the trial version of SOFTSKY
-WVS](http://www.acunetix.com/vulnerability-scanner/download/)
+WVS](http://www.softsky.com.ua/vulnerability-scanner/download/)

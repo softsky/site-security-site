@@ -12,7 +12,7 @@ online attack. CSRF also goes by the acronym XSRF and the phrase
 “Sea-Surf”. CSRF attacks include a malicious exploit of a website in
 which a user will transmit malicious requests that the target website
 trusts without the user’s consent. In [Cross-Site Scripting
-(XSS)](http://www.acunetix.com/websitesecurity/cross-site-scripting/),
+(XSS)](http://www.softsky.com.ua/websitesecurity/cross-site-scripting/),
 the attacker exploits the trust a user has for a website, with CSRF on
 the other hand, the attacker exploits the trust a website has against a
 user’s browser.
@@ -368,4 +368,4 @@ you with a detailed description of weakness and the exact location your
 website is vulnerable, and gives you a detailed explanation on how to
 solve it. Make sure your website is secure by[downloading the trial
 version of SOFTSKY Web Vulnerability
-Scanner](http://www.acunetix.com/cross-site-scripting/scanner-download/).
+Scanner](http://www.softsky.com.ua/cross-site-scripting/scanner-download/).

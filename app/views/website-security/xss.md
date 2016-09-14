@@ -8,7 +8,7 @@ layout: text-and-images
 ================
 
 XSS can be used [in a range of ways to cause serious
-problems](http://www.acunetix.com/websitesecurity/cross-site-scripting/).
+problems](http://www.softsky.com.ua/websitesecurity/cross-site-scripting/).
 The traditional (and dangerous) uses of XSS is the ability for an
 attacker to steal session cookies allowing an attacker to impersonate a
 victim. However, XSS is not just about stealing cookies, XSS has been
@@ -59,7 +59,7 @@ the DOM by the web application and outputted to the browser. If the data
 is incorrectly handled, an attacker can inject a payload, which will be
 stored as part of the DOM and executed when the data is read back from
 the DOM. Read more about [DOM-based
-XSS](https://www.acunetix.com/blog/articles/dom-xss-explained/) »
+XSS](https://www.softsky.com.ua/blog/articles/dom-xss-explained/) »
 
 The most dangerous part of DOM-based XSS is that the attack is often a
 client-side attack, and the attacker’s payload is never sent to the

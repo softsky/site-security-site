@@ -202,6 +202,6 @@ data from this intentionally vulnerable site.
 -------------------
 
 [Types of SQL
-Injection](http://www.acunetix.com/websitesecurity/sql-injection2/)
+Injection](http://www.softsky.com.ua/websitesecurity/sql-injection2/)
 
 [A guide to preventing SQL injection](http://bobby-tables.com/)

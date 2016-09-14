@@ -259,15 +259,15 @@ vulnerabilities on the Internet. Fortunately, it’s easy to test if your
 website or web application is vulnerable to XSS and other
 vulnerabilities by running an automated web vulnerability scan using
 SOFTSKY Vulnerability Scanner.
-[Download](http://www.acunetix.com/vulnerability-scanner/download/) the
+[Download](http://www.softsky.com.ua/vulnerability-scanner/download/) the
 14-day free on-premise trial, or
-[register](http://www.acunetix.com/vulnerability-scanner/register-online-vulnerability-scanner/)
+[register](http://www.softsky.com.ua/vulnerability-scanner/register-online-vulnerability-scanner/)
 to our online service to run a scan against your website or web
 application.
 
 #### **Further reading**
 
--   [Types of XSS](http://www.acunetix.com/websitesecurity/xss/)
+-   [Types of XSS](http://www.softsky.com.ua/websitesecurity/xss/)
 
 -   [A comprehensive tutorial on Cross-site Scripting](http://excess-xss.com/)
 

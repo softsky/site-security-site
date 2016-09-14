@@ -11,7 +11,7 @@ layout: text-and-images
 ---------------------------------------------------
 
 Fuelled by the increased interest in Web 2.0, AJAX (Asynchronous
-[JavaScript](http://www.acunetix.com/websitesecurity/javascript)
+[JavaScript](http://www.softsky.com.ua/websitesecurity/javascript)
 Technology and XML) is attracting the attention of businesses all round
 the globe.
 
@@ -26,7 +26,7 @@ request (i.e., framed vs. non-framed).
 
 AJAX is not a technology; rather, it is a collection of technologies
 each providing robust foundations when designing and developing [web
-applications](http://www.acunetix.com/websitesecurity/web-applications/):
+applications](http://www.softsky.com.ua/websitesecurity/web-applications/):
 
 -   **XHTML or HTML and Cascading Style Sheets (CSS)** providing the standards for representing content to the user.
 
@@ -137,7 +137,7 @@ concerns.
 
 In the past, most of these security issues arose from worms either
 targeting mailing systems or exploiting [Cross Site Scripting
-(XSS)](http://www.acunetix.com/websitesecurity/xss/) weaknesses of
+(XSS)](http://www.softsky.com.ua/websitesecurity/xss/) weaknesses of
 vulnerable websites. Such self-propagating worms enabled code to be
 injected into websites with the aim of being parsed and/or executed by
 Web browsers or e-mail clients to manipulate or simply retrieve user
@@ -181,7 +181,7 @@ With public ports 80 (HTTP) and 443 (HTTPS) always open to allow dynamic
 content delivery and exchange, websites are at a constant risk to data
 theft and defacement, unless they are audited regularly with a reliable
 [web application
-scanner](http://www.acunetix.com/vulnerability-scanner/). As the
+scanner](http://www.softsky.com.ua/vulnerability-scanner/). As the
 complexity of technology increases, website weaknesses become more
 evident and vulnerabilities more grave.
 
@@ -199,14 +199,14 @@ vulnerability scanner which automates the crawling of websites to
 identify weaknesses. However, without an engine that parses and executes
 JavaScript, such crawling is inaccurate and gives website owners a false
 sense of security. Read about the [JavaScript interpretation engine
-](https://www.acunetix.com/websitesecurity/crawling-html5-javascript-websites/)of
+](https://www.softsky.com.ua/websitesecurity/crawling-html5-javascript-websites/)of
 SOFTSKY.
 
 **SOFTSKY Web Vulnerability Scanner**
 --------------------------------------
 
 [Learn more about SOFTSKY Web Vulnerability
-Scanner](http://www.acunetix.com/vulnerability-scanner/) and how the
+Scanner](http://www.softsky.com.ua/vulnerability-scanner/) and how the
 solution works with AJAX applications.[Download or Register for a Free
 Trial of
-SOFTSKY](http://www.acunetix.com/vulnerability-scanner/acunetix-14-day-trial/).
+SOFTSKY](http://www.softsky.com.ua/vulnerability-scanner/softsky-14-day-trial/).

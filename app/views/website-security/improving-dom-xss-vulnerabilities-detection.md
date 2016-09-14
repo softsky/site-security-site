@@ -4,7 +4,7 @@
 **The Dangers of XSS Attacks**
 ------------------------------
 
-[Cross-site scripting](http://www.acunetix.com/websitesecurity/xss/)
+[Cross-site scripting](http://www.softsky.com.ua/websitesecurity/xss/)
 (also referred to as XSS) is a vulnerability that allows an attacker to
 send malicious code (usually in the form of JavaScript) to another user.
 This vulnerability is being used more and more in real-world attacks and
@@ -14,38 +14,38 @@ websites](http://www.ehackingnews.com/2013/01/yahoo-mail-accounts-hacked-by-dom-
 Two recent incidents highlighted the severity of this vulnerability:
 
 1.  Apple’s Developer Website was recently hacked and the [hacker used
-    > XSS
-    > vulnerabilities](http://mytechblog.com/2013/07/apple-developer-website-hacked-what-happened/)
-    > to achieve its goal. Tens of thousands of customer data records
-    > were at risk as a result of the attack and the developer website
-    > was non-functional for more than a week.
+    XSS
+    vulnerabilities](http://mytechblog.com/2013/07/apple-developer-website-hacked-what-happened/)
+    to achieve its goal. Tens of thousands of customer data records
+    were at risk as a result of the attack and the developer website
+    was non-functional for more than a week.
 
 2.  Canonical’s Ubuntu Forums were also hacked [using a XSS
-    > vulnerability](http://blog.canonical.com/2013/07/30/ubuntu-forums-are-back-up-and-a-post-mortem/):
-    > the attacker sent private messages to three administrators
-    > claiming that there was a server error on the announcement page
-    > and asking the Forum administrators to take a look. The private
-    > message contained an XSS exploit and the attacker managed to steal
-    > their cookies gaining access to the administrator control panel.
-    > 1.82 million logins and email addresses were stolen.
+    vulnerability](http://blog.canonical.com/2013/07/30/ubuntu-forums-are-back-up-and-a-post-mortem/):
+    the attacker sent private messages to three administrators
+    claiming that there was a server error on the announcement page
+    and asking the Forum administrators to take a look. The private
+    message contained an XSS exploit and the attacker managed to steal
+    their cookies gaining access to the administrator control panel.
+    1.82 million logins and email addresses were stolen.
 
 As seen in the examples above, XSS vulnerabilities can be very dangerous
 and should be fixed as soon as possible.
 
 SOFTSKY Web Vulnerability Scanner is the market leader at detecting XSS
 vulnerabilities and in [version
-9](http://www.acunetix.com/vulnerability-scanner/) we make it even
+9](http://www.softsky.com.ua/vulnerability-scanner/) we make it even
 better with improvements in the detection of DOM-based XSS
 vulnerabilities.
 
 While a traditional cross-site scripting vulnerability exploits
 server-side code, document object model [(DOM) based cross-site
-scripting](http://www.acunetix.com/blog/web-security-zone/articles/dom-xss-explained/)
+scripting](http://www.softsky.com.ua/blog/web-security-zone/articles/dom-xss-explained/)
 is a type of vulnerability which affects the script code being executed
 in the client’s browser.
 
 DOM-based XSS vulnerabilities are much harder to detect than classic
-[XSS vulnerabilities](https://www.acunetix.com/websitesecurity/xss/)
+[XSS vulnerabilities](https://www.softsky.com.ua/websitesecurity/xss/)
 because they reside on the script code from the website. An automated
 scanner needs to be able to execute the script code without errors and
 to monitor the execution of this code to detect such vulnerabilities.
@@ -59,9 +59,9 @@ the classic XSS vulnerabilities.
 ----------------------------------------------------
 
 SOFTSKY WVS version 9 introduces the [DeepScan
-technology](http://www.acunetix.com/websitesecurity/crawling-html5-javascript-websites/),
+technology](http://www.softsky.com.ua/websitesecurity/crawling-html5-javascript-websites/),
 which drastically improves the automatic detection of [DOM-based
-XSS](http://www.acunetix.com/blog/web-security-zone/articles/dom-xss-explained/)
+XSS](http://www.softsky.com.ua/blog/web-security-zone/articles/dom-xss-explained/)
 by tracing the execution of the script code from the scanned website.
 SOFTSKY WVS can now monitor a list of sources such as document
 location, Referrer, and window.name, and trace the data flow until it
@@ -71,8 +71,7 @@ such sinks are eval function, document.write, location change and so on.
 Here is an example of a DOM-based XSS vulnerability discovered in our
 [testhtml5](http://testhtml5.vulnweb.com/) website.
 
-![](media/website-security/improving-dom-xss-vulnerabilities-detection.md-images/media/image03.png){width="4.166666666666667in"
-height="1.1388888888888888in"}
+![](/media/website-security/improving-dom-xss-vulnerabilities-detection.md-images/media/image03.png)
 
 *Click to enlarge*
 
@@ -135,8 +134,7 @@ execution reaches any DOM XSS sinks.
 In this case, the page parameter is indeed vulnerable and SOFTSKY WVS
 issued the following alert:
 
-![](media/website-security/improving-dom-xss-vulnerabilities-detection.md-images/media/image04.png){width="4.166666666666667in"
-height="0.8611111111111112in"}
+![](/media/website-security/improving-dom-xss-vulnerabilities-detection.md-images/media/image04.png)
 
 *Click to enlarge*
 
@@ -145,26 +143,24 @@ DOM-based XSS vulnerability.
 
 SOFTSKY WVS goes even further.
 
-Another interesting URI is
-/\#/redir?url=http://pwnies.com/nominations/index.html. This URI is
+Another interesting URI is `\#/redir?url=http://pwnies.com/nominations/index.html`. This URI is
 using the query string notation of specifying parameters but inside the
 location hash. SOFTSKY WVS can handle this situation by understanding
 that the URL is a query string parameter and manipulates it accordingly
 and issues the following alert:
 
-![](media/website-security/improving-dom-xss-vulnerabilities-detection.md-images/media/image05.png){width="4.166666666666667in"
-height="0.875in"}
+![](/media/website-security/improving-dom-xss-vulnerabilities-detection.md-images/media/image05.png)
 
 *Click to enlarge*
 
 The URL parameter from the /\#/redir hash is used to redirect to a
 certain URL. The code looks like this:
 
-&lt;script&gt;\
-var redirUrl =
-decodeURIComponent(window.location.hash.slice(window.location.hash.indexOf("?url=")+5));\
-if (redirUrl) window.location = redirUrl;\
-&lt;/script&gt;
+	<script>
+	var redirUrl =
+	decodeURIComponent(window.location.hash.slice(window.location.hash.indexOf("?url=")+5));
+	if (redirUrl) window.location = redirUrl;
+	</script>
 
 The code looks for the ?url= in the location hash and if found, it
 assigns what follows to the window.location property. This of course is
@@ -174,7 +170,7 @@ The detection of DOM-based XSS vulnerabilities is very laborious, making
 them difficult to detect manually. The situation is not going to
 improve, since DOM XSS vulnerabilities are expected to be more
 widespread in modern[HTML5 web
-sites](http://www.acunetix.com/vulnerability-scanner/html5-website-security/).
+sites](http://www.softsky.com.ua/vulnerability-scanner/html5-website-security/).
 SOFTSKY Web Vulnerability version 9 can detect such vulnerabilities
 automatically, thereby reducing the resource-intensive task of detecting
 such vulnerabilities.
