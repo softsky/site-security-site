@@ -46,7 +46,7 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
             span.icon-bar            
-          a.navbar-brand(href='#')
+          a.navbar-brand(href='/')
             img.logo(src='/img/softsky-logo-transparent-143x59.png')          
         .navbar-collapse.collapse
           ul.nav.navbar-nav
@@ -95,19 +95,19 @@ html(lang='en')
               ul.dropdown-menu(role='menu')
                 li.dropdown-header CMS Vulnerabilities              
                 li
-                  a(href='#') WordPress Vulnerability Scan
+                  a(href='/online-scan#wordpress') WordPress Vulnerability Scan
                 li
-                  a(href='#') Joomla Vulnerability Scan
+                  a(href='/online-scan#joomla') Joomla Vulnerability Scan
                 li
-                  a(href='#') Drupal Vulnerability Scan
+                  a(href='/online-scan#drupal') Drupal Vulnerability Scan
                 li.divider
                 li.dropdown-header Website and Network Vulnerabilities
                 li
-                  a(href='#') Quick Scan
+                  a(href='/online-scan#quick') Quick Scan
                 li
-                  a(href='#') Full Scan
+                  a(href='/online-scan#full') Full Scan
                 li
-                  a(href='#') Human Penetration Testing
+                  a(href='/online-scan#human') Human Penetration Testing
                 
             li
               a(href='#about') Blog
@@ -145,6 +145,7 @@ html(lang='en')
     .bs-example
      hr
      block body
+     hr
     // Footer
     footer.p-3.black
       .container
@@ -154,13 +155,13 @@ html(lang='en')
            h5 Product Information
            ul
             li 
-              a(href="#") HTML5 Security
+              a(href="/vulnerability-scanner/html5-website-security") HTML5 Security
             li
-              a(href="#") DeepScan Technology
+              a(href="/vulnerability-scanner/crawling-html5-javascript-websites") DeepScan Technology
             li
-              a(href="#") Blind XSS Detection         
+              a(href="/vulnerability-scanner/acumonitor-blind-xss-detection") Blind XSS Detection
             li
-              a(href="#") Network Security Scanning
+              a(href="/vulnerability-scanner/network-security-scanner") Network Security Scanning
          .col-md-3
           p
            h5 Website Security
@@ -179,31 +180,23 @@ html(lang='en')
           p
            h5 Learn More
            ul
-            li 
-              a(href="#") Introduction to Web-shells
             li
-              a(href="#") Web Service Security
+              a(href="/website-security/web-services-wp") Web Service Security
             li
-              a(href="#") WordPress Security
+              a(href="/website-security/wordpress-security") WordPress Security
             li
-              a(href="#") AJAX Application Security
+              a(href="/website-security/ajax") AJAX Application Security
             li
-              a(href="#") PCI Compliance
+              a(href="/vulnerability-scanner/pci-regulatory-compliance") PCI Compliance
            
          .col-md-3
           p
            h5 Documentation
            ul
-            li 
-              a(href="#") FAQs
             li
-              a(href="#") Videos
+              a(href="/website-security/web-services-wp") Web Vulnerabilities
             li
-              a(href="#") Web Vulnerabilities
-            li
-              a(href="#") Network Vulnerabilities
-            li
-              a(href="#") Trojans and Backdoors
+              a(href="/vulnerability-scanner/network-security-scanner") Network Vulnerabilities
            
       p
        | SOFTSKY &copy; 2016
