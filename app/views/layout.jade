@@ -6,6 +6,7 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='description', content='')
     meta(name='author', content='')
+    title #{title}
     link(rel='icon', href='#{pathToAssets}/docs/favicon.ico')
     title Jumbotron Template for Bootstrap
     // Bootstrap core CSS
@@ -118,7 +119,7 @@ html(lang='en')
               ul.dropdown-menu(role='menu')
                 li.dropdown-header About Us
                 li
-                  a(href='/about/company.md') Company
+                  a(href='/about/company') Company
                 li
                   a(href='#') Press
                 li
@@ -132,11 +133,11 @@ html(lang='en')
             button.btn.btn-space.btn-success.btn-info(type='submit') Sign up            
             .form-group
               a(href='http://www.facebook.com/softsky')
-                i.fa.fa-facebook-square(aria-hudden='true')
+                i.fa.fa-facebook(aria-hudden='true')
               a(href='http://twitter.com/softsky')
-                i.fa.fa-twitter-square(aria-hudden='true')
+                i.fa.fa-twitter(aria-hudden='true')
               a(href='https://www.linkedin.com/company/softsky')
-                i.fa.fa-linkedin-square(aria-hudden='true')
+                i.fa.fa-linkedin(aria-hudden='true')
             
 
     // /.navbar-collapse
@@ -165,15 +166,15 @@ html(lang='en')
            h5 Website Security
            ul
             li 
-              a(href="#") Cross-site Scripting (XSS)
+              a(href="/website-security/cross-site-scripting-xss") Cross-site Scripting (XSS)
             li
-              a(href="#") SQL Injection
+              a(href="/website-security/sql-injection") SQL Injection
             li
-              a(href="#") DOM-based XSS
+              a(href="/website-security/dom-based-xss") DOM-based XSS
             li
-              a(href="#") CSRF Attacks
+              a(href="/website-security/cross-site-request-forgery-csrf") Cross-Site Request Forgery (CSRF)
             li
-              a(href="#") Directory Traversal
+              a(href="/website-security/directory-traversal-file-inclusion") Directory Traversal
          .col-md-3
           p
            h5 Learn More
