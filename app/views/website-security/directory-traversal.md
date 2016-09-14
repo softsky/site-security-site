@@ -1,3 +1,9 @@
+---
+title: Directory Traversal Attacks
+author: Arsen A. Gutsal
+layout: text-and-images
+---
+
 **Directory Traversal Attacks**
 ===============================
 
@@ -20,8 +26,7 @@ list which the web server’s administrator uses to indicate which users
 or groups are able to access, modify or execute particular files on the
 server, as well as other access rights.
 
-![](media/website-security/directory-traversal.md-images/media/image01.gif){width="3.0972222222222223in"
-height="4.708333333333333in"}
+![](/media/website-security/directory-traversal.md-images/media/image01.gif)
 
 The root directory is a specific directory on the server file system in
 which the users are confined. Users are not able to access anything
@@ -66,8 +71,8 @@ In web applications with dynamic pages, input is usually received from
 browsers through GET or POST request methods. Here is an example of an
 HTTP GET request URL
 
-GET http://test.webarticles.com/show.asp?view=oldarchive.html HTTP/1.1\
-Host: test.webarticles.com
+     GET http://test.webarticles.com/show.asp?view=oldarchive.html HTTP/1.1
+     Host: test.webarticles.com
 
 With this URL, the browser requests the dynamic page show.asp from the
 server and with it also sends the parameter view with the value of
@@ -77,10 +82,8 @@ renders it and then sends it back to the browser which displays it to
 the user. The attacker would assume that show.asp can retrieve files
 from the file system and sends the following custom URL.
 
-GET
-http://test.webarticles.com/show.asp?view=../../../../../Windows/system.ini
-HTTP/1.1\
-Host: test.webarticles.com
+     GET http://test.webarticles.com/show.asp?view=../../../../../Windows/system.ini HTTP/1.1
+     Host: test.webarticles.com
 
 This will cause the dynamic page to retrieve the file system.ini from
 the file system and display it to the user. The expression ../ instructs
@@ -107,10 +110,8 @@ default script directories exposed which are well known to hackers.
 For example, a URL request which makes use of the scripts directory of
 IIS to traverse directories and execute a command can be
 
-GET
-http://server.com/scripts/..%5c../Windows/System32/cmd.exe?/c+dir+c:\\
-HTTP/1.1\
-Host: server.com
+    GET http://server.com/scripts/..%5c../Windows/System32/cmd.exe?/c+dir+c:\ HTTP/1.1
+    Host: server.com
 
 The request would return to the user a list of all files in the C:\\
 directory by executing the cmd.exe command shell file and run the
@@ -135,7 +136,7 @@ it. Besides directory traversal vulnerabilities a web application
 scanner will also check for SQL injection, Cross-site Scripting and
 other web vulnerabilities.
 
-[Acunetix Web Vulnerability
+[SOFTSKY Web Vulnerability
 Scanner](http://www.acunetix.com/vulnerability-scanner/) scans for [SQL
 Injection](http://www.acunetix.com/websitesecurity/sql-injection),
 [Cross Site
@@ -155,10 +156,10 @@ but the known good data and filter meta characters from the user input.
 This will ensure that only what should be entered in the field will be
 submitted to the server.
 
-**Check if your Website is Vulnerable to Attack with Acunetix Web Vulnerability Scanner**
+**Check if your Website is Vulnerable to Attack with SOFTSKY Web Vulnerability Scanner**
 -----------------------------------------------------------------------------------------
 
-Acunetix Web Vulnerability Scanner ensures website security by
+SOFTSKY Web Vulnerability Scanner ensures website security by
 automatically checking for [SQL
 Injection](http://www.acunetix.com/vulnerability-scanner/sql-injection/),
 [Cross Site
@@ -167,5 +168,5 @@ Directory Traversal and other vulnerabilities. It checks password
 strength on authentication pages and automatically audits shopping
 carts, forms, dynamic content and other web applications. As the scan is
 being completed, the software produces detailed reports that pinpoint
-where vulnerabilities exist. [Download the trial version of Acunetix
+where vulnerabilities exist. [Download the trial version of SOFTSKY
 WVS](http://www.acunetix.com/vulnerability-scanner/download/)

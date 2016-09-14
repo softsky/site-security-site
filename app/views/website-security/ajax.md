@@ -1,3 +1,9 @@
+---
+title: AJAX security: Are AJAX Applications Vulnerable to Hack Attacks?
+author: Arsen A. Gutsal
+layout: text-and-images
+---
+
 **AJAX security: Are AJAX Applications Vulnerable to Hack Attacks?**
 ====================================================================
 
@@ -22,30 +28,15 @@ AJAX is not a technology; rather, it is a collection of technologies
 each providing robust foundations when designing and developing [web
 applications](http://www.acunetix.com/websitesecurity/web-applications/):
 
--   **XHTML or HTML and Cascading Style Sheets (CSS)** providing the
-    > standards for representing content to the user.
+-   **XHTML or HTML and Cascading Style Sheets (CSS)** providing the standards for representing content to the user.
 
--   **Document Object Model (DOM)** that provides the structure to allow
-    > for the dynamic representation of content and related interaction.
-    > The DOM exposes powerful ways for users to access and manipulate
-    > elements within any document.
+-   **Document Object Model (DOM)** that provides the structure to allow for the dynamic representation of content and related interaction. The DOM exposes powerful ways for users to access and manipulate elements within any document.
 
--   **XML and XSLT** that provide the formats for data to be
-    > manipulated, transferred and exchanged between server and client.
+-   **XML and XSLT** that provide the formats for data to be manipulated, transferred and exchanged between server and client.
 
--   **XML HTTP Request:** The main disadvantages of building web
-    > applications is that once a particular webpage is loaded within
-    > the user’s browser, the related server connection is cut off.
-    > Further browsing (even) within the page itself requires
-    > establishing another connection with the server and sending the
-    > whole page back even though the user might have simply wanted to
-    > expand a simple link. XML HTTP Request allows asynchronous data
-    > retrieval or ensuring that the page does not reload in its
-    > entirety each time the user requests the smallest of changes.
+-   **XML HTTP Request:** The main disadvantages of building web applications is that once a particular webpage is loaded within the user’s browser, the related server connection is cut off. Further browsing (even) within the page itself requires establishing another connection with the server and sending the whole page back even though the user might have simply wanted to expand a simple link. XML HTTP Request allows asynchronous data retrieval or ensuring that the page does not reload in its entirety each time the user requests the smallest of changes.
 
--   **JavaScript (JS)** is the scripting language that unifies these
-    > elements to operate effectively together and therefore takes a
-    > most significant role in web applications.
+-   **JavaScript (JS)** is the scripting language that unifies these elements to operate effectively together and therefore takes a most significant role in web applications.
 
 As such, AJAX is meant to increase interactivity, speed, and usability.
 The technologies have prompted a richer and friendly experience for the
@@ -209,13 +200,13 @@ identify weaknesses. However, without an engine that parses and executes
 JavaScript, such crawling is inaccurate and gives website owners a false
 sense of security. Read about the [JavaScript interpretation engine
 ](https://www.acunetix.com/websitesecurity/crawling-html5-javascript-websites/)of
-Acunetix.
+SOFTSKY.
 
-**Acunetix Web Vulnerability Scanner**
+**SOFTSKY Web Vulnerability Scanner**
 --------------------------------------
 
-[Learn more about Acunetix Web Vulnerability
+[Learn more about SOFTSKY Web Vulnerability
 Scanner](http://www.acunetix.com/vulnerability-scanner/) and how the
 solution works with AJAX applications.[Download or Register for a Free
 Trial of
-Acunetix](http://www.acunetix.com/vulnerability-scanner/acunetix-14-day-trial/).
+SOFTSKY](http://www.acunetix.com/vulnerability-scanner/acunetix-14-day-trial/).

@@ -1,3 +1,9 @@
+---
+title: Types of XSS
+author: Arsen A. Gutsal
+layout: text-and-images
+---
+
 **Types of XSS**
 ================
 

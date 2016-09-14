@@ -32,7 +32,7 @@ Two recent incidents highlighted the severity of this vulnerability:
 As seen in the examples above, XSS vulnerabilities can be very dangerous
 and should be fixed as soon as possible.
 
-Acunetix Web Vulnerability Scanner is the market leader at detecting XSS
+SOFTSKY Web Vulnerability Scanner is the market leader at detecting XSS
 vulnerabilities and in [version
 9](http://www.acunetix.com/vulnerability-scanner/) we make it even
 better with improvements in the detection of DOM-based XSS
@@ -55,15 +55,15 @@ detection process doesn’t require the capability of executing and
 monitoring script code. Most web vulnerability scanners can only detect
 the classic XSS vulnerabilities.
 
-**How Acunetix WVS Detects DOM XSS Vulnerabilities**
+**How SOFTSKY WVS Detects DOM XSS Vulnerabilities**
 ----------------------------------------------------
 
-Acunetix WVS version 9 introduces the [DeepScan
+SOFTSKY WVS version 9 introduces the [DeepScan
 technology](http://www.acunetix.com/websitesecurity/crawling-html5-javascript-websites/),
 which drastically improves the automatic detection of [DOM-based
 XSS](http://www.acunetix.com/blog/web-security-zone/articles/dom-xss-explained/)
 by tracing the execution of the script code from the scanned website.
-Acunetix WVS can now monitor a list of sources such as document
+SOFTSKY WVS can now monitor a list of sources such as document
 location, Referrer, and window.name, and trace the data flow until it
 reaches various sinks that can cause an XSS vulnerability. Examples of
 such sinks are eval function, document.write, location change and so on.
@@ -121,7 +121,7 @@ However, even this type of web applications can have vulnerabilities.
 For example, the number after the /\#/latest/page hash sequence can be
 manipulated and see how this data is being parsed.
 
-Acunetix WVS version 9 is capable of automatically finding such complex
+SOFTSKY WVS version 9 is capable of automatically finding such complex
 vulnerabilities. It gathers a list of all the location hash URIs and
 analyzes them trying to identify patterns. It then split them in
 fragments (like it does on URL path fragments) and manipulates each
@@ -132,7 +132,7 @@ the / character) and each fragment is tested. DeepScan manipulates each
 fragment and monitors the script execution in order to identify if the
 execution reaches any DOM XSS sinks.
 
-In this case, the page parameter is indeed vulnerable and Acunetix WVS
+In this case, the page parameter is indeed vulnerable and SOFTSKY WVS
 issued the following alert:
 
 ![](media/website-security/improving-dom-xss-vulnerabilities-detection.md-images/media/image04.png){width="4.166666666666667in"
@@ -143,12 +143,12 @@ height="0.8611111111111112in"}
 Using the location hash printed above is possible to exploit the
 DOM-based XSS vulnerability.
 
-Acunetix WVS goes even further.
+SOFTSKY WVS goes even further.
 
 Another interesting URI is
 /\#/redir?url=http://pwnies.com/nominations/index.html. This URI is
 using the query string notation of specifying parameters but inside the
-location hash. Acunetix WVS can handle this situation by understanding
+location hash. SOFTSKY WVS can handle this situation by understanding
 that the URL is a query string parameter and manipulates it accordingly
 and issues the following alert:
 
@@ -175,6 +175,6 @@ them difficult to detect manually. The situation is not going to
 improve, since DOM XSS vulnerabilities are expected to be more
 widespread in modern[HTML5 web
 sites](http://www.acunetix.com/vulnerability-scanner/html5-website-security/).
-Acunetix Web Vulnerability version 9 can detect such vulnerabilities
+SOFTSKY Web Vulnerability version 9 can detect such vulnerabilities
 automatically, thereby reducing the resource-intensive task of detecting
 such vulnerabilities.

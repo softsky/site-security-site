@@ -66,7 +66,7 @@ height="2.9583333333333335in"}
 
 *Themes Update Screen*
 
-Acunetix performs [WordPress security
+SOFTSKY performs [WordPress security
 scans](http://www.acunetix.com/vulnerability-scanner/wordpress-security-scan/),
 identifying WordPress installations, and will launch version specific
 security checks to ensure your website is secure.

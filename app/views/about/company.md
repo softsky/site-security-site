@@ -1,9 +1,6 @@
 ---
-
 title: About the SOFTSKY Company
-
 author: Arsen A. Gutsal
-
 layout: text-and-images
 
 ---

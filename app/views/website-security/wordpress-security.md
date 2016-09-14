@@ -1,3 +1,9 @@
+---
+title: WordPress Security: Top tips to secure your WordPress Application
+author: Arsen A. Gutsal
+layout: text-and-images
+---
+
 # WordPress Security: Top tips to secure your WordPress Application
 
 
@@ -29,7 +35,7 @@ importantly, it brings with it bugfixes and security fixes, which help
 your WordPress site remain safe against common, easy-to-exploit
 vulnerabilities.
 
-![](media/website-security/wordpress-security.md-images/media/image07.jpg)
+![](/media/website-security/wordpress-security.md-images/media/image07.jpg)
 
 *WordPress (Core) Updates Screen*
 
@@ -48,8 +54,7 @@ malicious users to steal database credentials, which would then
 potentially allow total compromise of the WordPress site through it’s
 database.
 
-![](media/website-security/wordpress-security.md-images/media/image04.jpg){width="6.267716535433071in"
-height="2.9583333333333335in"}
+![](/media/website-security/wordpress-security.md-images/media/image04.jpg)
 
 *Plugins Update Screen*
 
@@ -58,12 +63,11 @@ all updated to their latest versions is essential. By keeping your
 plugins and themes up to date, you can make sure your site is covered
 with the latest security updates.
 
-![](media/website-security/wordpress-security.md-images/media/image01.jpg){width="6.267716535433071in"
-height="2.9583333333333335in"}
+![](/media/website-security/wordpress-security.md-images/media/image01.jpg)
 
 *Themes Update Screen*
 
-Acunetix performs [WordPress security
+SOFTSKY performs [WordPress security
 scans](http://www.acunetix.com/vulnerability-scanner/wordpress-security-scan/),
 identifying WordPress installations, and will launch version specific
 security checks to ensure your website is secure.
@@ -117,8 +121,7 @@ occurs when the web server does not find an index file (i.e. an
 index.php or index.html), if directory listing is turned on, the server
 will display an HTML page listing the contents of the directory.
 
-![](media/website-security/wordpress-security.md-images/media/image06.jpg){width="6.267716535433071in"
-height="2.9583333333333335in"}
+![](/media/website-security/wordpress-security.md-images/media/image06.jpg)
 
 *Directory Listing in Apache HTTP Server on a WordPress site*
 
@@ -153,9 +156,9 @@ These keys consist of a number of encryption keys as well as
 
 Security Keys ensure better encryption of information stored in the
 users’ cookies. There are a total of eight security keys that WordPress
-uses – **AUTH\_KEY**, **SECURE\_AUTH\_KEY**, **LOGGED\_IN\_KEY**,
-**NONCE\_KEY, AUTH\_SALT**,**SECURE\_AUTH\_SALT**, **LOGGED\_IN\_SALT**,
-and **NONCE\_SALT**.
+uses – `AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`,
+`NONCE_KEY`, `AUTH_SALT`,`SECURE_AUTH_SALT`, `LOGGED_IN_SALT`,
+and `NONCE_SALT`.
 
 A Security Key functions similarly to a very strong password or
 passphrase and should contain elements that make it harder to generate
@@ -176,8 +179,7 @@ guess users’ passwords. Additionally, if attackers manages to steal a
 user’s password, they will need to get past HTTP authentication in order
 to gain access to WordPress login form.
 
-![](media/website-security/wordpress-security.md-images/media/image09.png){width="4.944444444444445in"
-height="3.125in"}
+![](/media/website-security/wordpress-security.md-images/media/image09.png)
 
 *Basic HTTP Authentication*
 
@@ -255,7 +257,7 @@ allows code execution on the server.
 Entering the following constant in wp-config.php, disables editing from
 within the administrative interface.
 
-       define('DISALLOW\_FILE\_EDIT', true);
+       define('DISALLOW_FILE_EDIT', true);
 
 ## Prevent WordPress Username Enumeration
 
@@ -271,7 +273,7 @@ In order to prevent WordPress Username Enumeration you can add the
 following rule to WordPress site’s .htaccess file (this is usually
 located in your website’s root directory).
 
-	RewriteCond %{QUERY\_STRING} author=d\
+	RewriteCond %{QUERY_STRING} author=d\
 	RewriteRule \^ /? \[L,R=301\]
 
 ## Enabling HTTPS for all logins and wp-admin
@@ -305,13 +307,13 @@ true.
 To ensure that login credentials are encrypted during transit to the web
 server, define the following constant inwp-config.php.
 
-	define('FORCE\_SSL\_LOGIN', true);
+	define('FORCE_SSL_LOGIN', true);
 
 To ensure that sensitive data in transit (such as session cookies) is
 encrypted when using the WordPress administration panel, define the
 following constant in wp-config.php.
 
-	define('FORCE\_SSL\_ADMIN', true);
+	define('FORCE_SSL_ADMIN', true);
 
 ## Restrict Direct Access to Plugin and Theme PHP files
 
@@ -334,7 +336,7 @@ security measures such as input validation checks since. Most of the
 times this occurs because the validation would not performed in other
 files and not in the mentioned smaller modules.
 
-Furthermore, if the register\_globals directive is enabled on the server
+Furthermore, if the register_globals directive is enabled on the server
 (directive is disabled by default in PHP versions 4.2.0 and greater),
 with direct access to a PHP file, an attacker may be able to carry out
 several malicious actions including the ability to define PHP variables
@@ -348,11 +350,11 @@ requests to PHP files to a page of your choosing (in the following
 example the server will respond with a 404 page and status code).
 
 	# Restrict access to PHP files from plugin and theme directories\
-	RewriteCond %{REQUEST\_URI} !\^/wp-content/plugins/file/to/exclude\\.php
-	RewriteCond %{REQUEST\_URI} !\^/wp-content/plugins/directory/to/exclude/\
+	RewriteCond %{REQUEST_URI} !\^/wp-content/plugins/file/to/exclude\\.php
+	RewriteCond %{REQUEST_URI} !\^/wp-content/plugins/directory/to/exclude/\
 	RewriteRule wp-content/plugins/(.\*\\.php)\$ - \[R=404,L\]\
-	RewriteCond %{REQUEST\_URI} !\^/wp-content/themes/file/to/exclude\\.php\
-	RewriteCond %{REQUEST\_URI} !\^/wp-content/themes/directory/to/exclude/\
+	RewriteCond %{REQUEST_URI} !\^/wp-content/themes/file/to/exclude\\.php\
+	RewriteCond %{REQUEST_URI} !\^/wp-content/themes/directory/to/exclude/\
 	RewriteRule wp-content/themes/(.\*\\.php)\$ - \[R=404,L\]
 
 ## Prevent PHP files from executing
@@ -373,13 +375,12 @@ The best approach to mitigate this potential security risk is to deny
 the web server from serving any PHP files in thewp-content/uploads
 directory using the following rule.
 
-> &lt;Directory "/var/www/wp-content/uploads/"&gt;\
-> &lt;Files "\*.php"&gt;\
-> Order Deny,Allow\
-> Deny from All\
-> &lt;/Files&gt;
->
-> &lt;/Directory&gt;
+	  <Directory "/var/www/wp-content/uploads/">
+	  <Files "*.php">
+	  	  Order Deny,Allow
+	  	  Deny from All
+	  </Files>
+	  </Directory>
 
 ## Secure Your Debug Logs
 
@@ -387,21 +388,21 @@ During development of plugins or themes, as well as during deployment of
 a WordPress site, developers or system administrators may enable debug
 logs to log any PHP errors that occur.
 
-WordPress makes use of the WP\_DEBUG constant which is defined in
+WordPress makes use of the `WP_DEBUG` constant which is defined in
 wp-config.php. The constant is used to trigger the *debug* mode
 throughout WordPress. The constant is set to be false by default.
 
 Developers and administrators may also enable the `WP_DEBUG_LOG` and
 `WP_DEBUG_DISPLAY` companion constants to `WP_DEBUG`. `WP_DEBUG_LOG`
-creates a log file in the wp-contents folder, while WP\_DEBUG\_DISPLAY
+creates a log file in the wp-contents folder, while `WP_DEBUG_DISPLAY`
 controls whether debug messages are shown inside the HTML of pages or
 not.
 
 Any of the above will be useful while a theme, plugin or site is in
 development, however, if enabled on a production website, it might cause
 information disclosure – allowing malicious users to view errors and
-additional logging information. The WP\_DEBUG constant should be
+additional logging information. The `WP_DEBUG` constant should be
 disabled on production systems by either removing the constant from the
-wp-config.php file, or setting it to false as follows.
+`wp-config.php` file, or setting it to false as follows.
 
-	      define( 'WP\_DEBUG', false );
+	      define( 'WP_DEBUG', false );

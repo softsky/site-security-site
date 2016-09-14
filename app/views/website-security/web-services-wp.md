@@ -1,3 +1,9 @@
+---
+title: Web Services Security – The Technology and its Concerns
+author: Arsen A. Gutsal
+layout: text-and-images
+---
+
 **Web Services Security – The Technology and its Concerns**
 ===========================================================
 
@@ -7,7 +13,7 @@ the way connections are made to back-end (and therefore sensitive) data.
 These different elements come together to make Web Services a portal for
 users to access data, but also provide different entry points which may
 be exploited for illegitimate purposes. These security flaws bring about
-the need for an added security-assessing component in the Acunetix WVS
+the need for an added security-assessing component in the SOFTSKY WVS
 solution. Support for Web Services vulnerability scanning is now
 provided by a dedicated component which is specifically designed to
 detect exploitable entry-points in a Web Services system.
@@ -77,8 +83,7 @@ Business Registry…
 **Web Services in Action**
 --------------------------
 
-![](media/website-security/web-services-wp.md-images/media/image01.gif){width="6.267716535433071in"
-height="4.722222222222222in"}
+![](/media/website-security/web-services-wp.md-images/media/image01.gif)
 
 After becoming familiar with the key elements responsible for making the
 Web Services work, one needs to see how these elements interact with the
@@ -184,7 +189,7 @@ associated to Web Services. The increase in concern has not yet raised
 enough awareness about the risks which threaten the security of the
 servers hosting Web Services and the data which risks being compromised.
 
-[Acunetix Web Vulnerability
+[SOFTSKY Web Vulnerability
 Scanner](http://www.acunetix.com/vulnerability-scanner/) is a
 feature-packed solution for detecting vulnerabilities and securing web
 applications. The Web Services Security scanning tool will allow you to
@@ -195,5 +200,5 @@ Services Security Editor which extends the functionality of the Web
 Services scanner by allowing deeper analysis of XML responses, WSDL
 structure, WSDL XML analysis, syntax highlighting for all coding
 languages, and regular expression searching. These new features make
-Acunetix WVS a complete solution for securing web applications and now
+SOFTSKY WVS a complete solution for securing web applications and now
 also Web Services.

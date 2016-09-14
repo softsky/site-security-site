@@ -1,3 +1,9 @@
+---
+title: SQL Injection (SQLi)
+author: Arsen A. Gutsal
+layout: text-and-images
+---
+
 **SQL Injection (SQLi)**
 ========================
 
@@ -36,16 +42,15 @@ SQL query and run against the database server.
 The following server-side pseudo-code is used to authenticate users to
 the web application.
 
-\# Define POST variables\
-**uname = request.POST\['username'\]**\
-**passwd = request.POST\['password'\]**\
-\
-\# SQL query vulnerable to SQLi\
-sql = “**SELECT** id **FROM** users **WHERE** username=’” + **uname** +
-“’ **AND** **password**=’” + **passwd** + “’”\
-\
-\# **Execute** the **SQL** statement\
-**database**.**execute**(**sql**)
+    # Define POST variables
+    uname = request.POST['username']
+    passwd = request.POST['password']
+
+    # SQL query vulnerable to SQLi
+    sql = “SELECT id FROM users WHERE username=’” + uname + “’ AND password=’” + passwd + “’”
+
+    # Execute the SQL statement
+    database.execute(sql)
 
 The above script is a simple example of authenticating a user with a
 username and a password against a database with a table named users, and
@@ -56,25 +61,24 @@ could submit malicious input in such a way that would alter the SQL
 statement being executed by the database server.
 
 A simple example of an SQL injection payload could be something as
-simple as setting the password field topassword’ OR 1=1.
+simple as setting the password field to `password’ OR 1=1`.
 
 This would result in the following SQL query being run against the
 database server.
 
-**SELECT** id **FROM** users **WHERE** username=’username’ **AND**
-**password**=’**password**’ **OR** 1=1’
+	 SELECT id FROM users WHERE username=’username’ AND password=’password’ OR 1=1’
 
 An attacker can also comment out the rest of the SQL statement to
 control the execution of the SQL query further.
 
--- MySQL, MSSQL, Oracle, PostgreSQL, SQLite\
-' OR '1'='1' **--**\
-' OR '1'='1' **/\***\
--- MySQL\
-' OR '1'='1' **\#**\
--- Access (using null characters)\
-' OR '1'='1' **%00**\
-' OR '1'='1' **%16**
+	-- MySQL, MSSQL, Oracle, PostgreSQL, SQLite
+	' OR '1'='1' --
+	' OR '1'='1' /*
+	-- MySQL
+	' OR '1'='1' #
+	-- Access (using null characters)
+	' OR '1'='1' %00
+	' OR '1'='1' %16
 
 Once the query executes, the result is returned to the application to be
 processed, resulting in an authentication bypass. In the event of
@@ -95,30 +99,30 @@ to understand how lucrative a successful SQL injection attack can be for
 an attacker.
 
 -   An attacker can use SQL injection to bypass authentication or even
-    > impersonate specific users.
+    impersonate specific users.
 
 -   One of SQL’s primary functions is to select data based on a query
-    > and output the result of that query. An SQL injection
-    > vulnerability could allow the complete disclosure of data residing
-    > on a database server.
+     and output the result of that query. An SQL injection
+     vulnerability could allow the complete disclosure of data residing
+     on a database server.
 
 -   Since web applications use SQL to alter data within a database, an
-    > attacker could use SQL injection to alter data stored in
-    > a database. Altering data affects data integrity and could cause
-    > repudiation issues, for instance, issues such as voiding
-    > transactions, altering balances and other records.
+     attacker could use SQL injection to alter data stored in
+     a database. Altering data affects data integrity and could cause
+     repudiation issues, for instance, issues such as voiding
+     transactions, altering balances and other records.
 
 -   SQL is used to delete records from a database. An attacker could use
-    > an SQL injection vulnerability to delete data from a database.
-    > Even if an appropriate backup strategy is employed, deletion of
-    > data could affect an application’s availability until the database
-    > is restored.
+     an SQL injection vulnerability to delete data from a database.
+     Even if an appropriate backup strategy is employed, deletion of
+     data could affect an application’s availability until the database
+     is restored.
 
 -   Some database servers are configured (intentional or otherwise) to
-    > allow arbitrary execution of operating system commands on the
-    > database server. Given the right conditions, an attacker could use
-    > SQL injection as the initial vector in an attack of an internal
-    > network that sits behind a firewall.
+     allow arbitrary execution of operating system commands on the
+     database server. Given the right conditions, an attacker could use
+     SQL injection as the initial vector in an attack of an internal
+     network that sits behind a firewall.
 
 **The anatomy of an SQL Injection attack**
 ------------------------------------------
@@ -153,17 +157,16 @@ return data within the HTTP response – this technique is referred to as
 *union-based SQL injection*.
 
 The following is an example of such a technique. This can be seen on
-**testphp.vulnweb.com**, an intentionally vulnerable website hosted by
-Acunetix.
+`testphp.vulnweb.com`, an intentionally vulnerable website hosted by
+SOFTSKY.
 
 The following HTTP request is a normal request that a legitimate user
 would send.
 
-**GET http://testphp.vulnweb.com/artists.php?artist=1 HTTP/1.1**\
-Host: testphp.vulnweb.com
+      GET http://testphp.vulnweb.com/artists.php?artist=1 HTTP/1.1
+      Host: testphp.vulnweb.com
 
-![](media/website-security/sql-injection.md-images/media/image04.png){width="6.267716535433071in"
-height="5.263888888888889in"}
+![](/media/website-security/sql-injection.md-images/media/image04.png)
 
 Although the above request looks normal, the artist parameter in the GET
 request’s query string is vulnerable to SQL injection.
@@ -180,24 +183,20 @@ joined to the result of the original query, allowing an attacker to
 exfiltrate data out of a database by obtaining values of columns from
 other tables.
 
-**GET http://testphp.vulnweb.com/artists.php?artist=-1 UNION SELECT 1,
-2, 3 HTTP/1.1\
-Host: testphp.vulnweb.com**
+      GET http://testphp.vulnweb.com/artists.php?artist=-1 UNION SELECT 1,2,3 HTTP/1.1
+    Host: testphp.vulnweb.com
 
-![](media/website-security/sql-injection.md-images/media/image03.png){width="6.267716535433071in"
-height="5.263888888888889in"}
+![](/media/website-security/sql-injection.md-images/media/image03.png)
 
 The above example proves that the query to the database can be modified
 to return data which an attacker may want to extract. The following
 example shows how an SQL injection payload could be used to exfiltrate
 data from this intentionally vulnerable site.
 
-**GET http://testphp.vulnweb.com/artists.php?artist=-1 UNION SELECT
-1,pass,cc FROM users WHERE uname='test' HTTP/1.1\
-Host: testphp.vulnweb.com**
+     GET http://testphp.vulnweb.com/artists.php?artist=-1 UNION SELECT 1,pass,cc FROM users WHERE uname='test' HTTP/1.1
+     Host: testphp.vulnweb.com
 
-![](media/website-security/sql-injection.md-images/media/image05.png){width="6.267716535433071in"
-height="5.263888888888889in"}
+![](/media/website-security/sql-injection.md-images/media/image05.png)
 
 **Further Reading**
 -------------------
