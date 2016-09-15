@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var PORT_LISTENER = 9000;
+var PORT_LISTENER = process.env.PORT || 9000;
 console.log('I am listening to this port: http://localhost:%s', PORT_LISTENER);
 
 var express = require('express'),
@@ -23,7 +23,7 @@ var router = require('./routes/index');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || PORT_LISTENER);
+app.set('port', PORT_LISTENER);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(favicon(__dirname + '/public/bootstrap-3.3.1/docs/favicon.ico'));
