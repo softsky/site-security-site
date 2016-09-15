@@ -1,0 +1,27 @@
+lb:
+  image: dockercloud/haproxy
+  links:
+    - web
+  ports:
+    - "80:80"
+  roles:
+    - global
+web:
+  image: softsky/site-security-site
+  ports:
+    - "3000:3000"
+  links:
+    - redis
+    - api
+  target_num_containers: 4
+api:
+  image: softsky/site-security-api
+  ports:
+    - "3001:3001"
+  links:
+    - mongo
+  target_num_containers: 4
+mongo:
+  image: mongo
+redis:
+  image: redis
