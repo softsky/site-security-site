@@ -16,14 +16,14 @@ var express = require('express')
 , marked = require('marked')
 , MarkedMetaData = require('marked-metadata')
 , hljs = require('highlight.js')
-, seneca = require('seneca')()
-    .client({
-	type: 'http',
-	port: '3000',
-	host: 'localhost',
-	protocol: 'http'
-    })
-    .act('role:entity,cmd:list',{name:'ww','q.host':/.*t.*/}, console.log);
+// , seneca = require('seneca')()
+//     .client({
+// 	type: 'http',
+// 	port: '3000',
+// 	host: 'localhost',
+// 	protocol: 'http'
+//     })
+    //.act('role:entity,cmd:list',{name:'ww','q.host':/.*t.*/}, console.log);
 
 marked.setOptions({
     renderer: new marked.Renderer(),
@@ -65,12 +65,12 @@ module.exports = (function () {
         });
     });
     router.get('/security/report/:id', function (req, res) {
-	seneca.act({role:'web', cmd:'list', name:'ww', 'q.id':req.params.id}, function (err, msg){
-            res.render('bootstrap3-templates/dashboard', _.extend({
-		'pathToAssets': '/bootstrap-3.3.1',
-		'pathToSelectedTemplateWithinBootstrap' : '/bootstrap-3.3.1/docs/examples/dashboard'
-            }, msg));
-	});
+	// seneca.act({role:'web', cmd:'list', name:'ww', 'q.id':req.params.id}, function (err, msg){
+        //     res.render('bootstrap3-templates/dashboard', _.extend({
+	// 	'pathToAssets': '/bootstrap-3.3.1',
+	// 	'pathToSelectedTemplateWithinBootstrap' : '/bootstrap-3.3.1/docs/examples/dashboard'
+        //     }, msg));
+	// });
     });
     // Generic section
     router.get('/:section/:id', (req, res, next) => {
