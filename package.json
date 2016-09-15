@@ -21,7 +21,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "grunt"
+    "start": "node app/app.js"
   },
   "dependencies": {
     "body-parser": "~1.0.1",
