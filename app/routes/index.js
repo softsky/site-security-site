@@ -13,6 +13,7 @@ var express = require('express')
 , _ = require('lodash')
 , jade = require('jade')
 , fs = require('fs')
+, webshot = require('webshot')
 , marked = require('marked')
 , MarkedMetaData = require('marked-metadata')
 , hljs = require('highlight.js')
@@ -52,6 +53,13 @@ module.exports = (function () {
 	    'carousel': jade.renderFile('app/views/carousel.jade')
         });
     });
+    router.get('/:id', function (req, res) {
+	var id = req.params.id;
+        res.render(id,{
+            'pathToAssets': '/bootstrap-3.3.1'
+        });
+    });
+    
     router.get('/about', function (req, res) {
         res.redirect('http://www.alt-f1.be');
     });
@@ -72,12 +80,44 @@ module.exports = (function () {
         //     }, msg));
 	// });
     });
+
+    router.get('/ws/:url', (req, res, next) => {
+	var url = req.params.url;
+	var fname = `${url}.png`;
+	var webshot = require('webshot');
+	var userAgent = req.headers['user-agent'];
+	console.log(userAgent);
+	var options = {
+	    screenSize: {
+		width: 800
+		, height: 600
+	    }
+	    , shotSize: {
+		width: 'all'
+		, height: 'all'
+	    },
+	      userAgent: userAgent
+	};
+	
+	res.writeHead(200, {'Content-Type': 'image/png' });
+	// stream the file
+	var renderStream = webshot(url, options);
+	
+	renderStream.on('data', function(data) {
+	    res.write(data);
+	});
+	renderStream.on('end', function(data) {
+	    res.end()
+	});
+
+    });
+    
     // Generic section
     router.get('/:section/:id', (req, res, next) => {
 	var id = req.params.id
 	, section = req.params.section;
 	
-	if(['css','img'].indexOf(section) > -1){
+	if(['css','img','media', 'js'].indexOf(section) > -1){
 	    next();
 	    return;
 	}
@@ -99,7 +139,6 @@ module.exports = (function () {
 		jade.renderFile(`app/views/${section}/${id}.jade`):mkmd.markdown()
         });	
     });
-    
-    
+            
     return router;
 })();
