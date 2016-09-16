@@ -18,7 +18,7 @@ var express = require('express')
 , MarkedMetaData = require('marked-metadata')
 , hljs = require('highlight.js')
 
-, redis = require('redis')
+// , redis = require('redis')
 , requestProxy = require('express-request-proxy')
 
 , seneca = require('seneca')()
@@ -29,7 +29,7 @@ var express = require('express')
     // 	protocol: 'http'
     // });
 
-require('redis-streams')(redis);
+// require('redis-streams')(redis);
 
 marked.setOptions({
     renderer: new marked.Renderer(),
@@ -89,8 +89,8 @@ module.exports = (function () {
     });
 
     router.get('/api/:role/:cmd/:host', requestProxy({
-	cache: redis.createClient(),
-	cacheMaxAge: 3600,
+	//cache: redis.createClient(),
+	//cacheMaxAge: 3600,
 	url: "http://localhost:3001/api/:role/:cmd/:host",
 	// query: {
 	//     secret_key: process.env.SOMEAPI_SECRET_KEY
