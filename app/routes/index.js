@@ -17,14 +17,19 @@ var express = require('express')
 , marked = require('marked')
 , MarkedMetaData = require('marked-metadata')
 , hljs = require('highlight.js')
-// , seneca = require('seneca')()
-//     .client({
-// 	type: 'http',
-// 	port: '3000',
-// 	host: 'localhost',
-// 	protocol: 'http'
-//     })
-    //.act('role:entity,cmd:list',{name:'ww','q.host':/.*t.*/}, console.log);
+
+, redis = require('redis')
+, requestProxy = require('express-request-proxy')
+
+, seneca = require('seneca')()
+    // .client({
+    // 	type: 'http',
+    // 	port: '3001',
+    // 	host: 'localhost',
+    // 	protocol: 'http'
+    // });
+
+require('redis-streams')(redis);
 
 marked.setOptions({
     renderer: new marked.Renderer(),
@@ -56,7 +61,9 @@ module.exports = (function () {
     router.get('/:id', function (req, res) {
 	var id = req.params.id;
         res.render(id,{
-            'pathToAssets': '/bootstrap-3.3.1'
+            'pathToAssets': '/bootstrap-3.3.1',
+	    // FIXME: when remove carousel design gets smashed. Fix
+	    'carousel': jade.renderFile('app/views/carousel.jade')	    
         });
     });
     
@@ -81,34 +88,42 @@ module.exports = (function () {
 	// });
     });
 
+    router.get('/api/:role/:cmd/:host', requestProxy({
+	cache: redis.createClient(),
+	cacheMaxAge: 3600,
+	url: "http://localhost:3001/api/:role/:cmd/:host",
+	// query: {
+	//     secret_key: process.env.SOMEAPI_SECRET_KEY
+	// },
+	// headers: {
+	//     'X-Custom-Header': process.env.SOMEAPI_CUSTOM_HEADER
+    }));
+    
     router.get('/ws/:url', (req, res, next) => {
 	var url = req.params.url;
 	var fname = `${url}.png`;
 	var webshot = require('webshot');
 	var userAgent = req.headers['user-agent'];
-	console.log(userAgent);
-	var options = {
-	    screenSize: {
-		width: 800
-		, height: 600
-	    }
-	    , shotSize: {
-		width: 'all'
-		, height: 'all'
-	    },
-	      userAgent: userAgent
-	};
-	
+	console.log(userAgent, req.params.options);
+	var options = _.extend({
+	    // screenSize: {
+	    // 	width: '800'
+	    // 	, height: '600'
+	    // },
+	    // shotSize: {
+	    // 	width: '300'
+	    // 	, height: 'all'
+	    // },
+	    //  userAgent: userAgent
+	}, req.params.options?JSON.parse(req.params.options):{});
+
+	console.log('Capturing screenshot:', options);
 	res.writeHead(200, {'Content-Type': 'image/png' });
 	// stream the file
 	var renderStream = webshot(url, options);
 	
-	renderStream.on('data', function(data) {
-	    res.write(data);
-	});
-	renderStream.on('end', function(data) {
-	    res.end()
-	});
+	renderStream.on('data', res.write.bind(res));
+	renderStream.on('end', res.end.bind(res));
 
     });
     
