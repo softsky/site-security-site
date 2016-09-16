@@ -67,6 +67,56 @@ hr {
     font-size: 1.1em;    
 }
 
+dl {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0
+}
+dt {
+    float: left;
+    width: 20%;
+    /* adjust the width; make sure the total of both is 100% */
+    padding: 0;
+    margin: 0
+}
+dd {
+    float: right;
+    width: 80%;
+    /* adjust the width; make sure the total of both is 100% */
+    padding: 0;
+    margin: 0
+    clear:right;
+}
+.modal-dialog {
+    font-family: "Francois One";
+    font-style: normal;
+    /* font-weight: 900; */
+    /* font-size: 32px; */
+    
+}
+.modal-dialog .modal-header, .modal-dialog .modal-header h4{
+    background-color: rgb(70, 184, 218);
+    color: white;
+}
+.floating-side-button {
+    float:left;
+    top: 200px;
+    left: -40px;
+    width:40;
+    height:60;
+    padding:6px;
+    position: fixed;
+    border-radius:8px;
+    z-index: 1000;
+    
+    font-family: "Francois One";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    
+    transform: rotate(90deg);
+}
 footer {
     background-color: #080808;
     font-weidht: 100;
