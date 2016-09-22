@@ -43,11 +43,17 @@ $(document).ready(() => {
 	    }
 	});
     });
+    $('input#email').on('change', (e) => {
+	var val = $(e.target).val();
+	if(val.endsWith($("#url").val()))
+	    $(e.target).val(val.replace(/\@.*/,''));
+    });
+    
     $('button[type=submit]').click(() => {
 	console.log('Hiding');
 	$('form').fadeIn('slow', () => {
 	    $('h1').text('Thank you!');
 	});
 	
-    })
-})
+    });
+});
