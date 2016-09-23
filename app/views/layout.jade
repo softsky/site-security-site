@@ -48,20 +48,20 @@ html(lang='en')
          .modal-body             
             form(role='form')
              .form-group
-              label(for='firstName') First Name
-              input#firstName.form-control.btn-space(type='text', placeholder='John')
+              label(for='subscribe_firstName') First Name
+              input#subscribe_firstName.form-control.btn-space(type='text', placeholder='John')
              .form-group
-              label(for='lastName') Last Name
-              input#lastName.form-control.btn-space(type='text', placeholder='Doe')
+              label(for='subscribe_lastName') Last Name
+              input#subscribe_lastName.form-control.btn-space(type='text', placeholder='Doe')
              .form-group
-              label(for='email') Email
-              input#email.form-control.btn-space(type='text', placeholder='john.doe@gmail.com')
+              label(for='subscribe_email') Email
+              input#subscribe_email.form-control.btn-space(type='text', placeholder='john.doe@gmail.com')
          .modal-footer
             h6 Thank you for your interest
             button.btn.btn-space.btn-primary Subscribe
             button.btn.btn-space.btn-default(data-dismiss='modal') Dismiss
             
-    #signUpModal.modal.fade(role=dialog)
+    #signUp_signUpModal.modal.fade(role=dialog)
      .modal-dialog
        .modal-content
          .modal-header
@@ -71,25 +71,25 @@ html(lang='en')
          .modal-body             
             form(role='form')
              .form-group
-              label(for='firstName') First Name
-              input#firstName.form-control.btn-space(type='text', placeholder='John')
+              label(for='signUp_firstName') First Name
+              input#signUp_firstName.form-control.btn-space(type='text', placeholder='John')
              .form-group
-              label(for='lastName') Last Name
-              input#lastName.form-control.btn-space(type='text', placeholder='Doe')
+              label(for='signUp_lastName') Last Name
+              input#signUp_lastName.form-control.btn-space(type='text', placeholder='Doe')
              .form-group
-              label(for='email') Email
-              input#email.form-control.btn-space(type='text', placeholder='john.doe@example.com')
+              label(for='signUp_email') Email
+              input#signUp_email.form-control.btn-space(type='text', placeholder='john.doe@example.com')
              .form-group
-              label.sr-only(for='website') Email
+              label.sr-only(for='signUp_website') Email
               .input-group
                 .input-group-addon http://
-                input#website.form-control.btn-space(type='text', placeholder='example.com')
+                input#signUp_website.form-control.btn-space(type='text', placeholder='example.com')
          .modal-footer
             h6 Thank you for your registration
             button.btn.btn-space.btn-primary Sign up
             button.btn.btn-space.btn-default(data-dismiss='modal') Dismiss
 
-    #signInModal.modal.fade(role=dialog)
+    #signIn_signInModal.modal.fade(role=dialog)
      .modal-dialog
        .modal-content
          .modal-header
@@ -99,11 +99,11 @@ html(lang='en')
          .modal-body             
             form(role='form')
              .form-group
-              label(for='firstName') Email
-              input#firstName.form-control.btn-space(type='text', placeholder='john.doe@example.com')
+              label(for='signIn_firstName') Email
+              input#signIn_firstName.form-control.btn-space(type='text', placeholder='john.doe@example.com')
              .form-group
-              label(for='lastName') Password
-              input#lastName.form-control.btn-space(type='password', placeholder='')
+              label(for='signIn_lastName') Password
+              input#signIn_lastName.form-control.btn-space(type='password', placeholder='')
          .modal-footer
             button.btn.btn-space.btn-primary Sign In
             button.btn.btn-space.btn-default(data-dismiss='modal') Dismiss
