@@ -15,6 +15,8 @@ var express = require('express')
 , fs = require('fs')
 , webshot = require('webshot')
 , marked = require('marked')
+, dotenv = require('dotenv').config()
+, request = require('request')
 , MarkedMetaData = require('marked-metadata')
 , hljs = require('highlight.js')
 
@@ -63,7 +65,7 @@ module.exports = (function () {
         res.render(id,{
             'pathToAssets': '/bootstrap-3.3.1',
 	    // FIXME: when remove carousel design gets smashed. Fix
-	    'carousel': jade.renderFile('app/views/carousel.jade')	    
+	    'carousel': jade.renderFile('app/views/carousel.jade')
         });
     });
     
@@ -98,6 +100,40 @@ module.exports = (function () {
 	// headers: {
 	//     'X-Custom-Header': process.env.SOMEAPI_CUSTOM_HEADER
     }));
+
+    
+    var access_object = {}
+    , updateSendPulseAccessToken = () => {
+	const data = {
+	    grant_type:'client_credentials',
+	    client_id:process.env.SENDPULSE_CLIENT_ID,
+	    client_secret:process.env.SENDPULSE_CLIENT_SECRET
+	};
+
+	console.log('Sending', data);
+	request.post({url:'https://api.sendpulse.com/oauth/access_token', form: data}, (err, response, body) => {
+	    access_object = JSON.parse(body);
+	    setTimeout(updateSendPulseAccessToken, 3600 * 1000);
+	    console.log(err, access_object); 
+	});
+    };
+
+    updateSendPulseAccessToken()
+    
+    
+    router.all('/sendpulse/*', (req, res, next) => {
+	// TODO think how to move it out of innter proc
+	const headers = {
+	    Authorization: `${access_object.token_type} ${access_object.access_token}`
+	};
+	console.log(req.path, req.body);
+	return requestProxy({
+	    //cache: redis.createClient(),
+	    //cacheMaxAge: 3600,
+	    url: 'http://api.sendpulse.com/*',
+	    headers: headers
+	})(req, res, next);
+    });
     
     router.get('/ws/:url', (req, res, next) => {
 	var url = req.params.url;

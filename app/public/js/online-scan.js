@@ -23,6 +23,7 @@ $(document).ready(() => {
 	    
 	$('#screenshot').attr('src',`/ws/${domain}?options=${JSON.stringify(options)}`);
 
+	return ;
 	$.ajax({
 	    url: `/api/exec/whatweb/${domain}`,
 	    dataType: 'json',
@@ -44,6 +45,7 @@ $(document).ready(() => {
 	});
     });
     $('input#email').on('change', (e) => {
+	console.log('onchange, email', $(e.target).val());
 	var val = $(e.target).val();
 	if(val.endsWith($("#url").val()))
 	    $(e.target).val(val.replace(/\@.*/,''));
@@ -54,6 +56,28 @@ $(document).ready(() => {
 	$('form').fadeIn('slow', () => {
 	    $('h1').text('Thank you!');
 	});
+
+	var email = $('input#email').val();
+	if(email.indexOf('@') < 0){
+	    email += $('#domain').text();
+	};
 	
+	$.ajax({
+	    url: `/sendpulse/addressbooks/565640/emails`,
+	    method: 'POST',
+	    dataType: 'json',
+	    contentType: 'application/json',
+	    data: JSON.stringify([{
+		email: email,
+		variables: {
+		    firstName: $('input#firstName').val(),
+		    lastName: $('input#lastName').val(),
+		    website_url: $('input#url').val()
+		}
+	    }]),
+	    success: (data, textStatus) => {
+		console.log(data, textStatus);
+	    }
+	});
     });
 });

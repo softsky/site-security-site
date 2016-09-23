@@ -3,8 +3,8 @@ block body
     script(src='/js/online-scan.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js')
     .row
-      .col-md-6.col-sm-3
-        form.form(role='form')
+      .col-md-6
+        form.form(role='form',action='#')
           h1 Online Scan
           .form-group
             label
@@ -14,13 +14,16 @@ block body
                 input.form-control.btn-space(type='http', id='url', placeholder='example.com', protocol='http', required='true')
           .form-group
             label
-              | Your Name
-              input.form-control.btn-space(type='text', id='name', placeholder='John Doe', required='true')
+              | First Name
+              input.form-control.btn-space(type='text', id='firstName', placeholder='John', required='true')
+            label.p-l-3
+              | Last Name
+              input.form-control.btn-space(type='text', id='lastName', placeholder='Doe', required='true')
           .form-group
             label
               | Email
               .input-group
-                input.form-control.btn-space.text-right(type='text', id='email', placeholder='john.doe', required='true')
+                input.form-control.btn-space.text-righ(type='text', id='email', placeholder='john.doe', required='true')
                 span.input-group-addon(id='domain') @example.com
           //.form-group
           // input.form-control.btn-space(type='scan-type', placeholder='Type of scan')  
