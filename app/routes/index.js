@@ -21,8 +21,8 @@ var express = require('express')
 , hljs = require('highlight.js')
 
 // , redis = require('redis')
-, requestProxy = require('express-request-proxy')
-, seneca = require('seneca')();
+, requestProxy = require('express-request-proxy');
+// , seneca = require('seneca')();
 
 // require('redis-streams')(redis);
 
@@ -75,14 +75,14 @@ module.exports = (function () {
         });
     });
     
-    router.get('/security/report/:id', function (req, res) {
-        // seneca.act({role:'web', cmd:'list', name:'ww', 'q.id':req.params.id}, function (err, msg){
-        //     res.render('bootstrap3-templates/dashboard', _.extend({
-        //      'pathToAssets': '/bootstrap-3.3.1',
-        //      'pathToSelectedTemplateWithinBootstrap' : '/bootstrap-3.3.1/docs/examples/dashboard'
-        //     }, msg));
-        // });
-    });
+    // router.get('/security/report/:id', function (req, res) {
+    //     // seneca.act({role:'web', cmd:'list', name:'ww', 'q.id':req.params.id}, function (err, msg){
+    //     //     res.render('bootstrap3-templates/dashboard', _.extend({
+    //     //      'pathToAssets': '/bootstrap-3.3.1',
+    //     //      'pathToSelectedTemplateWithinBootstrap' : '/bootstrap-3.3.1/docs/examples/dashboard'
+    //     //     }, msg));
+    //     // });
+    // });
 
     var access_object = {};
     var updateSendPulseAccessToken = () => {
