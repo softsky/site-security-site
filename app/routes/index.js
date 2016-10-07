@@ -15,15 +15,14 @@ var express = require('express')
 , fs = require('fs')
 , webshot = require('webshot')
 , marked = require('marked')
-, dotenv = require('dotenv').config()
+, dotenv = require('dotenv').config({silent:true})
 , request = require('request')
 , MarkedMetaData = require('marked-metadata')
 , hljs = require('highlight.js')
 
 // , redis = require('redis')
 , requestProxy = require('express-request-proxy')
-
-, seneca = require('seneca')()
+, seneca = require('seneca')();
 
 // require('redis-streams')(redis);
 
@@ -75,6 +74,7 @@ module.exports = (function () {
             'pathToSelectedTemplateWithinBootstrap' : '/bootstrap-3.3.1/docs/examples/' + req.params.selectedTemplate
         });
     });
+    
     router.get('/security/report/:id', function (req, res) {
         // seneca.act({role:'web', cmd:'list', name:'ww', 'q.id':req.params.id}, function (err, msg){
         //     res.render('bootstrap3-templates/dashboard', _.extend({
@@ -83,19 +83,6 @@ module.exports = (function () {
         //     }, msg));
         // });
     });
-
-    router.get('/api/:role/:cmd/:host', requestProxy({
-        // TODO add seneca authentication
-        //cache: redis.createClient(),
-        //cacheMaxAge: 3600,
-        url: 'http://localhost:3001/api/:role/:cmd/:host',
-        // query: {
-        //     secret_key: process.env.SOMEAPI_SECRET_KEY
-        // },
-        // headers: {
-        //     'X-Custom-Header': process.env.SOMEAPI_CUSTOM_HEADER
-    }));
-
 
     var access_object = {};
     var updateSendPulseAccessToken = () => {
@@ -116,26 +103,21 @@ module.exports = (function () {
     updateSendPulseAccessToken()
 
 
-    router.all('/sendpulse/*', (req, res, next) => {
-        // TODO think how to move it out of innter proc
-        const headers = {
+    router.all('/sendpulse/*', requestProxy({
+        //cache: redis.createClient(),
+        //cacheMaxAge: 3600,
+        url: 'https://api.sendpulse.com/*',
+        headers: {
             Authorization: `${access_object.token_type} ${access_object.access_token}`
-        };
-        console.log(req.path, req.body);
-        return requestProxy({
-            //cache: redis.createClient(),
-            //cacheMaxAge: 3600,
-            url: 'http://api.sendpulse.com/*',
-            headers: headers
-        })(req, res, next);
-    });
+        }
+    }));
 
     router.get('/ws/:url', (req, res, next) => {
         var url = req.params.url;
         var fname = `${url}.png`;
         var webshot = require('webshot');
         var userAgent = req.headers['user-agent'];
-        console.log(userAgent, req.params.options);
+        console.log(userAgent, req.query.options);
         var options = _.extend({
             // screenSize: {
             //  width: '800'
@@ -145,16 +127,28 @@ module.exports = (function () {
             //  width: '300'
             //  , height: 'all'
             // },
-            //  userAgent: userAgent
-        }, req.params.options?JSON.parse(req.params.options):{});
+             userAgent: userAgent
+        }, req.query.options?JSON.parse(req.query.options):{});
 
-        console.log('Capturing screenshot:', options);
-        res.writeHead(200, {'Content-Type': 'image/png' });
+        console.log('Capturing screenshot:', url, options);
+        //res.writeHead(200, {'Content-Type': 'image/png' });
         // stream the file
-        var renderStream = webshot(url, options);
+        var renderStream = webshot(url, options)
+        , screenshot = '';
+        
+        // Capture the streaming output from the screenshot
+        renderStream.on('data', function(data) {
+            screenshot += data.toString('binary');
+        });
 
-        renderStream.on('data', res.write.bind(res));
-        renderStream.on('end', res.end.bind(res));
+        // Once the image capture is completed, write it out to the browser
+        renderStream.on('end', function() {
+            res.set('Content-Type', 'image/png');
+            res.end(screenshot, 'binary');
+        });
+
+//        renderStream.on('data', res.write.bind(res));
+//        renderStream.on('end', res.end.bind(res));
 
     });
 
