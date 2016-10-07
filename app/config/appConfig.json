@@ -12,8 +12,8 @@
         "devPort": 9000,
         "dist": "_gen_dist",
         "distPort": 9000,
-        "livereloadPort": 1337,
+        "livereloadPort": 35729,
         "src": "app",
-        "srcPort": "9000"
+        "srcPort": 9000
     }
 }
