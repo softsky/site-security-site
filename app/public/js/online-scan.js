@@ -1,8 +1,18 @@
 $(window).on('hashchange', () => {
     if(window.location.hash){
-        var scanType = window.location.hash.match(/^#(.*)\/?/);
-        if(scanType && scanType.length > 1){
-            $('select#scanType').val(scanType[1]);
+        var hash = window.location.hash.match(/^#(.*)/);
+        if(hash && hash.length > 1){
+            var parts = hash[1].split(/\//);
+            if(scanType){
+                $('select#scanType').val(parts[0]);
+            }
+            if(round){
+                $('select#round').val(parts[1]);
+                $('select#round option:selected').attr('disabled', false);
+            }
+            if(coupon){
+                $('input#coupon').val(parts[2]);
+            }
         }
     }
 
