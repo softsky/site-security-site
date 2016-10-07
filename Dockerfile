@@ -14,4 +14,5 @@ RUN npm install
 
 COPY app/ app/
 
-CMD [ "npm", "run", "start" ]
+#CMD [ "npm", "run", "start" ]
+CMD [ "node", "/usr/src/app/app.js" ]
