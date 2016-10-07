@@ -53,19 +53,20 @@ module.exports = function (grunt) {
             }
         },
 
-
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc'
+        eslint: {
+            nodeFiles: {
+                options: {
+                    configFile: "app/config/eslint-node.json"
+                },
+                src: ['<%= appConfig.app.src %>/app.js', '<%= appConfig.app.src %>/routes/**/*.js']
             },
-            gruntfile: {
-                src: 'Gruntfile.js'
-            },
-            app: {
-                src: ['<%= appConfig.app.src %>/<%= appConfig.directories.src %>/*.js', '<%= appConfig.app.src %>/routes/**/*.js']
-            }
+            browserFiles: {
+                options: {
+                    configFile: "app/config/eslint-browser.json"
+                },
+                src: ['<%= appConfig.app.src %>/public/js/*.js']
+            }            
         },
-
 
         nodemon: {
             src: {
@@ -99,11 +100,14 @@ module.exports = function (grunt) {
         },
 
         watch: {
-            //every time a file is changed, a task is performed
-            gruntfile: {
-                files: ['<%= jshint.app.src %>', '<%= jshint.gruntfile.src %>'],
-                tasks: ['jshint:gruntfile', 'jshint:app' ]
+            options: {
+                spawn: false,
             },
+            //every time a file is changed, a task is performed
+            // gruntfile: {
+            //     files: ['<%= eslint.app.src %>', '<%= eslint.gruntfile.src %>'],
+            //     tasks: ['eslint:gruntfile', 'eslint:app' ]
+            // },
             app: {
                 files: '{<%= appConfig.app.dev %>,<%= appConfig.app.src %>}/**/*.{css,html,js,jpg,jpeg,png}',
                 options: {
@@ -120,14 +124,17 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks("gruntify-eslint");
+    
 
     // Start local server and watch for changes in files.
     grunt.registerTask('src', [
-        'jshint',
-        'nodemon:src'
+        'eslint',
+        'nodemon:src',
+        'watch'
     ]);
 
     // Available tasks
-    grunt.registerTask('default', ['src']);
+    grunt.registerTask('default', ['eslint', 'src']);       
 };
 

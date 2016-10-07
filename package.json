@@ -29,6 +29,7 @@
     "dotenv": "^2.0.0",
     "errorhandler": "1.4.3",
     "express": "~4.8.0",
+    "express-http-proxy": "^0.10.0",
     "express-request-proxy": "^2.0.0",
     "express-session": "1.13.0",
     "googleapis": "~0.4.3",
@@ -59,6 +60,8 @@
     "Bootstrap 3.2.0"
   ],
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-connect": "~0.3.0",
     "grunt-contrib-copy": "~0.4.1",
@@ -67,6 +70,6 @@
     "grunt-markdown": "~0.4.0",
     "grunt-nodemon": "~0.1.0",
     "grunt-open": "~0.2.2",
-    "html2markdown": "^1.1.0"
+    "gruntify-eslint": "^3.1.0"
   }
 }
