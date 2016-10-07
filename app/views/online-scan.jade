@@ -11,28 +11,51 @@ block body
               | Website URL            
               .input-group
                 span.input-group-addon http://
-                input.form-control.btn-space(type='http', id='url', placeholder='example.com', protocol='http', required='true')
+                input#url.form-control.btn-space(type='http', placeholder='example.com', protocol='http', required='true')
           .form-group
             label
               | First Name
-              input.form-control.btn-space(type='text', id='firstName', placeholder='John', required='true')
+              input#firstName.form-control.btn-space(type='text', placeholder='John', required='true')
             label.p-l-3
               | Last Name
-              input.form-control.btn-space(type='text', id='lastName', placeholder='Doe', required='true')
+              input#lastName.form-control.btn-space(type='text', placeholder='Doe', required='true')
           .form-group
             label
               | Email
               .input-group
-                input.form-control.btn-space.text-righ(type='text', id='email', placeholder='john.doe', required='true')
-                span.input-group-addon(id='domain') @example.com
+                input#email.form-control.btn-space.text-righ(type='text', placeholder='john.doe', required='true')
+                span#domain.input-group-addon @example.com
+          .form-group
+            label
+              | Round
+              select#round.form-control
+                option(value="0") 0 (Quick Scan - $0)
+                option(value="1", disabled=true) 1 (Full Scan - $199)
+                option(value="2", disabled=true) 2 (Human Penetrationn Testing - $999)
+                option(value="3", disabled=true) 3 (Weekly Monitoring - $999/yr)
+                option(value="4", disabled=true) 4 (Bug Bounty program - $2999)
+          .form-group
+            label
+              | Scan type
+              select#scanType.form-control
+                option(value="wordpress") Wordpress Vulnerability Scan
+                option(value="joomla") Joomla Vulnerability Scan
+                option(value="drupal") Drupal Vulnerability Scan
+                option(value="website") Website Vulnerability Scan
+                option(value="webserver") Web Server Vulnerability Scan
+          .form-group
+            label
+              | Coupon Code
+              input#coupon.form-control.btn-space.text-righ(type='text')
           //.form-group
           // input.form-control.btn-space(type='scan-type', placeholder='Type of scan')  
           .checkbox
            label.control-label
-             input.has-warning(type='checkbox', id='agreed', required='true')
+             input#agreed.has-warning(type='checkbox', required='true')
              | I've read understood and agree to 
              a(href="/terms-of-service") SOFTSKY Terms of Service
 
+          .alert(role='alert')
           button.btn.btn-space.btn-success(type='submit') Start Scan
           .scan-result
             dl
