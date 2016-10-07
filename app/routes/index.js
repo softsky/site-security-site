@@ -119,19 +119,10 @@ module.exports = (function () {
         var userAgent = req.headers['user-agent'];
         console.log(userAgent, req.query.options);
         var options = _.extend({
-            // screenSize: {
-            //  width: '800'
-            //  , height: '600'
-            // },
-            // shotSize: {
-            //  width: '300'
-            //  , height: 'all'
-            // },
              userAgent: userAgent
         }, req.query.options?JSON.parse(req.query.options):{});
 
         console.log('Capturing screenshot:', url, options);
-        //res.writeHead(200, {'Content-Type': 'image/png' });
         // stream the file
         var renderStream = webshot(url, options)
         , screenshot = '';
@@ -146,10 +137,6 @@ module.exports = (function () {
             res.set('Content-Type', 'image/png');
             res.end(screenshot, 'binary');
         });
-
-//        renderStream.on('data', res.write.bind(res));
-//        renderStream.on('end', res.end.bind(res));
-
     });
 
     // Generic section
