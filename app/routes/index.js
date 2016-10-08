@@ -84,33 +84,33 @@ module.exports = (function () {
     //     // });
     // });
 
-    var access_object = {};
-    var updateSendPulseAccessToken = () => {
-        const data = {
-            grant_type:'client_credentials',
-            client_id:process.env.SENDPULSE_CLIENT_ID,
-            client_secret:process.env.SENDPULSE_CLIENT_SECRET
-        };
+    // var access_object = {};
+    // var updateSendPulseAccessToken = () => {
+    //     const data = {
+    //         grant_type:'client_credentials',
+    //         client_id:process.env.SENDPULSE_CLIENT_ID,
+    //         client_secret:process.env.SENDPULSE_CLIENT_SECRET
+    //     };
 
-        console.log('Sending', data);
-        request.post({url:'https://api.sendpulse.com/oauth/access_token', form: data}, (err, response, body) => {
-            access_object = JSON.parse(body);
-            setTimeout(updateSendPulseAccessToken, 3600 * 1000);
-            console.log(err, access_object);
-        });
-    };
+    //     console.log('Sending', data);
+    //     request.post({url:'https://api.sendpulse.com/oauth/access_token', form: data}, (err, response, body) => {
+    //         access_object = JSON.parse(body);
+    //         setTimeout(updateSendPulseAccessToken, 3600 * 1000);
+    //         console.log(err, access_object);
+    //     });
+    // };
 
-    updateSendPulseAccessToken()
+    // updateSendPulseAccessToken()
 
 
-    router.all('/sendpulse/*', requestProxy({
-        //cache: redis.createClient(),
-        //cacheMaxAge: 3600,
-        url: 'https://api.sendpulse.com/*',
-        headers: {
-            Authorization: `${access_object.token_type} ${access_object.access_token}`
-        }
-    }));
+    // router.all('/sendpulse/*', requestProxy({
+    //     //cache: redis.createClient(),
+    //     //cacheMaxAge: 3600,
+    //     url: 'https://api.sendpulse.com/*',
+    //     headers: {
+    //         Authorization: `${access_object.token_type} ${access_object.access_token}`
+    //     }
+    // }));
 
     router.get('/ws/:url', (req, res, next) => {
         var url = req.params.url;
@@ -149,12 +149,15 @@ module.exports = (function () {
             return;
         }
 
-        var mkmd = new MarkedMetaData(`app/views/${section}/${id}.md`);
-        var md = {};
-        try { 
-            md = mkmd.metadata();
-        }catch(e){
-            console.log('No metadata found');
+        var md = {
+        }, mkmd = {};
+        if(fs.existsSync(`app/views/${section}/${id}.md`)){
+            mkmd = new MarkedMetaData(`app/views/${section}/${id}.md`);
+            try { 
+                md = mkmd.metadata();
+            }catch(e){
+                console.log('No metadata found');
+            }
         }
 
         res.render(md.layout || 'section',{
