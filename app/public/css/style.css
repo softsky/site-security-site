@@ -103,6 +103,9 @@ dd {
     background-color: rgb(70, 184, 218);
     color: white;
 }
+.float-right {
+    float:right;
+}
 .floating-side-button {
     float:left;
     top: 200px;
