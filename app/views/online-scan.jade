@@ -11,24 +11,24 @@ block body
               | Website URL            
               .input-group
                 span.input-group-addon http://
-                input#url.form-control.btn-space(type='http', placeholder='example.com', protocol='http', required='true')
+                input#url.form-control.input-lg.btn-space(type='http', placeholder='example.com', protocol='http', required='true')
           .form-group
-            label
+            label.p-l-3
               | First Name
-              input#firstName.form-control.btn-space(type='text', placeholder='John', required='true')
+              input#firstName.form-control.input-lg.btn-space(type='text', placeholder='John', required='true')
             label.p-l-3
               | Last Name
-              input#lastName.form-control.btn-space(type='text', placeholder='Doe', required='true')
+              input#lastName.form-control.input-lg.btn-space(type='text', placeholder='Doe', required='true')
           .form-group
             label
               | Email
               .input-group
-                input#email.form-control.btn-space.text-righ(type='text', placeholder='john.doe', required='true')
+                input#email.form-control.input-lg.btn-space.text-righ(type='text', placeholder='john.doe', required='true')
                 span#domain.input-group-addon @example.com
           .form-group
             label
               | Round
-              select#round.form-control
+              select#round.form-control.input-lg
                 option(value="0") 0 (Quick Scan - $0)
                 option(value="1", disabled=true) 1 (Full Scan - $199)
                 option(value="2", disabled=true) 2 (Human Penetrationn Testing - $999)
@@ -37,7 +37,7 @@ block body
           .form-group
             label
               | Scan type
-              select#scanType.form-control
+              select#scanType.form-control.input-lg
                 option(value="wordpress") Wordpress Vulnerability Scan
                 option(value="joomla") Joomla Vulnerability Scan
                 option(value="drupal") Drupal Vulnerability Scan
@@ -46,7 +46,7 @@ block body
           .form-group
             label
               | Coupon Code
-              input#coupon.form-control.btn-space.text-righ(type='text')
+              input#coupon.form-control.input-lg.btn-space.text-righ(type='text')
           //.form-group
           // input.form-control.btn-space(type='scan-type', placeholder='Type of scan')  
           .checkbox
