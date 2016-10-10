@@ -26,8 +26,13 @@ $(document).ready(() => {
     });
     
     $('input#url').on('blur', (e) => {
-	const val = $(e.target).val()
-	, parser = document.createElement('a');
+	const val = $(e.target).val();
+        if(!val){
+            // if domain is empty, return
+            return;
+        }
+	const parser = document.createElement('a');
+
 	if(val.startsWith('http')){
             parser.href = val;
             $(e.target).val(val.replace(/https?:\/\//, ''));
@@ -35,11 +40,9 @@ $(document).ready(() => {
             parser.href = 'http://' + val;
         }
 	const domain = parser.hostname.replace(/^www\./,'');
-
+        $(e.target).val(domain);
 	$('#domain').text('@' + domain);
-
-	console.log('Capturing shot for:' + domain);
-	options = {
+	const options = {
 	    screenSize: {
 		width: $(window).width(),
 		height: $(window).height()
@@ -116,7 +119,7 @@ $(document).ready(() => {
 		email: email,
                 name: {
 		    first: $('input#firstName').val(),
-		    last: $('input#lastName').val()                    
+		    last: $('input#lastName').val()
                 },
                 'scan-type': $('select#scanType').val(),
                 round: $('select#round').val(),
@@ -130,14 +133,14 @@ $(document).ready(() => {
                 };
 		//console.log(data, textStatus);
                 $('.alert[role=alert]')
-                    .addClass('alert-success')
+                    .attr('class','alert alert-success')
                     .text(messages[data.status]);
 	    },
             error: (err) => {
                 $('.alert[role=alert]')
-                    .addClass('alert-danger')
+                    .attr('class','alert alert-danger')
                     .text(JSON.stringify(JSON.parse(err.responseText).error.message));
-            }            
+            }
 	});
         return false;
     });
