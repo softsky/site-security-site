@@ -37,6 +37,8 @@ html(lang='en')
     // ==================================================
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='#{pathToAssets}/dist/js/bootstrap.min.js')
+    script(src='/js/main.js')
+        
   body
     #subscribeModal.modal.fade(role=dialog)
      .modal-dialog
@@ -119,7 +121,7 @@ html(lang='en')
             span.icon-bar
             span.icon-bar            
           a.navbar-brand(href='/')
-            img.logo(src='/img/softsky-logo-transparent-143x59.png')          
+            img.logo(src='/img/softsky-logo-transparent-143x59.png')
         .navbar-collapse.collapse
           ul.nav.navbar-nav
             li
@@ -179,7 +181,7 @@ html(lang='en')
                 li
                   a(href='/online-scan#webserver') Web Server Vulnerability Scan
                 
-            li
+            li.hidden
               a(href='#about') Blog
 
             li.dropdown
