@@ -1,0 +1,852 @@
+doctype html
+html.no-js(lang='en-us')
+  head
+    meta(charset='utf-8')
+    title SOFTSKY - Multipurpose Responsive HTML5 Template
+    meta(name='author', content='')
+    meta(name='keywords', content='')
+    meta(name='detailription', content='')
+    // Mobile Specific Metas
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    // Faviconslink(rel='shortcut icon', href='images/favicon.png')
+    // styles
+    link(href='/css/bootstrap/bootstrap.min.css', rel='stylesheet')
+    link(href='/css/font-awesome.min.css', type='text/css', rel='stylesheet')
+    link(href='/js/owl-carousel/owl.carousel.css', rel='stylesheet')
+    link(href='/js/owl-carousel/owl.theme.css', rel='stylesheet')
+    link(href='/js/owl-carousel/owl.transitions.css', rel='stylesheet')
+    link(href='/css/magnific-popup.css', rel='stylesheet')
+    link(href='/css/animate.css', type='text/css', rel='stylesheet')
+    link(href='/css/lp-style.css', type='text/css', rel='stylesheet')
+    // Replace Your Color
+    link(rel='stylesheet', href='/css/colors/default-color.css')
+    // Replace Your Color Ends
+    // Switcher Styles
+    link#switcher-css(rel='stylesheet', type='text/css', href='/css/switcher.css', media='all')
+    // END Switcher Styles
+    // Template Color Demo Examples
+    link(rel='alternate stylesheet', type='text/css', href='/css/colors/green.css', title='green', media='all')
+    // Green Color
+    link(rel='alternate stylesheet', type='text/css', href='/css/colors/blue.css', title='blue', media='all')
+    // Blue Color
+    link(rel='alternate stylesheet', type='text/css', href='/css/colors/red.css', title='red', media='all')
+    // Red Color
+    link(rel='alternate stylesheet', type='text/css', href='/css/colors/purple.css', title='purple', media='all')
+    // gray Color
+    // END Template Color Demo Examples
+    // The HTML5 shim, for IE6-8 support of HTML5 elements
+    //if lt IE 9
+    script(src='/js/html5shiv.js')
+    script(src='/js/respond.min.js')
+ 
+ body(data-spy='scroll', data-target='#main-menu')
+    // Start Page loader
+    #pageloader
+      .loader
+        img(src='/images/progress.gif', width='100', alt='loader')
+    // End Page loader
+    // Start Home Slider
+    section#home
+      .slider-overlay
+      .hm.flexslider
+        ul.sliders
+          li.slider1.bg
+          li.slider2.bg
+          li.slider3.bg
+      // Home slider
+      // start text slider
+      .tx
+        .tx-cell
+          .slider-text
+            ul#text-slider
+              li
+                h1 Welcome to SOFTSKY
+              li
+                h1 We Show Your Security Problems
+              li
+                h1 We Help Your Business to Stay Secured
+            p Website security 
+              |must be a priority in any organization but remains overlooked. 
+            .page-scroll.scroll
+              a.btn.btn-lg.btn-primary.btn-color-white(href='#services') Learn more
+              a.btn.btn-lg.btn-primary.btn-color-white(href='#pricing') Pricing
+    // End Slider
+    // Start Navigation
+    header#header
+      .container
+        .row
+          .col-sm-12
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#main-menu')
+              span.sr-only Toggle navigation
+              span.fa.fa-bars
+              span.icon-bar
+              span.icon-bar
+            // Start Logo
+            .logo-nav
+              a(title='SOFTSKY', href='/')
+                img(src='/img/softsky-logo-transparent-143x59.png')
+              strong Security Audit Scanner
+            // End Logo
+            .clear-toggle
+            #main-menu.collapse.scroll.navbar-right
+              ul.nav
+                li.active
+                  a(href='#home') Home
+                li
+                  a(href='#services') Services
+                li
+                  a(href='#features') Works
+                li
+                  a(href='#pricing') Pricing
+                li
+                  a(href='#clients') Clients
+                li.hidden
+                  a(href='#blog') Blog
+                li
+                  a(href='#team') Team                  
+                li
+                  a(href='#contact') Contact
+            // End main-menu
+    // End Navigation
+    // Start Services
+    section#services.section
+      .container
+        .row
+          // Start heading
+          .col-md-offset-2.col-md-8
+            .section-header
+              h2.service
+                span Our Services
+          // End heading
+          // Services Item #1
+          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='300ms')
+            .services-box
+              .services-icon
+                i.fa.fa-calendar-o.effect-8
+              .services-detail
+                h4 Free Quick Security Audit
+                p
+                  |Our heuristics quickly analyze your network configuration/services
+                  |to determine if you might have security issues.
+          // Services Item #3
+          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='400ms')
+            .services-box
+              .services-icon
+                i.fa.fa-calendar-check-o
+              .services-detail
+                h4 Full Security Audit
+                p
+                  | Our robots will analyze your infrastructure and point you to issues that could be used for penetration attack against you.
+          // Services Item #5
+          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='500ms')
+            .services-box
+              .services-icon
+                i.fa.fa-graduation-cap
+              .services-detail
+                h4 Expert Security Audit
+                p
+                  | If something was not found by machine, our experts will manually analyze your system.
+          // Services Item #4
+          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='600ms')
+            .services-box
+              .services-icon
+                i.fa.fa-diamond
+              .services-detail
+                h4 Bug Bounty Program
+                p
+                  | Our Ninja Squad will attempt to find breaches in your website security and report you.
+          // Services Item #2
+          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='700ms')
+            .services-box
+              .services-icon
+                i.fa.fa-magic
+              .services-detail
+                h4 Expert Tweaking
+                p
+                  | We understand and websites and webserver differs. We will provide fine configuration tunning to meet your needs.
+          // Services Item #8
+          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='800ms')
+            .services-box
+              .services-icon
+                i.fa.fa-support
+              .services-detail
+                h4 Update & Support
+                p
+                  | We provide high-tech email/phone support for our customers.
+        // /.row
+      // /.container
+    // End Services
+    // Start facts
+    section#facts.section.parallax
+      .overlay
+      .container
+        .row
+          // Start facts info #1
+          .col-lg-3.col-md-3.col-sm-6.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='300ms')
+            .facts-detail
+              i.fa.fa-group
+              span 200+
+              p Clients
+          // Start facts info #2
+          .col-lg-3.col-md-3.col-sm-6.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='400ms')
+            .facts-detail
+              i.fa.fa-gift
+              span 600+
+              p Completed Projects
+          // Start facts info #3
+          .col-lg-3.col-md-3.col-sm-6.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='500ms')
+            .facts-detail
+              i.fa.fa-trophy
+              span 50
+              p Isssues Reported
+          // Start facts info #4
+          .col-lg-3.col-md-3.col-sm-6.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='600ms')
+            .facts-detail
+              i.fa.fa-coffee
+              span 3
+              p Cups of Coffee
+        // /row
+      // /container
+    // End facts
+    // Start portfolio
+    section#works.section.hidden
+      // Filtering
+      .wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='500ms')
+        // Start heading
+        .col-md-offset-2.col-md-8
+          .section-header
+            h2.service
+              span Latest Projects
+        // End heading
+        .col-md-12
+          // Filtering
+          ul.filtering
+            li.filter(data-filter='all') All
+            li.filter(data-filter='graphic') Graphic Design
+            li.filter(data-filter='illustration') Illustrations
+            li.filter(data-filter='branding') Branding
+            li.filter(data-filter='Web-design') Web Design
+      .full-width.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='700ms')
+        // Work Grid
+        ul.work-grid
+          // Work Block
+          li.work-item.thumbnail-img.mix.Web-design
+            a.popup-image(href='images/works/img1.jpg')
+              img(src='images/works/img1.jpg', alt='thumbnail')
+            .work-info
+              .work-info-detail.display-table
+                .display-table-cell
+                  h4 Project Title
+                  p Web Design
+                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+          // Work Block
+          li.work-item.thumbnail-img.mix.graphic
+            a.popup-image(href='images/works/img2.jpg')
+              img(src='images/works/img2.jpg', alt='thumbnail')
+            .work-info
+              .work-info-detail.display-table
+                .display-table-cell
+                  h4 Project Title
+                  p Web Design
+                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+          // Work Block
+          li.work-item.thumbnail-img.mix.illustration
+            a.popup-image(href='images/works/img3.jpg')
+              img(src='images/works/img3.jpg', alt='thumbnail')
+            .work-info
+              .work-info-detail.display-table
+                .display-table-cell
+                  h4 Project Title
+                  p Illustrations
+                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+          // Work Block
+          li.work-item.thumbnail-img.mix.branding
+            a.popup-image(href='images/works/img4.jpg')
+              img(src='images/works/img4.jpg', alt='thumbnail')
+            .work-info
+              .work-info-detail.display-table
+                .display-table-cell
+                  h4 Project Title
+                  p Branding
+                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+          // Work Block
+          li.work-item.thumbnail-img.mix.Web-design
+            a.popup-image(href='images/works/img5.jpg')
+              img(src='images/works/img5.jpg', alt='thumbnail')
+            .work-info
+              .work-info-detail.display-table
+                .display-table-cell
+                  h4 Project Title
+                  p Web Design
+                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+          // Work Block
+          li.work-item.thumbnail-img.mix.graphic
+            a.popup-image(href='images/works/img6.jpg')
+              img(src='images/works/img6.jpg', alt='thumbnail')
+            .work-info
+              .work-info-detail.display-table
+                .display-table-cell
+                  h4 Project Title
+                  p Web Design
+                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+          // Work Block
+          li.work-item.thumbnail-img.mix.illustration
+            a.popup-image(href='images/works/img7.jpg')
+              img(src='images/works/img7.jpg', alt='thumbnail')
+            .work-info
+              .work-info-detail.display-table
+                .display-table-cell
+                  h4 Project Title
+                  p Illustrations
+                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+          // Work Block
+          li.work-item.thumbnail-img.mix.branding
+            a.popup-image(href='images/works/img8.jpg')
+              img(src='images/works/img8.jpg', alt='thumbnail')
+            .work-info
+              .work-info-detail.display-table
+                .display-table-cell
+                  h4 Project Title
+                  p Branding
+                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+          // Work Block
+          li.work-item.thumbnail-img.mix.graphic
+            a.popup-image(href='images/works/img9.jpg')
+              img(src='images/works/img9.jpg', alt='thumbnail')
+            .work-info
+              .work-info-detail.display-table
+                .display-table-cell
+                  h4 Project Title
+                  p Web Design
+                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+      .clear
+      .work-all.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='800ms')
+        a.btn.btn-primary.btn-lg(href='#') View All Poroject
+    // End portfolio
+    // Start Call to Action
+    section#cta.section.parallax
+      .overlay
+      .container.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='500ms')
+        .row
+          .col-md-12.call-to-action
+            h3 Who We are? 
+            p
+              | SOFTSKY is Ukrainian company, established in 1999 as Custom Software Devlelopment
+              br
+              | and Consulting Company has turned into Security Audit company in late 2015.
+            a.btn.btn-primary.btn-lg.btn-scroll.btn-color-white(href='#contact') Get in Touch
+    // End Call to Action
+    // Start Features
+    section#features.section
+      .container
+        .row
+          // Start heading
+          .col-md-offset-2.col-md-8
+            .section-header
+              h2.service
+                span Work Process
+          // End heading
+          .col-md-12.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='500ms')
+            .features-intro
+              // <h3>Passionate about crafting modern and usable design!</h3>
+              p We want to make Internet safer!
+          .features-main
+            // Start Features Left
+            .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='800ms')
+              .features-left
+                // Features Item #1
+                .features-item
+                  .features-icon
+                    i.fa.fa-group
+                  .features-info
+                    h4 Planning
+                    p We analyze your architectural/coding/configuration issues and plan how to improve.
+                // Features Item #2
+                .features-item
+                  .features-icon
+                    i.fa.fa-trophy
+                  .features-info
+                    h4 Staging Preparation
+                    p We help you prepare staging server that duplicate your production server.
+                // Features Item #3
+                .features-item
+                  .features-icon
+                    i.fa.fa-tag
+                  .features-info
+                    h4 Consulting
+                    p We consult your system administrators on security/administation skills he/she could have missed.
+            // End Features Left
+            // Start Features Image
+            .col-md-4.hidden-xs.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='800ms')
+              img(src='images/device.png', alt='Features Image')
+            // End Features Image
+            // Start Features Right
+            .col-md-4.wow.hidden.zoomIn(data-wow-duration='700ms', data-wow-delay='800ms')
+              .features-right
+                // Features Item #1
+                .features-item
+                  .features-icon
+                    i.fa.fa-cog
+                  .features-info
+                    h4 Development
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                // Features Item #2
+                .features-item
+                  .features-icon
+                    i.fa.fa-home
+                  .features-info
+                    h4 App Design
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                // Features Item #3
+                .features-item
+                  .features-icon
+                    i.fa.fa-film
+                  .features-info
+                    h4 Our mission
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            // End Features Right
+          // /.features-main
+        // /.row
+      // /.container
+    // End Features
+    // Start pricing
+    section#pricing.section.section-white
+      .overlay
+      .container
+        .row
+          // Start heading
+          .col-md-offset-2.col-md-8
+            .section-header
+              h2.service
+                span Pricing
+          // End heading
+          // Price detail #1
+          .col-md-3.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='500ms')
+            .pricing-table
+              h1 Quick Security Audit
+              h2
+                | $0 
+                strong 
+              .feature-list
+                ul
+                  li Basic recon, common
+                  li Google hacking queries
+                  li Enumerate pen ports
+                  li Brute forces sub-domains, open services
+                  li Sub-domain hijacking
+                  li NMap, Metasploit scan
+                  li Exploit remote shell access
+
+              .price-signup
+                a.btn.btn-primary.btn-lg(href='/online-scan#website/0') Get Report Now
+          // Price detail #2
+          .col-md-3.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='600ms')
+            .pricing-table
+              h1 Full Security Audit
+              h2 
+                | $199
+                strong /domain
+              .feature-list
+                ul
+                  li Quick Scan included
+                  li 1 hour Consulting                  
+                  li NMAP Vulnerability detection
+                  li W3AF, SkipFish, Nikto2 audit
+                  li Automated Metasploit 
+                  li SSL vulnerabilities
+                  li SQL Injection
+              .price-signup
+                a.btn.btn-primary.btn-lg(href='/online-scan#website/1', data-subject='Full Scan') Buy Now
+          // Price detail #3
+          .col-md-3.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='700ms')
+            .pricing-table
+              h1 Expert Security Audit
+              h2 
+                | $1199
+                strong /domain
+              .feature-list
+                ul
+                  li Full Scan included
+                  li 5 hours Consulting
+                  li Manual Metasploit 
+                  li Black Box
+                  li White Box
+                  li Source Code Inspection
+                  li Overall Architecture Review
+              .price-signup
+                a.btn.btn-primary.btn-lg(href='/online-scan#website/2', data-subject='Manual Scan') Buy Now
+          .col-md-3.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='700ms')
+            .pricing-table
+              h1 Bug Bounty
+              h2
+                | Get a Quote
+                strong 
+              .feature-list
+                ul
+                  li Manual Scan included
+              .price-signup
+                a.btn.btn-primary.btn-lg(href='#contact', data-subject='Bug Bounty') Contact us
+        // /.row
+    // End Pricing
+    // Start Testimonial
+    section#testimonials.section.parallax
+      .container
+        .row
+          // Start heading
+          .col-md-offset-2.col-md-8
+            .section-header
+              h2.service
+                span Testimonial
+          // End heading
+          .col-md-8.col-md-offset-2
+            .testimonials-carousel
+              // Start Testimonial item #1
+              .items
+                .detail
+                  | “We use SOFTSKY to improve security for all our clients worldwide as their work is very comprehensive and their customer service is stellar. They provide useful recommendations to fix the vulnerabilities their checks discover and we highly recommend their services"
+                .name 
+                  a(href="https://www.linkedin.com/in/neerajkamdar") Neeraj Kamdarb
+                | Founder, Orrasis Ltd.
+              // Start Testimonial item #2
+        //-       .items
+        //-         .detail
+        //-           | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac vehicula tortor, vitae lacinia nisi. Mauris ac urna in dolor mollis tincidunt.
+        //-         .name JONATHAN DOE
+        //-       // Start Testimonial item #3
+        //-       .items
+        //-         .detail
+        //-           | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac vehicula tortor, vitae lacinia nisi. Mauris ac urna in dolor mollis tincidunt.
+        //-         .name JONATHAN DOE
+        //- // /.row
+      // /.container
+    // End Testimonial
+    // Start clients
+    section#clients.section
+      .container.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='600ms')
+        .row
+          .clients-carousel
+            .col-md-3.col-xs-6
+              a(href='http://www.paramountbusinessjets.com')
+                figure
+                  img(src='images/clients-logo/clients-logo1.png', alt='')
+            // End clients item
+            // Start clients item
+            .col-md-3.col-xs-6
+              a(href='http://www.marsresearch.com')
+                figure
+                  img(src='images/clients-logo/clients-logo2.png', alt='')
+            // End clients item
+            // Start clients item
+            .col-md-3.col-xs-6
+              a(href='http://www.zoomtivity.com')
+                figure
+                  img(src='images/clients-logo/clients-logo3.png', alt='')
+            // End clients item
+            // Start clients item
+            .col-md-3.col-xs-6
+              a(href='http://russia-insider.com')
+                figure
+                  img(src='images/clients-logo/clients-logo4.png', alt='')
+            // End clients item
+            // Start clients item
+            .col-md-3.col-xs-6.hidden
+              a(href='#')
+                figure
+                  img(src='images/clients-logo/clients-logo5.png', alt='')
+            // End clients item
+            // Start clients item
+            .col-md-3.col-xs-6.hidden
+              a(href='#')
+                figure
+                  img(src='images/clients-logo/clients-logo6.png', alt='')
+            // End clients item
+            // Start clients item
+            .col-md-3.col-xs-6.hidden
+              a(href='#')
+                figure
+                  img(src='images/clients-logo/clients-logo7.png', alt='')
+            // End clients item
+            // Start clients item
+            .col-md-3.col-xs-6.hidden
+              a(href='#')
+                figure
+                  img(src='images/clients-logo/clients-logo8.png', alt='')
+            // End clients item
+        // /row
+      // /container
+    // End clients
+    // Start blog
+    section#blog.section.hidden
+      .container
+        .row
+          // Start heading
+          .col-md-offset-2.col-md-8
+            .section-header
+              h2.service
+                span Blog
+          // End heading
+          // Start Blog item #1
+          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='300ms')
+            .blog-post
+              .post-media
+                img(src='images/blog/blog1.jpg', alt='')
+              // /.post-media
+              .post-detail
+                h4 Example of Blog post
+                ul.entry-meta
+                  li April 10, 2016
+                  li
+                    a(href='#') 12 Comments
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde
+                a.btn.btn-primary.btn-rounded(href='blog.html') Read More
+          // Start Blog item #2
+          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='400ms')
+            .blog-post
+              .post-media
+                img(src='images/blog/blog2.jpg', alt='')
+              // /.post-media
+              .post-detail
+                h4 This is a image post
+                ul.entry-meta
+                  li April 10, 2016
+                  li
+                    a(href='#') 12 Comments
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde
+                a.btn.btn-primary.btn-rounded(href='blog.html') Read More
+          // Start Blog item #3
+          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='500ms')
+            .blog-post
+              .post-media
+                img(src='images/blog/blog3.jpg', alt='')
+              // /.post-media
+              .post-detail
+                h4 Example of video post
+                ul.entry-meta
+                  li April 10, 2016
+                  li
+                    a(href='#') 12 Comments
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde
+                a.btn.btn-primary.btn-rounded(href='blog.html') Read More
+        // /.row
+      // /.container
+    // End blog
+    // Start Team
+    section#team.section
+      .container
+        .row
+          // Start heading
+          .col-md-offset-2.col-md-8
+            .section-header
+              h2.service
+                span Meet the Team
+          // End heading
+          // Start Team item #1
+          .col-lg-4.col-md-6.col-sm-6.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='500ms')
+            .team-member
+              img.image(src='images/team/1.jpg', alt='')
+              .team-info
+                h4 Arsen A. Gutsal
+                p CEO, Owner
+                ul.socials
+                  li
+                    a(href='http://facebook.com/arsen.gutsal')
+                      i.fa.fa-facebook
+                  li
+                    a(href='http://twitter.com/_0rthodox_')
+                      i.fa.fa-twitter
+                  li
+                    a(href='https://plus.google.com/+ArsenGutsalAtWork')
+                      i.fa.fa-google-plus
+                  li
+                    a(href='http://linkedin.com/in/agutsal')
+                      i.fa.fa-linkedin
+          // Start Team item #2
+          .col-lg-4.col-md-6.col-sm-6.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='500ms')
+            .team-member
+              img.image(src='images/team/2.jpg', alt='')
+              .team-info
+                h4 Taras Bobalo
+                p Security Analyst
+                ul.socials
+                  li.hidden
+                    a(href='#')
+                      i.fa.fa-facebook
+                  li.hidden
+                    a(href='#')
+                      i.fa.fa-twitter
+                  li.hidden
+                    a(href='#')
+                      i.fa.fa-google-plus
+                  li
+                    a(href='https://www.linkedin.com/in/tarasbobalo')
+                      i.fa.fa-linkedin
+          // Start Team item #3
+          .col-lg-4.col-md-6.col-sm-6.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='500ms')
+            .team-member
+              img.image(src='images/team/3.jpg', alt='')
+              .team-info
+                h4 Ivan Karp
+                p Marketing
+                ul.socials
+                  li
+                    a(href='https://www.facebook.com/ivan.karp')
+                      i.fa.fa-facebook
+                  li.hidden
+                    a(href='#')
+                      i.fa.fa-twitter
+                  li.hidden
+                    a(href='#')
+                      i.fa.fa-google-plus
+                  li
+                    a(href='https://www.linkedin.com/in/ivan-karp-6aa16284')
+                      i.fa.fa-linkedin
+        // /row
+      // /container
+    // End Team    
+    // Start Contact
+    section#contact.section.parallax.section-white
+      .overlay
+      .container
+        .row
+          // Start heading
+          .col-md-offset-2.col-md-8
+            .section-header
+              h2.service
+                span Contact
+          // End heading
+          // Start contact form
+          .col-md-7.contact-form.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='300ms')
+            .contact-form
+              form#ajax-form(name='ajax-form', action='/api/notify/email/contact-request', method='post')
+                .row
+                  .col-md-6
+                    label(for='name')
+                      span#err-name.error Please enter name
+                    input#name.form-control(name='name', placeholder='Full Name', type='text')
+                  .col-md-6
+                    label(for='email')
+                      span#err-email.error Please enter e-mail
+                      span#err-emailvld.error Email is not a valid format
+                    input#email.form-control(name='email', placeholder='Your Email', type='email')
+                  .col-md-12
+                    input.form-control(name='url', placeholder='Website URL', type='text')
+                  .col-md-12
+                    input.form-control(name='subject', placeholder='Subject', type='text')
+                  .col-md-12
+                    textarea#message.form-control(name='message', rows='5', placeholder='Your Message')
+                  .col-md-12.text-right
+                    button#send.btn.btn-default.btn-lg(type='submit', name='submit') Send Message
+                .row
+                  #err-form.error.text-align-center There was a problem validating the form please check!
+                  #err-timedout.error.text-align-center The connection to the server timed out!
+                  #err-state.error
+              #ajaxsuccess Successfully sent!!
+            // /.contact-form
+          // contact form
+          // Start contact information
+          .col-md-4.contact-address.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='400ms')
+            p
+              i.fa.fa-map-marker
+                
+              span#maplink Schlyahtynec'ka 3, Gai Schevchenkivsky, Ternopil, Ukraine
+                a(href="//maps.google.com") 
+            p
+              i.fa.fa-envelope
+              span info@softsky.com.ua
+            p
+              i.fa.fa-phone
+              span +38 (096) 5996328
+            p
+              i.fa.fa-clock-o
+              span
+                | Monday - Friday: 
+                strong 10:00 am - 10:00 pm
+            p
+              i.fa.fa-clock-o
+              span
+                | Saturday - Sunday: 
+                strong Closed
+          // End contact information
+        // /.row
+      // /.container
+    // End Contact
+    // Start footer
+    footer
+      .container
+        .row
+          .col-md-12.text-center
+            // Start footer social
+            ul.list-inline.footer-social
+              li
+                a(href='http://facebook.com/arsen.gutsal')
+                  i.fa.fa-facebook
+              li
+                a(href='http://linkedin.com/company/softsky')
+                  i.fa.fa-linkedin
+              li
+              //-   a(href='#')
+              //-     i.fa.fa-instagram
+              //- li
+              //-   a(href='#')
+              //-     i.fa.fa-behance
+              li
+                a(href='#')
+                  i.fa.fa-twitter
+            //-   li
+            //-     a(href='#')
+            //-       i.fa.fa-dribbble
+            //- // End footer social
+            // footer copyright text
+            p Copyright © SOFTSKY, 2016 All reserved
+            // end of the footer copyright text
+        // /.row
+      // /.container
+    // End footer
+    // ========================================
+    //
+    //-   START : Switcher
+    //-   ========================================
+    //- .demo_changer
+    //-   .demo-icon
+    //-     i.fa.fa-gear
+    //-   .form_holder
+    //-     .layout_styles
+    //-     p CHOOSE YOUR COLOR
+    //-     .predefined_styles
+    //-       a.styleswitch(href='', rel='default')
+    //-         img(src='images/switcher/default.jpg', alt='default')
+    //-       a.styleswitch(href='', rel='green')
+    //-         img(src='images/switcher/green.jpg', alt='green')
+    //-       a.styleswitch(href='', rel='blue')
+    //-         img(src='images/switcher/blue.jpg', alt='blue')
+    //-       a.styleswitch(href='', rel='red')
+    //-         img(src='images/switcher/red.jpg', alt='red')
+    //-       a.styleswitch(href='', rel='purple')
+    //-         img(src='images/switcher/purple.jpg', alt='purple')
+    //-     span
+    //-       a.styleswitch(rel='tag', href='?default=true') RESET STYLE
+    //- //
+    //-   END Switcher
+    //-   ========================================
+    //- a.scrollup(href='#')
+      i.fa.fa-chevron-up  
+    // Plugins
+    script(type='text/javascript', src='/js/jquery-1.11.1.min.js')
+    script(type='text/javascript', src='/js/bootstrap.min.js')
+    script(type='text/javascript', src='/js/owl-carousel/owl.carousel.js')
+    script(type='text/javascript', src='/js/jquery.flexslider-min.js')
+    script(type='text/javascript', src='/js/jquery.bxslider.min.js')
+    script(type='text/javascript', src='/js/jquery.magnific-popup.min.js')
+    script(type='text/javascript', src='/js/easing.js')
+    script(type='text/javascript', src='/js/jquery.parallax-1.1.3.js')
+    script(type='text/javascript', src='/js/jquery.sticky.js')
+    script(type='text/javascript', src='/js/jquery.mixitup.min.js')
+    script(type='text/javascript', src='/js/wow.min.js')
+    script(type='text/javascript', src='/js/contact.js')
+    script(type='text/javascript', src='/js/custom.js')
+    // Style Switcher
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js')
+    script(type='text/javascript', src='/js/style-switcher.js')
