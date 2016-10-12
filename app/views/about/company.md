@@ -6,6 +6,7 @@ layout: text-and-images
 
 ![](/media/about/company.md-images/media/image04-500.jpg?class=pull-right)
 
+# We secure. We believe in the power of protection. No matter what your website represents - it must be safe and secure.
 ## SOFTSKY History
 
 SOFTSKY was founded 1999 as a Custom Software Development company. Since 2015 SOFTSKY provides Penetration Testing services. Penetration Test (pentest) is a controlled simulation of a real-life cyber attack that reveals the actual state of organization's information security and its ability to withstand an intrusion with minimal losses.
