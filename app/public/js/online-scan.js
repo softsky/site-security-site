@@ -133,13 +133,24 @@ $(document).ready(() => {
                 };
 		//console.log(data, textStatus);
                 $('.alert[role=alert]')
-                    .attr('class','alert alert-success')
-                    .text(messages[data.status]);
+                    .addClass('alert-success')                
+                    .text(messages[data.status])
+                    .fadeIn(100)
+                    .fadeOut(3000, () => {
+                        $(this).removeClass('alert-success');
+                    });
+                    
+                
 	    },
             error: (err) => {
                 $('.alert[role=alert]')
-                    .attr('class','alert alert-danger')
-                    .text(JSON.stringify(JSON.parse(err.responseText).error.message));
+                    .addClass('alert-danger')
+                    .text(JSON.stringify(JSON.parse(err.responseText).error.message))
+                    .fadeIn(100)                
+                    .fadeOut(3000, () => {
+                        $(this).removeClass('alert-danger');
+                    });
+                    
             }
 	});
         return false;
