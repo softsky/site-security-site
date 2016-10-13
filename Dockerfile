@@ -6,7 +6,6 @@ MAINTAINER Arsen A.Gutsal <gutsal.arsen@softsky.com.ua>
 ENV APP_PATH /usr/src
 WORKDIR ${APP_PATH}
 
-ENV API_PORT    none
 ENV NODE_PORT 3000
 EXPOSE ${NODE_PORT}
 
