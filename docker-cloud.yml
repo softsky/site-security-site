@@ -6,6 +6,21 @@ lb:
     - "80:80"
   roles:
     - global
+redis:
+  image: redis
+mongo:
+  image: mongo
+api:
+  image: softsky/site-security-api
+  autoredeploy: true
+  labels:
+    ua.com.softsky.description: "SOFTSKY Site Security API"
+  ports:
+    - "3001:3001"
+  links:
+    - redis:REDIS
+    - mongo:MONGODB
+  target_num_containers: 1
 web:
   image: softsky/site-security-site
   autoredeploy: true
@@ -18,18 +33,3 @@ web:
     - redis:REDIS
     - api:API
   target_num_containers: 1
-api:
-  image: softsky/site-security-api
-  autoredeploy: true
-  labels:
-    ua.com.softsky.description: "SOFTSKY Site Security API"
-  ports:
-    - "3001:3001"
-  links:
-    - redis:REDIS
-    - mongo:MONGODB
-  target_num_containers: 1
-mongo:
-  image: mongo
-redis:
-  image: redis
