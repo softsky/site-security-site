@@ -8,19 +8,27 @@ lb:
     - global
 web:
   image: softsky/site-security-site
+  autoredeploy: true
+  labels:
+    ua.com.softsky.description: "Main Website"
   ports:
-    - "3000:3000"
+    - "80:3000"
+  privileged: true
   links:
-    - redis
-    - api
-  target_num_containers: 4
+    - redis:REDIS
+    - api:API
+  target_num_containers: 1
 api:
   image: softsky/site-security-api
+  autoredeploy: true
+  labels:
+    ua.com.softsky.description: "SOFTSKY Site Security API"
   ports:
     - "3001:3001"
   links:
-    - mongo
-  target_num_containers: 4
+    - redis:REDIS
+    - mongo:MONGODB
+  target_num_containers: 1
 mongo:
   image: mongo
 redis:
