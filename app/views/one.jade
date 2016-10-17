@@ -67,11 +67,37 @@ html.no-js(lang='en-us')
                 h1 We Help Your Business to Stay Safe
             p We secure. We believe in the power of protection. 
               |No matter what your website represents - it must be safe and secure.
-              
+
             .page-scroll.scroll
               a.btn.btn-lg.btn-primary.btn-color-white(href='#services') Learn more
               a.btn.btn-lg.btn-primary.btn-color-white(href='#pricing') Pricing
-    // End Slider
+              
+            p
+            p
+            h2(style='color:white;') Scan now for free
+            .col-md-12.contact-form.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='300ms')
+              .contact-form
+                form#ajax-form(name='ajax-form', action='/scan/new', method='post')
+                  .row
+                    .col-md-6
+                      label(for='name')
+                        span#err-name.error Please enter name
+                      input#name.form-control(name='name', placeholder='Full Name', type='text')
+                    .col-md-6
+                      label(for='email')
+                        span#err-email.error Please enter e-mail
+                        span#err-emailvld.error Email is not a valid format
+                      input#email.form-control(name='email', placeholder='Your Email', type='email')
+                    .col-md-12
+                      input.form-control(name='url', placeholder='Website URL', type='text')
+                    .col-md-12.text-right
+                      button#send.btn.btn-default.btn-lg(type='submit', name='submit') FREE Scan
+                  .row
+                    #err-form.error.text-align-center There was a problem validating the form please check!
+                    #err-timedout.error.text-align-center The connection to the server timed out!
+                    #err-state.error
+                #ajaxsuccess Your scan has been queued. We will send you email when it's started.
+// End Slider
     // Start Navigation
     header#header
       .container
