@@ -2,6 +2,8 @@ $(document).ready(() => {
     console.log('ready');
     // making all client links opening in a new window
     $('#clients a').attr('target', '_new');
+
+    $("#name").focus();
     
     // TODO add some initialization stuff here
     $('img[src*=class]').each((idx, it) => {
