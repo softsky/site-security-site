@@ -43,6 +43,7 @@
     "matchdep": "~0.1.2",
     "method-override": "2.3.5",
     "morgan": "1.7.0",
+    "rsmq": "^0.7.1",
     "seneca": "^2.1.0",
     "serve-favicon": "2.3.0",
     "webshot": "^0.18.0"

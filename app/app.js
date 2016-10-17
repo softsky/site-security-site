@@ -15,7 +15,11 @@ var express = require('express'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     http = require('http'),
-    path = require('path');
+    path = require('path'),
+    RedisSMQ = require('rsmq'),
+    dotenv = require('dotenv').config({silent:true}),
+    [rs_protocol, rs_host, rs_port] = (process.env.REDIS_PORT || 'tcp://127.0.0.1:6379').split(/\:\/\/|\:/),
+    rsmq = new RedisSMQ({host: rs_host, port: rs_port, ns: 'rsmq'});
 
 var appConfig = require('./config/appConfig.json');
 var router = require('./routes/index');
@@ -50,6 +54,26 @@ app.use('/api', proxy(`http://${host}:${port}`, {
 app.use('/', router);
 
 app.use(express.static(path.join(__dirname, appConfig.directories.publicDir)));
+
+// attempting to create new queue
+rsmq.createQueue({qname:"new-scan"},(err, resp) => {
+    if(resp === 1) {
+        console.log('Queue created');
+    }
+});
+
+app.use('/scan/new', (req, res, next) => {
+    console.log(req.body);
+    rsmq.sendMessage({qname:'new-scan', message: JSON.stringify(req.body)}, (err, resp) => {
+        if(err){
+            res.send({status: 'error', err: err});
+        } else {
+            res.send({status: 'queued'});
+            console.log("Message sent. ID:", resp);
+        }
+    });
+});
+
 
 app.use(function (req, res, next) {
     console.log('req.body: ' + JSON.stringify(req.body));
