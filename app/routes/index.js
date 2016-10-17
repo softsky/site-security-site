@@ -54,8 +54,7 @@ module.exports = (function () {
         });
     });
     router.get('/:id', function (req, res) {
-        var id = req.params.id;
-        res.render(id,{
+        res.render(req.params.id, {
             'pathToAssets': '/bootstrap-3.3.1',
             // FIXME: when remove carousel design gets smashed. Fix
             'carousel': jade.renderFile('app/views/carousel.jade')
