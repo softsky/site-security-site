@@ -112,7 +112,7 @@ $(document).ready(() => {
 
 	$.ajax({
 	    method: 'POST',
-	    url: `/api/on/online-scan/start`,
+	    url: `/scan/new`,
             contentType: 'application/json',
             dataType: 'json',
 	    data: JSON.stringify({
@@ -128,12 +128,12 @@ $(document).ready(() => {
             }),
 	    success: (data, textStatus) => {
                 const messages = {
-                    scheduled: 'Your scan has been scheduled. Please, check your mailbox',
+                    queued: 'Your scan has been queued. We will send you email when it\'s started',
                     error: 'Error:' + data.msg + JSON.stringify(data.reason)
                 };
 		//console.log(data, textStatus);
                 $('.alert[role=alert]')
-                    .addClass('alert-success')                
+                    .addClass('alert-success')
                     .text(messages[data.status])
                     .fadeIn(100)
                     .fadeOut(3000, () => {
