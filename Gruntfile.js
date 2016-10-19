@@ -21,11 +21,10 @@ module.exports = function (grunt) {
 
     require('matchdep').filterDev('*').forEach(grunt.loadNpmTasks);
 
+    
     // Project configuration.
     grunt.initConfig({
-        appConfig: grunt.file.readJSON('./app/config/appConfig.json'),
-
-
+        appConfig: grunt.file.readJSON('./app/config/appConfig.json'),        
         // Task configuration.
 
         // Clean folders before compile assets.
@@ -56,18 +55,106 @@ module.exports = function (grunt) {
         eslint: {
             nodeFiles: {
                 options: {
-                    configFile: "app/config/eslint-node.json"
+                    configFile: 'app/config/eslint-node.json'
                 },
                 src: ['<%= appConfig.app.src %>/app.js', '<%= appConfig.app.src %>/routes/**/*.js']
             },
             browserFiles: {
                 options: {
-                    configFile: "app/config/eslint-browser.json"
+                    configFile: 'app/config/eslint-browser.json'
                 },
                 src: ['<%= appConfig.app.src %>/public/js/*.js']
             }            
         },
-
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['babel-preset-es2015']
+            },
+            dist: {
+                files: {
+                    //'<%= appConfig.app.dist %>': '<%= appConfig.app.dist %>'
+                    //'<%= appConfig.app.src %>/public/js/*.js': 'dist/app/public/js/*.js'
+                    'dist/app/public/js/contact.js': 'app/public/js/contact.js',
+                    'dist/app/public/js/custom.js': 'app/public/js/custom.js',
+                    'dist/app/public/js/esing.js': 'app/public/js/easing.js',
+                    'dist/app/public/js/main.js': 'app/public/js/main.js',
+                    'dist/app/public/js/online-scan.js': 'app/public/js/online-scan.js',
+                    'dist/app/public/js/style-switcher.js': 'app/public/js/style-switcher.js'
+                }
+            }
+        },
+        // uglify: {
+        //     options: {
+        //         mangle: {
+        //         }
+        //     },
+        //     app: {
+        //         files: {
+        //             'dist/app/public/js/app.min.js':'dist/app/public/js/*.js'
+        //         }
+        //     }
+        // },
+        // cssmin: {
+        //     // options: {
+        //     //     shorthandCompacting: false,
+        //     //     roundingPrecision: -1
+        //     // },
+        //     target: {
+        //         files: [{
+        //             expand: true,
+        //             cwd: 'app/public/css',
+        //             dest: 'dist/app/public/css',
+        //             ext: '.min.css',
+        //             src: ['*.css', '!*.min.css']
+        //         }]
+        //     }
+        // },
+        jadeUsemin: {
+            scripts: {
+                options: {
+                    prefix: 'app/public',
+                    targetPrefix: 'dist/app/public',
+                    failOnMissingSource: true, // optional 
+                    tasks: {
+                        concat: ['concat'],
+                        js: ['concat', 'babel', 'uglify'],
+                        css: ['concat', 'cssmin']
+                    }
+                },
+                files: {
+                    'dist/app/views/one.jade': 'app/views/one.jade',
+                    'dist/app/views/online-scan.jade': 'app/views/online-scan.jade',
+                    'dist/app/views/carousel.jade': 'app/views/carousel.jade',
+                    'dist/app/views/about.jade': 'app/views/about.jade',
+                    'dist/app/views/layout.jade': 'app/views/layout.jade'
+                }
+            }
+        },
+        copy: {
+            dist: {
+                files: [
+                    // includes files within path
+                    {expand: true, src: ['Dockerfile','package.json','docker-*.yml'], dest: 'dist/', filter: 'isFile'},
+                    {expand: true, src: [
+                        'app/app.js', //FIXME optimize
+                        'app/config/**/*',
+                        'app/routes/**/*',
+                        'app/views/**/*',
+                        'app/public/fonts/**/*',
+                        'app/public/media/**/*',
+                        'app/public/images/**/*',
+                        'app/public/img/**/*',
+                        'app/public/css/*.min.css',          
+                        'app/public/css/bootstrap/**/*',                        
+                        'app/public/css/fonts/**/*',            
+                        'app/public/js/assets/**/*',
+                        'app/public/bootstrap-3.3.1/**/*',
+                        'app/public/bower_components/**/*',
+                    ], dest: 'dist/'}
+                ]
+            }
+        },
         nodemon: {
             src: {
                 options: {
@@ -125,7 +212,12 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("gruntify-eslint");
-    
+    grunt.loadNpmTasks("grunt-babel");
+    grunt.loadNpmTasks("grunt-babel");
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+
+    grunt.loadNpmTasks('grunt-jade-usemin');    
 
     // Start local server and watch for changes in files.
     grunt.registerTask('src', [
@@ -133,8 +225,13 @@ module.exports = function (grunt) {
         'nodemon:src',
         'watch'
     ]);
+    grunt.registerTask('dist', [
+        'clean',
+        'copy',
+        'jadeUsemin'
+    ]);
 
     // Available tasks
-    grunt.registerTask('default', ['eslint', 'src']);       
+    grunt.registerTask('default', ['eslint', 'src']);
 };
 

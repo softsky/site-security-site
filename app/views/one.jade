@@ -10,34 +10,34 @@ html.no-js(lang='en-us')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
     // Faviconslink(rel='shortcut icon', href='images/favicon.png')
     // styles
-    link(href='/css/bootstrap/bootstrap.min.css', rel='stylesheet')
-    link(href='/css/font-awesome.min.css', type='text/css', rel='stylesheet')
-    link(href='/js/owl-carousel/owl.carousel.css', rel='stylesheet')
-    link(href='/js/owl-carousel/owl.theme.css', rel='stylesheet')
-    link(href='/js/owl-carousel/owl.transitions.css', rel='stylesheet')
+    <!-- build:concat /css/vendor.min.css -->
+    link(type='text/css', rel='stylesheet', href='/css/bootstrap/bootstrap.min.css')
+    link(type='text/css', rel='stylesheet', href='/css/font-awesome.min.css')
+    <!-- endbuild -->    
+    
+    
+    <!-- build:css /css/one.min.css -->
+    link(type='text/css', rel='stylesheet', href='/css/font-cabin.css')
+    link(href='/css/owl.carousel.css', rel='stylesheet')
+    link(href='/css/owl.theme.css', rel='stylesheet')
+    link(href='/css/owl.transitions.css', rel='stylesheet')
     link(href='/css/magnific-popup.css', rel='stylesheet')
     link(href='/css/animate.css', type='text/css', rel='stylesheet')
     link(href='/css/lp-style.css', type='text/css', rel='stylesheet')
-    // Replace Your Color
-    link(rel='stylesheet', href='/css/colors/default-color.css')
-    // Replace Your Color Ends
     // Switcher Styles
     link#switcher-css(rel='stylesheet', type='text/css', href='/css/switcher.css', media='all')
     // END Switcher Styles
     // Template Color Demo Examples
     link(rel='alternate stylesheet', type='text/css', href='/css/colors/green.css', title='green', media='all')
     // Green Color
-    link(rel='alternate stylesheet', type='text/css', href='/css/colors/blue.css', title='blue', media='all')
-    // Blue Color
-    link(rel='alternate stylesheet', type='text/css', href='/css/colors/red.css', title='red', media='all')
-    // Red Color
-    link(rel='alternate stylesheet', type='text/css', href='/css/colors/purple.css', title='purple', media='all')
-    // gray Color
+    <!-- endbuild -->    
     // END Template Color Demo Examples
+    
     // The HTML5 shim, for IE6-8 support of HTML5 elements
-    //if lt IE 9
-    script(src='/js/html5shiv.js')
-    script(src='/js/respond.min.js')
+    //-<!-- [if lt IE 9]
+    script(src='/js/assets/html5shiv.min.js')
+    script(src='/js/assets/respond.min.js')
+    //-<![endif] -->
  
  body(data-spy='scroll', data-target='#main-menu')
     // Start Page loader
@@ -49,7 +49,7 @@ html.no-js(lang='en-us')
     section#home
       .slider-overlay
       .hm.flexslider
-        ul.sliders
+        ul.slides
           li.slider1.bg
           li.slider2.bg
           li.slider3.bg
@@ -64,40 +64,42 @@ html.no-js(lang='en-us')
               li
                 h1 We Show Your Security Problems
               li
-                h1 We Help Your Business to Stay Safe
+                h1 We Help Your Business Stay Safe
             p We secure. We believe in the power of protection. 
               |No matter what your website represents - it must be safe and secure.
 
             .page-scroll.scroll
               a.btn.btn-lg.btn-primary.btn-color-white(href='#services') Learn more
               a.btn.btn-lg.btn-primary.btn-color-white(href='#pricing') Pricing
-              
-            p
-            p
-            h2(style='color:white;') Scan now for free
-            .col-md-12.contact-form.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='300ms')
-              .contact-form
-                form#ajax-form(name='ajax-form', action='/scan/new', method='post')
-                  .row
-                    .col-md-6
-                      label(for='name')
-                        span#err-name.error Please enter name
-                      input#name.form-control(name='name', placeholder='Full Name', type='text')
-                    .col-md-6
-                      label(for='email')
-                        span#err-email.error Please enter e-mail
-                        span#err-emailvld.error Email is not a valid format
-                      input#email.form-control(name='email', placeholder='Your Email', type='email')
-                    .col-md-12
-                      input.form-control(name='url', placeholder='Website URL', type='text')
-                    .col-md-12.text-right
-                      button#send.btn.btn-default.btn-lg(type='submit', name='submit') FREE Scan
-                  .row
-                    #err-form.error.text-align-center There was a problem validating the form please check!
-                    #err-timedout.error.text-align-center The connection to the server timed out!
-                    #err-state.error
-                #ajaxsuccess Your scan has been queued. We will send you email when it's started.
-// End Slider
+
+            br
+            br
+            br
+            .embedded-form
+              h2(style='color:white;') Scan now for free
+              .col-md-12.contact-form.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='300ms')
+                .contact-form
+                  form#ajax-form-0(name='ajax-form', action='/scan/new', method='post')
+                    .row
+                      .col-md-6
+                        label(for='name')
+                          span#err-name-0.error Please enter name
+                        input#name-0.form-control(name='name', placeholder='Full Name', type='text')
+                      .col-md-6
+                        label(for='email')
+                          span#err-email-0.error Please enter e-mail
+                          span#err-emailvld-0.error Email is not a valid format
+                        input#email-0.form-control(name='email', placeholder='Your Email', type='email')
+                      .col-md-12
+                        input.form-control(name='url', placeholder='Website URL', type='text')
+                      .col-md-12.text-right
+                        button#send-0.btn.btn-default.btn-lg(type='submit', name='submit') FREE Scan
+                    .row
+                      #err-form-0.error.text-align-center There was a problem validating the form please check!
+                      #err-timedout-0.error.text-align-center The connection to the server timed out!
+                      #err-state-0.error
+                  #ajaxsuccess-0 Your scan has been queued. We will send you email when it's started.
+    // End Slider
     // Start Navigation
     header#header
       .container
@@ -204,122 +206,122 @@ html.no-js(lang='en-us')
       // /.container
     // End Services
     // Start portfolio
-    section#works.section.hidden
-      // Filtering
-      .wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='500ms')
-        // Start heading
-        .col-md-offset-2.col-md-8
-          .section-header
-            h2.service
-              span Latest Projects
-        // End heading
-        .col-md-12
-          // Filtering
-          ul.filtering
-            li.filter(data-filter='all') All
-            li.filter(data-filter='graphic') Graphic Design
-            li.filter(data-filter='illustration') Illustrations
-            li.filter(data-filter='branding') Branding
-            li.filter(data-filter='Web-design') Web Design
-      .full-width.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='700ms')
-        // Work Grid
-        ul.work-grid
-          // Work Block
-          li.work-item.thumbnail-img.mix.Web-design
-            a.popup-image(href='images/works/img1.jpg')
-              img(src='images/works/img1.jpg', alt='thumbnail')
-            .work-info
-              .work-info-detail.display-table
-                .display-table-cell
-                  h4 Project Title
-                  p Web Design
-                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
-          // Work Block
-          li.work-item.thumbnail-img.mix.graphic
-            a.popup-image(href='images/works/img2.jpg')
-              img(src='images/works/img2.jpg', alt='thumbnail')
-            .work-info
-              .work-info-detail.display-table
-                .display-table-cell
-                  h4 Project Title
-                  p Web Design
-                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
-          // Work Block
-          li.work-item.thumbnail-img.mix.illustration
-            a.popup-image(href='images/works/img3.jpg')
-              img(src='images/works/img3.jpg', alt='thumbnail')
-            .work-info
-              .work-info-detail.display-table
-                .display-table-cell
-                  h4 Project Title
-                  p Illustrations
-                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
-          // Work Block
-          li.work-item.thumbnail-img.mix.branding
-            a.popup-image(href='images/works/img4.jpg')
-              img(src='images/works/img4.jpg', alt='thumbnail')
-            .work-info
-              .work-info-detail.display-table
-                .display-table-cell
-                  h4 Project Title
-                  p Branding
-                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
-          // Work Block
-          li.work-item.thumbnail-img.mix.Web-design
-            a.popup-image(href='images/works/img5.jpg')
-              img(src='images/works/img5.jpg', alt='thumbnail')
-            .work-info
-              .work-info-detail.display-table
-                .display-table-cell
-                  h4 Project Title
-                  p Web Design
-                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
-          // Work Block
-          li.work-item.thumbnail-img.mix.graphic
-            a.popup-image(href='images/works/img6.jpg')
-              img(src='images/works/img6.jpg', alt='thumbnail')
-            .work-info
-              .work-info-detail.display-table
-                .display-table-cell
-                  h4 Project Title
-                  p Web Design
-                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
-          // Work Block
-          li.work-item.thumbnail-img.mix.illustration
-            a.popup-image(href='images/works/img7.jpg')
-              img(src='images/works/img7.jpg', alt='thumbnail')
-            .work-info
-              .work-info-detail.display-table
-                .display-table-cell
-                  h4 Project Title
-                  p Illustrations
-                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
-          // Work Block
-          li.work-item.thumbnail-img.mix.branding
-            a.popup-image(href='images/works/img8.jpg')
-              img(src='images/works/img8.jpg', alt='thumbnail')
-            .work-info
-              .work-info-detail.display-table
-                .display-table-cell
-                  h4 Project Title
-                  p Branding
-                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
-          // Work Block
-          li.work-item.thumbnail-img.mix.graphic
-            a.popup-image(href='images/works/img9.jpg')
-              img(src='images/works/img9.jpg', alt='thumbnail')
-            .work-info
-              .work-info-detail.display-table
-                .display-table-cell
-                  h4 Project Title
-                  p Web Design
-                  a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
-      .clear
-      .work-all.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='800ms')
-        a.btn.btn-primary.btn-lg(href='#') View All Poroject
-    // End portfolio
-    // Start Call to Action
-    section#cta.section.parallax
+    //- section#works.section.hidden
+    //-   // Filtering
+    //-   .wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='500ms')
+    //-     // Start heading
+    //-     .col-md-offset-2.col-md-8
+    //-       .section-header
+    //-         h2.service
+    //-           span Latest Projects
+    //-     // End heading
+    //-     .col-md-12
+    //-       // Filtering
+    //-       ul.filtering
+    //-         li.filter(data-filter='all') All
+    //-         li.filter(data-filter='graphic') Graphic Design
+    //-         li.filter(data-filter='illustration') Illustrations
+    //-         li.filter(data-filter='branding') Branding
+    //-         li.filter(data-filter='Web-design') Web Design
+    //-   .full-width.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='700ms')
+    //-     // Work Grid
+    //-     ul.work-grid
+    //-       // Work Block
+    //-       li.work-item.thumbnail-img.mix.Web-design
+    //-         a.popup-image(href='images/works/img1.jpg')
+    //-           img(src='images/works/img1.jpg', alt='thumbnail')
+    //-         .work-info
+    //-           .work-info-detail.display-table
+    //-             .display-table-cell
+    //-               h4 Project Title
+    //-               p Web Design
+    //-               a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+    //-       // Work Block
+    //-       li.work-item.thumbnail-img.mix.graphic
+    //-         a.popup-image(href='images/works/img2.jpg')
+    //-           img(src='images/works/img2.jpg', alt='thumbnail')
+    //-         .work-info
+    //-           .work-info-detail.display-table
+    //-             .display-table-cell
+    //-               h4 Project Title
+    //-               p Web Design
+    //-               a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+    //-       // Work Block
+    //-       li.work-item.thumbnail-img.mix.illustration
+    //-         a.popup-image(href='images/works/img3.jpg')
+    //-           img(src='images/works/img3.jpg', alt='thumbnail')
+    //-         .work-info
+    //-           .work-info-detail.display-table
+    //-             .display-table-cell
+    //-               h4 Project Title
+    //-               p Illustrations
+    //-               a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+    //-       // Work Block
+    //-       li.work-item.thumbnail-img.mix.branding
+    //-         a.popup-image(href='images/works/img4.jpg')
+    //-           img(src='images/works/img4.jpg', alt='thumbnail')
+    //-         .work-info
+    //-           .work-info-detail.display-table
+    //-             .display-table-cell
+    //-               h4 Project Title
+    //-               p Branding
+    //-               a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+    //-       // Work Block
+    //-       li.work-item.thumbnail-img.mix.Web-design
+    //-         a.popup-image(href='images/works/img5.jpg')
+    //-           img(src='images/works/img5.jpg', alt='thumbnail')
+    //-         .work-info
+    //-           .work-info-detail.display-table
+    //-             .display-table-cell
+    //-               h4 Project Title
+    //-               p Web Design
+    //-               a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+    //-       // Work Block
+    //-       li.work-item.thumbnail-img.mix.graphic
+    //-         a.popup-image(href='images/works/img6.jpg')
+    //-           img(src='images/works/img6.jpg', alt='thumbnail')
+    //-         .work-info
+    //-           .work-info-detail.display-table
+    //-             .display-table-cell
+    //-               h4 Project Title
+    //-               p Web Design
+    //-               a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+    //-       // Work Block
+    //-       li.work-item.thumbnail-img.mix.illustration
+    //-         a.popup-image(href='images/works/img7.jpg')
+    //-           img(src='images/works/img7.jpg', alt='thumbnail')
+    //-         .work-info
+    //-           .work-info-detail.display-table
+    //-             .display-table-cell
+    //-               h4 Project Title
+    //-               p Illustrations
+    //-               a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+    //-       // Work Block
+    //-       li.work-item.thumbnail-img.mix.branding
+    //-         a.popup-image(href='images/works/img8.jpg')
+    //-           img(src='images/works/img8.jpg', alt='thumbnail')
+    //-         .work-info
+    //-           .work-info-detail.display-table
+    //-             .display-table-cell
+    //-               h4 Project Title
+    //-               p Branding
+    //-               a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+    //-       // Work Block
+    //-       li.work-item.thumbnail-img.mix.graphic
+    //-         a.popup-image(href='images/works/img9.jpg')
+    //-           img(src='images/works/img9.jpg', alt='thumbnail')
+    //-         .work-info
+    //-           .work-info-detail.display-table
+    //-             .display-table-cell
+    //-               h4 Project Title
+    //-               p Web Design
+    //-               a.btn.btn-primary.btn-sm.btn-color-white(href='single-work.html') View More
+    //-   .clear
+    //-   .work-all.wow.fadeInUp(data-wow-duration='700ms', data-wow-delay='800ms')
+    //-     a.btn.btn-primary.btn-lg(href='#') View All Poroject
+    //- // End portfolio
+    //- // Start Call to Action
+    //- section#cta.section.parallax
       .overlay
       .container.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='500ms')
         .row
@@ -604,63 +606,63 @@ html.no-js(lang='en-us')
       // /container
     // End facts
     // Start blog
-    section#blog.section.hidden
-      .container
-        .row
-          // Start heading
-          .col-md-offset-2.col-md-8
-            .section-header
-              h2.service
-                span Blog
-          // End heading
-          // Start Blog item #1
-          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='300ms')
-            .blog-post
-              .post-media
-                img(src='images/blog/blog1.jpg', alt='')
-              // /.post-media
-              .post-detail
-                h4 Example of Blog post
-                ul.entry-meta
-                  li April 10, 2016
-                  li
-                    a(href='#') 12 Comments
-                p
-                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde
-                a.btn.btn-primary.btn-rounded(href='blog.html') Read More
-          // Start Blog item #2
-          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='400ms')
-            .blog-post
-              .post-media
-                img(src='images/blog/blog2.jpg', alt='')
-              // /.post-media
-              .post-detail
-                h4 This is a image post
-                ul.entry-meta
-                  li April 10, 2016
-                  li
-                    a(href='#') 12 Comments
-                p
-                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde
-                a.btn.btn-primary.btn-rounded(href='blog.html') Read More
-          // Start Blog item #3
-          .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='500ms')
-            .blog-post
-              .post-media
-                img(src='images/blog/blog3.jpg', alt='')
-              // /.post-media
-              .post-detail
-                h4 Example of video post
-                ul.entry-meta
-                  li April 10, 2016
-                  li
-                    a(href='#') 12 Comments
-                p
-                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde
-                a.btn.btn-primary.btn-rounded(href='blog.html') Read More
-        // /.row
-      // /.container
-    // End blog
+    //- section#blog.section.hidden
+    //-   .container
+    //-     .row
+    //-       // Start heading
+    //-       .col-md-offset-2.col-md-8
+    //-         .section-header
+    //-           h2.service
+    //-             span Blog
+    //-       // End heading
+    //-       // Start Blog item #1
+    //-       .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='300ms')
+    //-         .blog-post
+    //-           .post-media
+    //-             img(src='images/blog/blog1.jpg', alt='')
+    //-           // /.post-media
+    //-           .post-detail
+    //-             h4 Example of Blog post
+    //-             ul.entry-meta
+    //-               li April 10, 2016
+    //-               li
+    //-                 a(href='#') 12 Comments
+    //-             p
+    //-               | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde
+    //-             a.btn.btn-primary.btn-rounded(href='blog.html') Read More
+    //-       // Start Blog item #2
+    //-       .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='400ms')
+    //-         .blog-post
+    //-           .post-media
+    //-             img(src='images/blog/blog2.jpg', alt='')
+    //-           // /.post-media
+    //-           .post-detail
+    //-             h4 This is a image post
+    //-             ul.entry-meta
+    //-               li April 10, 2016
+    //-               li
+    //-                 a(href='#') 12 Comments
+    //-             p
+    //-               | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde
+    //-             a.btn.btn-primary.btn-rounded(href='blog.html') Read More
+    //-       // Start Blog item #3
+    //-       .col-md-4.wow.zoomIn(data-wow-duration='700ms', data-wow-delay='500ms')
+    //-         .blog-post
+    //-           .post-media
+    //-             img(src='images/blog/blog3.jpg', alt='')
+    //-           // /.post-media
+    //-           .post-detail
+    //-             h4 Example of video post
+    //-             ul.entry-meta
+    //-               li April 10, 2016
+    //-               li
+    //-                 a(href='#') 12 Comments
+    //-             p
+    //-               | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde
+    //-             a.btn.btn-primary.btn-rounded(href='blog.html') Read More
+    //-     // /.row
+    //-   // /.container
+    //- // End blog
     // Start Team
     section#team.section
       .container
@@ -863,23 +865,28 @@ html.no-js(lang='en-us')
     //- a.scrollup(href='#')
       i.fa.fa-chevron-up  
     // Plugins
-    script(type='text/javascript', src='/js/jquery-1.11.1.min.js')
-    script(type='text/javascript', src='/js/bootstrap.min.js')
-    script(type='text/javascript', src='/js/owl-carousel/owl.carousel.js')
-    script(type='text/javascript', src='/js/jquery.flexslider-min.js')
-    script(type='text/javascript', src='/js/jquery.bxslider.min.js')
-    script(type='text/javascript', src='/js/jquery.magnific-popup.min.js')
+    <!-- build:concat /js/vendor.min.js -->
+    script(type='text/javascript', src='/js/assets/lodash.min.js')
+    script(type='text/javascript', src='/js/assets/jquery-1.11.1.min.js')
+    script(type='text/javascript', src='/js/assets/bootstrap.min.js')    
+    script(type='text/javascript', src='/js/assets/jquery.mixitup.min.js')
+    script(type='text/javascript', src='/js/assets/jquery.bxslider.min.js')
+    script(type='text/javascript', src='/js/assets/jquery.flexslider-min.js')
+    script(type='text/javascript', src='/js/assets/jquery.magnific-popup.min.js')
+    script(type='text/javascript', src='/js/assets/wow.min.js')    
+    
+    script(type='text/javascript', src='/js/assets/owl.carousel.js')
+    script(type='text/javascript', src='/js/assets/jquery.parallax-1.1.3.js')
+    script(type='text/javascript', src='/js/assets/jquery.sticky.js')
+    <!-- endbuild -->    
+    <!-- build:js(dist/app/public) /js/main.min.js -->
     script(type='text/javascript', src='/js/easing.js')
-    script(type='text/javascript', src='/js/jquery.parallax-1.1.3.js')
-    script(type='text/javascript', src='/js/jquery.sticky.js')
-    script(type='text/javascript', src='/js/jquery.mixitup.min.js')
-    script(type='text/javascript', src='/js/wow.min.js')
     script(type='text/javascript', src='/js/contact.js')
     script(type='text/javascript', src='/js/custom.js')
     script(type='text/javascript', src='/js/main.js')
     // Style Switcher
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js')
     script(type='text/javascript', src='/js/style-switcher.js')
+    <!-- endbuild -->
 
    script.
      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

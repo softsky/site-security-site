@@ -35,7 +35,7 @@
 
 */
 
-@import url(https://fonts.googleapis.com/css?family=Cabin:400,400i,500,500i,600,600i,700,700i);
+@import url(./font-cabin.css);
 
 /*-----------------------------------------------------------------*/
 /* Basic
@@ -2264,6 +2264,11 @@ img.align-right {
 	padding: 0px 10px;
 }
 
-
+}
+.embedded-form {
+    background: rgba(20, 20, 20, 0.5);
+    padding: 5px;
+    display:block;
+    overflow:auto;
 }
 

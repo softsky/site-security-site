@@ -93,7 +93,7 @@ dd {
     clear:right;
 }
 .modal-dialog {
-    font-family: "Francois One";
+    font-family: "Cabin";
     font-style: normal;
     /* font-weight: 900; */
     /* font-size: 32px; */
@@ -117,8 +117,8 @@ dd {
     border-radius:8px;
     z-index: 1000;
     
-    font-family: "Francois One";
-    font-style: normal;
+    font-family: "Cabin";
+>    font-style: normal;
     font-weight: 900;
     font-size: 32px;
     
@@ -144,12 +144,12 @@ footer p {
     font-weidht: 900;    
 }
 .navbar, .carousel{
-    font-family: "Francois One";
+    font-family: "Cabin";
     font-style: normal;
     font-variant: normal;
 }
 body, footer{
-    font-family: 'Droid Sans'
+    font-family: "Cabin";
 }
 /*
  * Callouts
@@ -201,4 +201,3 @@ body, footer{
 .bs-callout-info h3 {
     color: #1b809e;
 }
-

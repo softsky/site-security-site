@@ -24,14 +24,14 @@ jQuery("#header").sticky({
 /* Home Slider
 /*------------------------------*/
 
-$(window).load(function() {
-	$('.homeslider').flexslider({
-	      animation: "fade", 
-		  controlNav: false,
-	    directionNav: false,
-		  slideshowSpeed:6000,
+    $(window).load(function() {
+	$('.flexslider').flexslider({
+	    animation: "fade", 
+	    controlNav: false,
+	    directionNav: false
+	    //slideshowSpeed:5000
 	});
-});
+    });
 
   
 jQuery('#text-slider').bxSlider({

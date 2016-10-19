@@ -75,11 +75,6 @@ app.use('/scan/new', (req, res, next) => {
 });
 
 
-app.use(function (req, res, next) {
-    console.log('req.body: ' + JSON.stringify(req.body));
-    next();
-});
-
 // development only
 if ('development' === app.get('env')) {
     app.use(errorhandler());

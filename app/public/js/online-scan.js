@@ -2,16 +2,16 @@ $(window).on('hashchange', () => {
     if(window.location.hash){
         var hash = window.location.hash.match(/^#(.*)/);
         if(hash && hash.length > 1){
-            var parts = hash[1].split(/\//);
+            var [scanType, round, coupon] = hash[1].split(/\//);
             if(scanType){
-                $('select#scanType').val(parts[0]);
+                $('select#scanType').val(scanType);
             }
             if(round){
-                $('select#round').val(parts[1]);
+                $('select#round').val(round);
                 $('select#round option:selected').attr('disabled', false);
             }
             if(coupon){
-                $('input#coupon').val(parts[2]);
+                $('input#coupon').val(coupon);
             }
         }
     }
@@ -80,39 +80,16 @@ $(document).ready(() => {
     });
     
     $('button[type=submit]').click((e) => {
-        e.preventDefault();
-
-	// console.log('Hiding');
-	// $('form').fadeIn('slow', () => {
-	//     $('h1').text('Thank you!');
-	// });
-
 	var email = $('input#email').val();
 	if(email.indexOf('@') < 0){
 	    email += $('#domain').text();
 	};
 	
-	// $.ajax({
-	//     url: `/sendpulse/addressbooks/565640/emails`,
-	//     method: 'POST',
-	//     data: {
-        //         emails: JSON.stringify([{
-	// 	    email: email,
-	// 	    variables: {
-	// 	        firstName: $('input#firstName').val(),
-	// 	        lastName: $('input#lastName').val(),
-	// 	        website_url: $('input#url').val()
-	// 	    }
-	//         }])
-        //     },
-	//     success: (data, textStatus) => {
-	// 	console.log(data, textStatus);
-	//     }
-	// });
+        var form = $(e.target).parents('form');
 
 	$.ajax({
 	    method: 'POST',
-	    url: `/scan/new`,
+	    url: $(form).attr('action'),
             contentType: 'application/json',
             dataType: 'json',
 	    data: JSON.stringify({
@@ -153,6 +130,7 @@ $(document).ready(() => {
                     
             }
 	});
+        e.preventDefault();
         return false;
     });
 });

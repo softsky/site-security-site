@@ -9,10 +9,10 @@ WORKDIR ${APP_PATH}
 ENV NODE_PORT 3000
 EXPOSE ${NODE_PORT}
 
-COPY package.json .
+COPY dist/package.json .
 RUN npm install
 
-COPY app/ app/
+COPY dist/app/ app/
 
 #CMD [ "npm", "run", "start" ]
 CMD [ "node", "/usr/src/app/app.js" ]

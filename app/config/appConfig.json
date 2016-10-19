@@ -8,7 +8,7 @@
     "app": {
         "name": "Bootstrap 3 rendered by Jade, Node, Express and Grunt",
         "rootPage": "app.js",
-        "dev": "_gen_dev",
+        "dev": "dist",
         "devPort": 9000,
         "dist": "_gen_dist",
         "distPort": 9000,

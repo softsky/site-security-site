@@ -1,34 +1,35 @@
 jQuery(document).ready(function ($) { // wait until the document is ready
-    $('#send').click(function(e){ // when the button is clicked the code executes
+    $("#ajaxsuccess,#ajaxsuccess-0").hide();
+    $('#send,#send-0').click(function(e){ // when the button is clicked the code executes
 	
 	$('.error').fadeOut('slow'); // reset the error messages (hides them)
 
 	var error = false; // we will set this true if the form isn't valid
 
-	var name = $('input#name').val(); // get the value of the input field
+	var name = $('input#name,input#name-0').val(); // get the value of the input field
 	if(name == "" || name == " ") {
-	    $('#err-name').fadeIn('slow'); // show the error message
+	    $('#err-name,#err-name-0').fadeIn('slow'); // show the error message
 	    error = true; // change the error state to true
 	}
 
 	var email_compare = /^([a-z0-9_.-]+)@([da-z.-]+).([a-z.]{2,6})$/; // Syntax to compare against input
-	var email = $('input#email').val(); // get the value of the input field
+	var email = $('input#email,input#email-0').val(); // get the value of the input field
 	if (email == "" || email == " ") { // check if the field is empty
-	    $('#err-email').fadeIn('slow'); // error - empty
+	    $('#err-email,#err-email-0').fadeIn('slow'); // error - empty
 	    error = true;
 	}else if (!email_compare.test(email)) { // if it's not empty check the format against our email_compare variable
-	    $('#err-emailvld').fadeIn('slow'); // error - not right format
+	    $('#err-emailvld,#err-emailvld-0').fadeIn('slow'); // error - not right format
 	    error = true;
 	}
 
 	if(error == true) {
-	    $('#err-form').slideDown('slow');
+	    $('#err-form,#err-form-0').slideDown('slow');
 	    return false;
 	}
 
-        var form = $(e.target).parents('#ajax-form')
+        var form = $(e.target).parents('#ajax-form,#ajax-form-0')
         , arr = [{}].concat($(form).serializeArray())
-        , data = _.reduce(arr,(result, it) => {result[it.name] = it.value;return result});
+        , data = _.reduce(arr,(result, it) => {result[it.name] = it.value;return result;});
         
         $.ajax({
             method: $(form).attr('method'),
@@ -38,44 +39,20 @@ jQuery(document).ready(function ($) { // wait until the document is ready
             data: JSON.stringify(data),
 	    error: function(request,error) {
 		if (error == "timeout") {
-		    $('#err-timedout').slideDown('slow');
+		    $('#err-timedout,#err-timedout-0').slideDown('slow');
 		}
 		else {
-		    $('#err-state').slideDown('slow');
-		    $("#err-state").html('An error occurred: ' + error + '');
+		    $('#err-state,#err-state-0').slideDown('slow');
+		    $("#err-state,#err-state-0").html('An error occurred: ' + error + '');
 		}
 	    },
 	    success: function() {
-		$('#ajax-form').slideUp('slow');
-		$('#ajaxsuccess').slideDown('slow');
+		$('#ajax-form,#ajax-form-0').slideUp('slow');
+		$('#ajaxsuccess,#ajaxsuccess-0').slideDown('slow');
 	    }
         });
         
         e.preventDefault();
         return false;
-        
-        
-
-	// $.ajax({
-	// 	type: "POST",
-	// 	url: $('#ajax-form').attr('action'),
-	// 	data: data_string,
-	// 	timeout: 6000,
-	// 	error: function(request,error) {
-	// 		if (error == "timeout") {
-	// 			$('#err-timedout').slideDown('slow');
-	// 		}
-	// 		else {
-	// 			$('#err-state').slideDown('slow');
-	// 			$("#err-state").html('An error occurred: ' + error + '');
-	// 		}
-	// 	},
-	// 	success: function() {
-	// 		$('#ajax-form').slideUp('slow');
-	// 		$('#ajaxsuccess').slideDown('slow');
-	// 	}
-	// });
-
-	//return false; // stops user browser being directed to the php file
     }); // end click function
 });

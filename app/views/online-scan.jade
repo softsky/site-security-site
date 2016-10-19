@@ -1,10 +1,12 @@
 extends layout
 block body
+    <!-- build:js(dist/app/public) /js/main-1.min.js -->
     script(src='/js/online-scan.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js')
+    script(src='/js/assets/lodash.min.js')
+    <!-- endbuild -->    
     .row
       .col-md-6
-        form.form(role='form',action='#')
+        form.form(role='form', action='/scan/new')
           h1 Online Security Audit
           .form-group
             label

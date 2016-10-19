@@ -1,15 +1,37 @@
 lb:
-  image: dockercloud/haproxy
-  links:
-    - web
+  image: dockercloud/haproxy:1.5.3
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  privileged: true
   ports:
     - "80:80"
   roles:
     - global
+  links:
+    - web
+  tags:
+    - provider=amazon
 redis:
   image: redis
+  tags:
+    - provider=amazon
+web:
+  image: softsky/site-security-site
+  autoredeploy: true
+  labels:
+    ua.com.softsky.description: "Main Website"
+  privileged: true
+  links:
+    - redis:REDIS
+    - api:API
+  target_num_containers: 1
+  tags:
+    - provider=amazon
 mongo:
   image: mongo
+  tags:
+    - DO
+    - API
 api:
   image: softsky/site-security-api
   autoredeploy: true
@@ -21,15 +43,6 @@ api:
     - redis:REDIS
     - mongo:MONGODB
   target_num_containers: 1
-web:
-  image: softsky/site-security-site
-  autoredeploy: true
-  labels:
-    ua.com.softsky.description: "Main Website"
-  ports:
-    - "80:3000"
-  privileged: true
-  links:
-    - redis:REDIS
-    - api:API
-  target_num_containers: 1
+  tags:
+    - DO
+    - API
