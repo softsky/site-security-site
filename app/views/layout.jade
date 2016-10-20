@@ -25,13 +25,13 @@ html(lang='en-us')
     <!-- endbuild -->    
     
     // Just for debugging purposes. Don't actually copy these 2 lines!
-    //-   <!--[if lt IE 9]
-    //-   script(src='/js/assetsie8-responsive-file-warning.js')
-    //-   script(src='/js/assets/ie-emulation-modes-warning.js')
-    //-   script(src='/js/assets/ie10-viewport-bug-workaround.js')
-    //-   script(src='/js/assets/html5shiv.min.js')
-    //-   script(src='/js/assets/respond.min.js')
-    //-   <![endif]-->
+    <!--[if lt IE 9]
+    script(src='/js/assetsie8-responsive-file-warning.js')
+    script(src='/js/assets/ie-emulation-modes-warning.js')
+    script(src='/js/assets/ie10-viewport-bug-workaround.js')
+    script(src='/js/assets/html5shiv.min.js')
+    script(src='/js/assets/respond.min.js')
+    <![endif]-->
     <!-- build:concat /js/vendor-0.min.js -->
     script(src='/js/assets/jquery.min.js')
     script(src='/js/assets/bootstrap.min.js')
@@ -65,15 +65,22 @@ html(lang='en-us')
             button.btn.btn-space.btn-primary Subscribe
             button.btn.btn-space.btn-default(data-dismiss='modal') Dismiss
             
-    #signUp_signUpModal.modal.fade(role=dialog)
+    #signUpModal.modal.fade(role=dialog)
      .modal-dialog
        .modal-content
          .modal-header
             button.close(type='button',data-dismiss='modal')
               | &times;
-            h4.modal-title Sign Up                       
+            h4.modal-title Sign Up
+            h5.modal-title Currently we support registation by invitation only. 
+              | To obtain your invitation code, please contact:
+              a(href='mailto:support@softsky.com.ua?subject=I would receive invitation code') &nbsp;support@softsky.com.ua
          .modal-body             
             form(role='form')
+             .form-group
+              label(for='signUp_invitation') Invitation Code
+              input#signUp_invitation.form-control.btn-space(type='text', placeholder='')
+             .form-group            
              .form-group
               label(for='signUp_firstName') First Name
               input#signUp_firstName.form-control.btn-space(type='text', placeholder='John')
@@ -89,11 +96,11 @@ html(lang='en-us')
                 .input-group-addon http://
                 input#signUp_website.form-control.btn-space(type='text', placeholder='example.com')
          .modal-footer
-            h6 Thank you for your registration
+            h6 Thank you for your interest
             button.btn.btn-space.btn-primary Sign up
             button.btn.btn-space.btn-default(data-dismiss='modal') Dismiss
 
-    #signIn_signInModal.modal.fade(role=dialog)
+    #signInModal.modal.fade(role=dialog)
      .modal-dialog
        .modal-content
          .modal-header
