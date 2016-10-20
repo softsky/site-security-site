@@ -70,18 +70,6 @@ module.exports = function (grunt) {
             options: {
                 sourceMap: true,
                 presets: ['babel-preset-es2015']
-            },
-            dist: {
-                files: {
-                    //'<%= appConfig.app.dist %>': '<%= appConfig.app.dist %>'
-                    //'<%= appConfig.app.src %>/public/js/*.js': 'dist/app/public/js/*.js'
-                    'dist/app/public/js/contact.js': 'app/public/js/contact.js',
-                    'dist/app/public/js/custom.js': 'app/public/js/custom.js',
-                    'dist/app/public/js/esing.js': 'app/public/js/easing.js',
-                    'dist/app/public/js/main.js': 'app/public/js/main.js',
-                    'dist/app/public/js/online-scan.js': 'app/public/js/online-scan.js',
-                    'dist/app/public/js/style-switcher.js': 'app/public/js/style-switcher.js'
-                }
             }
         },
         // uglify: {
@@ -212,7 +200,6 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks("gruntify-eslint");
-    grunt.loadNpmTasks("grunt-babel");
     grunt.loadNpmTasks("grunt-babel");
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
