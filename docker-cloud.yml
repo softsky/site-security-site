@@ -1,48 +1,43 @@
-lb:
-  image: dockercloud/haproxy:1.5.3
-  volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
-  privileged: true
-  ports:
-    - "80:80"
-  roles:
-    - global
-  links:
-    - web
-  tags:
-    - provider=amazon
-redis:
-  image: redis
-  tags:
-    - provider=amazon
-web:
-  image: softsky/site-security-site
-  autoredeploy: true
-  labels:
-    ua.com.softsky.description: "Main Website"
-  privileged: true
-  links:
-    - redis:REDIS
-    - api:API
-  target_num_containers: 1
-  tags:
-    - provider=amazon
-mongo:
-  image: mongo
-  tags:
-    - DO
-    - API
 api:
-  image: softsky/site-security-api
-  autoredeploy: true
+  image: 'softsky/site-security-api:latest'
   labels:
-    ua.com.softsky.description: "SOFTSKY Site Security API"
-  ports:
-    - "3001:3001"
+        ua.com.softsky.description: SOFTSKY Site Security API
   links:
-    - redis:REDIS
-    - mongo:MONGODB
-  target_num_containers: 1
+        - 'mongo:MONGODB'
+        - 'redis:REDIS'
+  ports:
+        - '3001:3001'
   tags:
-    - DO
-    - API
+        - API
+        - DO
+lb:
+  image: 'dockercloud/haproxy:1.5.3'
+  links:
+        - web
+  ports:
+        - '80:80'
+  privileged: true
+  tags:
+        - provider=amazon
+  target_num_containers: 2
+mongo:
+  image: 'mongo:latest'
+  tags:
+        - API
+        - DO
+redis:
+  image: 'redis:latest'
+  tags:
+        - provider=amazon
+web:
+  image: 'softsky/site-security-site:latest'
+  labels:
+        ua.com.softsky.description: Main Website
+  links:
+        - 'api:API'
+        - 'redis:REDIS'
+  privileged: true
+  restart: on-failure
+  tags:
+        - provider=amazon
+  target_num_containers: 2
