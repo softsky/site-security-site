@@ -12,7 +12,7 @@ EXPOSE ${NODE_PORT}
 COPY package.json /tmp
 COPY Gruntfile.js /tmp
 ADD app /tmp/app
-RUN cd /tmp && ls -la /tmp/ && npm install && npm install -g grunt-cli && grunt dist && npm uninstall -g grunt-cli && mv /tmp/node_modules /tmp/dist/ && mv /tmp/dist/* ${APP_PATH}
+RUN cd /tmp && ls -la /tmp/ && npm install && npm install -g grunt-cli && grunt dist && npm uninstall -g grunt-cli && cp -r /tmp/node_modules /tmp/dist/ && cp -r /tmp/dist/* ${APP_PATH}
 
 
 #CMD [ "npm", "run", "start" ]
