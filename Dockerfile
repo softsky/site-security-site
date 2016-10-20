@@ -9,10 +9,11 @@ WORKDIR ${APP_PATH}
 ENV NODE_PORT 3000
 EXPOSE ${NODE_PORT}
 
-COPY dist/package.json .
-RUN npm install
+COPY package.json /tmp
+COPY Gruntfile.js /tmp
+ADD app /tmp/app
+RUN cd /tmp && ls -la /tmp/ && npm install && npm install -g grunt-cli && grunt dist && npm uninstall -g grunt-cli && mv /tmp/node_modules /tmp/dist/ && mv /tmp/dist/* ${APP_PATH}
 
-COPY dist/app/ app/
 
 #CMD [ "npm", "run", "start" ]
 CMD [ "node", "/usr/src/app/app.js" ]
