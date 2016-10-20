@@ -16,6 +16,7 @@ var express = require('express'),
     logger = require('morgan'),
     http = require('http'),
     path = require('path'),
+    _ = require('lodash'),
     RedisSMQ = require('rsmq'),
     dotenv = require('dotenv').config({silent:true}),
     [rs_protocol, rs_host, rs_port] = (process.env.REDIS_PORT || 'tcp://127.0.0.1:6379').split(/\:\/\/|\:/),
@@ -63,8 +64,9 @@ rsmq.createQueue({qname:"new-scan"},(err, resp) => {
 });
 
 app.use('/scan/new', (req, res, next) => {
-    console.log(req.body);
-    rsmq.sendMessage({qname:'new-scan', message: JSON.stringify(req.body)}, (err, resp) => {
+    const data = _.extend(req.body, {timestamp: new Date()});
+    console.log(data);
+    rsmq.sendMessage({qname:'new-scan', message: JSON.stringify(data)}, (err, resp) => {
         if(err){
             res.send({status: 'error', err: err});
         } else {
