@@ -141,7 +141,7 @@ module.exports = (function () {
         var id = req.params.id
         , section = req.params.section;
 
-        if(['css','img','media','images','fonts','js'].indexOf(section) > -1){
+        if(['css','img','images','media','fonts','js'].indexOf(section) > -1){
             next();
             return;
         }
