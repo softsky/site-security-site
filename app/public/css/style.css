@@ -1,6 +1,11 @@
-.carousel-bg {
-    //background: url(//d3eaqdewfg2crq.cloudfront.net/wp-content/uploads/carousel/main-fort-gate/background.jpg) no-repeat center center;
-    background: url(http://feelgrafix.com/data/background/background-15.jpg) no-repeat center center;
+.carousel-bg-0 {
+    background: url(/img/background/background-0.jpg) no-repeat center center;
+}
+.carousel-bg-1 {
+    background: url(/img/background/background-1.jpg) no-repeat center center;
+}
+.carousel-bg-2 {
+    background: url(/img/background/background-2.jpg) no-repeat center center;
 }
 .gateway {
     background: url(//d3eaqdewfg2crq.cloudfront.net/wp-content/uploads/carousel/main-fort-gate/acx-fortGate-h2-359x300.hyperesources/Gate-Opening-Wall.png) no-repeat center center;
