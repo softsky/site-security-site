@@ -17,10 +17,27 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     _ = require('lodash'),
-    RedisSMQ = require('rsmq'),
+    passport = require('passport'),
     dotenv = require('dotenv').config({silent:true}),
-    [rs_protocol, rs_host, rs_port] = (process.env.REDIS_PORT || 'tcp://127.0.0.1:6379').split(/\:\/\/|\:/),
-    rsmq = new RedisSMQ({host: rs_host, port: rs_port, ns: 'rsmq'});
+    [redis_protocol, redis_host, redis_port] = (process.env.REDIS_PORT || 'tcp://redis:6379').split(/\:\/\/|\:/);
+
+    console.log(process.env);
+
+var Promise = require('bluebird')
+, seneca = Promise.promisifyAll(require('seneca')({timeout: 3000}))
+        .use('redis-queue-transport', {
+            'redis-queue': {
+                timeout: 3000,
+                type: 'redis-queue',
+                host: redis_host,
+                port: redis_port
+            }
+        })
+        .client( {type:'redis-queue'} );
+
+        // .listen( {type:'redis', topic:'my-topic'} );
+        //.client( {type:'rabbitmq'} );
+
 
 var appConfig = require('./config/appConfig.json');
 var router = require('./routes/index');
@@ -40,6 +57,11 @@ app.use(cookieParser('my v3ry s3cr3t C00k1e k3y d0nt y0u th1nk?'));
 app.use(session({ resave: true,
                   saveUninitialized: true,
                   secret: 'my l1ttl3 s3cret s3ss10n k3y isnt it?' }));
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
+
+
 // FIXME: currently we use 2 proxy libraries express-http-proxy and express-request-proxy
 // stick to oneo
 var [protocol, host, port] = (process.env.API_PORT || "tcp://localhost:3001").split(/\:/);
@@ -51,30 +73,20 @@ app.use('/api', proxy(`http://${host}:${port}`, {
     }
 }));
 
-//routes
-app.use('/', router);
 
 app.use(express.static(path.join(__dirname, appConfig.directories.publicDir)));
 
-// attempting to create new queue
-rsmq.createQueue({qname:"new-scan"},(err, resp) => {
-    if(resp === 1) {
-        console.log('Queue created');
-    }
-});
 
+//routes
+app.use('/oauth2', require('./routes/oauth2'));
 app.use('/scan/new', (req, res, next) => {
     const data = _.extend(req.body, {timestamp: new Date()});
-    console.log(data);
-    rsmq.sendMessage({qname:'new-scan', message: JSON.stringify(data)}, (err, resp) => {
-        if(err){
-            res.send({status: 'error', err: err});
-        } else {
-            res.send({status: 'queued'});
-            console.log("Message sent. ID:", resp);
-        }
-    });
+    seneca.actAsync('role:on,cmd:online-scan,action:start', {card: data})
+        .then(data => res.json(200, {status: 'scheduled'}))
+        .catch(err => res.json(200, {status: 'queued', err: err}));
 });
+app.use('/', router);
+
 
 
 // development only
