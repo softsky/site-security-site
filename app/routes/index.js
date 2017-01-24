@@ -11,7 +11,7 @@
 
 var express = require('express')
 , _ = require('lodash')
-, jade = require('jade')
+, pug = require('pug')
 , fs = require('fs')
 , webshot = require('webshot')
 , marked = require('marked')
@@ -48,14 +48,14 @@ module.exports = (function () {
 
     router.get('/', function (req, res) {
         res.render('one',{ // FIXME temporarily displaying landing page
-            'carousel': jade.renderFile('app/views/carousel.jade')
+            'carousel': pug.renderFile('app/views/carousel.pug')
         });
     });
     router.get('/:id', function (req, res) {
         res.render(req.params.id, {
             'pathToAssets': '/bootstrap-3.3.1',
             // FIXME: when remove carousel design gets smashed. Fix
-            'carousel': jade.renderFile('app/views/carousel.jade')
+            'carousel': pug.renderFile('app/views/carousel.pug')
         });
     });
 
@@ -161,9 +161,9 @@ module.exports = (function () {
             title: md.title,
             pathToAssets: '/bootstrap-3.3.1',
             pathToSelectedTemplateWithinBootstrap : '/bootstrap-3.3.1/docs/examples/' + 'carousel',
-            carousel: jade.renderFile('app/views/carousel.jade'),
-            body: fs.existsSync(`app/views/${section}/${id}.jade`)?
-                jade.renderFile(`app/views/${section}/${id}.jade`):mkmd.markdown()
+            carousel: pug.renderFile('app/views/carousel.pug'),
+            body: fs.existsSync(`app/views/${section}/${id}.pug`)?
+                pug.renderFile(`app/views/${section}/${id}.pug`):mkmd.markdown()
         });
     });
 

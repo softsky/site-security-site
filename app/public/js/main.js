@@ -12,6 +12,13 @@ $(document).ready(() => {
         console.log(clazz);
     });
 
+    $('input[name=url]').on('blur',(e)=>{
+        $(".slider-text").fadeOut('slow');
+        $("#details")
+            .fadeIn('slow');
+    });
+    
+
     // $('#pricing a.btn').on('click',(e)=>{
     //     var data = $(e.target).data();
     //     data.action && $('#contact #ajax-form').attr('action', data.action);

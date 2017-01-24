@@ -31,7 +31,7 @@ var app = express();
 // all environments
 app.set('port', PORT_LISTENER);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 app.use(favicon(__dirname + '/public/bootstrap-3.3.1/docs/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser({ keepExtensions: true, uploadDir: path.join(__dirname, appConfig.directories.publicDir) }));
