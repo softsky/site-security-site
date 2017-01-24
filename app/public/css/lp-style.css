@@ -2272,3 +2272,6 @@ img.align-right {
     overflow:auto;
 }
 
+.slides {
+    -webkit-padding-start: 0px;
+}
