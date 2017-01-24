@@ -2267,6 +2267,7 @@ img.align-right {
 }
 .embedded-form {
     background: rgba(20, 20, 20, 0.5);
+    margin: 40px;
     padding: 5px;
     display:block;
     overflow:auto;
