@@ -1,3 +1,4 @@
+//TODO merge with contact.js
 $(window).on('hashchange', () => {
     if(window.location.hash){
         var hash = window.location.hash.match(/^#(.*)/);
@@ -17,7 +18,9 @@ $(window).on('hashchange', () => {
     }
 
 });
+
 $(document).ready(() => {
+    const parser = document.createElement('a');
     console.log('initialized');
     $(window).trigger('hashchange');
     
@@ -31,7 +34,6 @@ $(document).ready(() => {
             // if domain is empty, return
             return;
         }
-	const parser = document.createElement('a');
 
 	if(val.startsWith('http')){
             parser.href = val;

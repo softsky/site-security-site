@@ -3,7 +3,7 @@ $(document).ready(() => {
     // making all client links opening in a new window
     $('#clients a').attr('target', '_new');
 
-    $("#name-0").focus();
+    $("input[name=url]:eq(0)").focus();
     
     // TODO add some initialization stuff here
     $('img[src*=class]').each((idx, it) => {
@@ -17,7 +17,7 @@ $(document).ready(() => {
         $("#details")
             .fadeIn('slow');
     });
-    
+
 
     // $('#pricing a.btn').on('click',(e)=>{
     //     var data = $(e.target).data();

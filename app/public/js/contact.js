@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) { // wait until the document is ready
+    const parser = document.createElement('a');
     $("#ajaxsuccess,#ajaxsuccess-0").hide();
     $('#send,#send-0').click(function(e){ // when the button is clicked the code executes
 	
@@ -30,6 +31,25 @@ jQuery(document).ready(function ($) { // wait until the document is ready
         var form = $(e.target).parents('#ajax-form,#ajax-form-0')
         , arr = [{}].concat($(form).serializeArray())
         , data = _.reduce(arr,(result, it) => {result[it.name] = it.value;return result;});
+
+        let [first,last] = data.name.split(/\s/);
+        data.name = {
+            first:first,
+            last:last
+        };
+
+        const val = data.url;
+        if(val.startsWith('http')){
+            parser.href = val;
+        } else {
+            parser.href = 'http://' + val;
+        }
+
+        data.url = parser.hostname.replace(/^www\./,'');
+        data = _.defaults({}, data, {
+            'scan-type':'website',
+            'round':0
+        });
         
         $.ajax({
             method: $(form).attr('method'),
