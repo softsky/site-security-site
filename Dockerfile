@@ -14,6 +14,7 @@ COPY Gruntfile.js /tmp
 ADD app /tmp/app
 RUN cd /tmp && ls -la /tmp/ && npm install && npm install -g grunt-cli && grunt dist && npm uninstall -g grunt-cli && cp -r /tmp/node_modules /tmp/dist/ && cp -r /tmp/dist/* ${APP_PATH}
 
+ENV NODE_PORT ${PORT}
 
 #CMD [ "npm", "run", "start" ]
 CMD [ "node", "/usr/src/app/app.js" ]
