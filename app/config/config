@@ -1,7 +1,0 @@
-  /home/archer/dev/softsky/site-security/site/app/config:
-  total used in directory 16 available 448048
-  drwxr-xr-x 2 archer archer 4096 Sep 24 17:16 .
-  drwxr-xr-x 6 archer archer 4096 Sep 15 13:00 ..
-  -rw-r--r-- 1 archer archer  458 Sep 24 17:11 appConfig.json
-C -rw-r--r-- 1 archer archer    3 Sep 24 17:17 eslint-browser.json
-  -rw-r--r-- 1 archer archer    1 Sep 24 17:16 eslint-node.json
