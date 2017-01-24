@@ -1,43 +1,43 @@
 api:
   image: 'softsky/site-security-api:latest'
   labels:
-        ua.com.softsky.description: SOFTSKY Site Security API
+    ua.com.softsky.description: SOFTSKY Site Security API
   links:
-        - 'mongo:MONGODB'
-        - 'redis:REDIS'
+    - 'mongo:MONGODB'
+    - 'redis:REDIS'
   ports:
-        - '3001:3001'
+    - '3001:3001'
+  restart: on-failure
   tags:
-        - API
-        - DO
+    - API
 lb:
   image: 'dockercloud/haproxy:1.5.3'
   links:
-        - web
+    - web
   ports:
-        - '80:80'
+    - '80:80'
   privileged: true
   tags:
-        - provider=amazon
+    - DO
   target_num_containers: 2
 mongo:
   image: 'mongo:latest'
   tags:
-        - API
-        - DO
+    - API
 redis:
   image: 'redis:latest'
   tags:
-        - provider=amazon
+    - DO
+  target_num_containers: 2
 web:
   image: 'softsky/site-security-site:latest'
   labels:
-        ua.com.softsky.description: Main Website
+    ua.com.softsky.description: Main Website
   links:
-        - 'api:API'
-        - 'redis:REDIS'
+    - 'api:API'
+    - 'redis:REDIS'
   privileged: true
   restart: on-failure
   tags:
-        - provider=amazon
+    - DO
   target_num_containers: 2
