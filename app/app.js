@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var PORT_LISTENER = process.env.NODE_PORT || 9000;
+var PORT_LISTENER = process.env.NODE_PORT || process.env.PORT || 9000;
 console.log('I am listening to this port: http://localhost:%s', PORT_LISTENER);
 
 var express = require('express'),
