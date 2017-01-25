@@ -14,8 +14,58 @@ $(document).ready(() => {
 
     $('input[name=url]').on('blur',(e)=>{
         $(".slider-text").fadeOut('slow');
-        $("#details")
-            .fadeIn('slow');
+        $("#details").removeClass('hidden');
+        const url = $('input[name=url]').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/whois',
+            contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+            data: `domain=${url}`
+        }).done((data) => {
+            let whois = $(data, 'pre').text().substring('version: ').match(/(.*)\:\s(.*)/gi);
+            $('#details .code').text(whois);
+        }).fail((xhr, status, errorThrown) => {
+            console.log(xhr, status, errorThrown);
+        });
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/whatweb',
+            contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+            data: `target=${url}`
+        }).done((data) => {
+            let r = data.match(/(.*)\s(\[\d*\])\s(.*)/);
+            let fa = r[3].split(/\,\s?/);
+
+            console.log(fa);
+            $("#details ul").html('');
+            $.each(fa, (idx, it) => {
+                var x = it.match(/(.*)\[(.*)\]/) || [it, it, it];
+                var e = $(`<li class="list-group-item"><span class='badge'>${x[2]}</span>${x[1]}</li>`);
+
+                $("#details ul").append(e);
+            });
+
+        }).fail((xhr, status, errorThrown) => {
+            console.log(xhr, status, errorThrown);
+        });
+
+
+
+        // $.ajax({
+        //     type: 'POST',
+        //     url:'http://whatweb.net/whatweb.php',
+        //     contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        //     data: `target=${url}`,
+        //     failure: (err) => {
+        //         console.error(err);
+        //     },
+        //     success: (data) => {
+        //         console.log(data);
+        //     }
+        // });
     });
 
 

@@ -19,9 +19,11 @@ var express = require('express'),
     _ = require('lodash'),
     passport = require('passport'),
     dotenv = require('dotenv').config({silent:true}),
-    [redis_protocol, redis_host, redis_port] = (process.env.REDIS_PORT || 'tcp://redis:6379').split(/\:\/\/|\:/);
+    redis_url = process.env.REDIS_PORT || process.env.REDIS_URL || 'tcp://redis:6379',
+    redis  = require('url').parse(redis_url);
 
-    console.log(process.env);
+console.log(process.env);
+console.log(redis_url);
 
 var Promise = require('bluebird')
 , seneca = Promise.promisifyAll(require('seneca')({timeout: 3000}))
@@ -29,8 +31,7 @@ var Promise = require('bluebird')
             'redis-queue': {
                 timeout: 3000,
                 type: 'redis-queue',
-                host: redis_host,
-                port: redis_port
+                url: redis_url
             }
         })
         .client( {type:'redis-queue'} );
@@ -67,6 +68,40 @@ app.use(passport.session()); // persistent login sessions
 var [protocol, host, port] = (process.env.API_PORT || "tcp://localhost:3001").split(/\:/);
 host = host.replace(/\/\//, '');
 console.log('Host', host, 'Port', port);
+
+app.use('/api/whatweb', proxy(`whatweb.net`, {
+    //reqAsBuffer: true,
+    decorateRequest: function(proxyReq, originalReq) {
+        // you can update headers
+        proxyReq.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        // you can change the method
+        proxyReq.method = 'POST';
+        // you can munge the bodyContent.
+        console.log(originalReq.body.target || originalReq.query.target);
+        proxyReq.bodyContent = 'target=' + (originalReq.body.target || originalReq.query.target);
+        return proxyReq;
+    },
+    forwardPath: (req, res) => {
+        return '/whatweb.php';
+    }
+}));
+
+app.use('/api/whois', proxy(`dns.com.ua`, {
+    decorateRequest: function(proxyReq, originalReq) {
+        // you can update headers
+        proxyReq.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        // you can change the method
+        proxyReq.method = 'POST';
+        // you can munge the bodyContent.
+        console.log(originalReq.body.domain || originalReq.query.domain);
+        proxyReq.bodyContent = 'domain=' + (originalReq.body.domain || originalReq.query.domain);
+        return proxyReq;
+    },
+    forwardPath: (req, res) => {
+        return '/ajax/whois?domain=' + (req.body.domain || req.query.domain);
+    }
+}));
+
 app.use('/api', proxy(`http://${host}:${port}`, {
     forwardPath: function(req, res) {
         return '/api' + require('url').parse(req.url).path;

@@ -1,12 +1,12 @@
 {
-  "name": "bootstrap3-jade-node-express",
-  "description": "Display Bootstrap 3 sample templates using Jade, Node and Express",
-  "version": "0.0.0",
-  "homepage": "http://www.alt-f1.be",
+  "name": "softsky-internet-security",
+  "description": "SOFTSKY Internet Security",
+  "version": "0.0.1",
+  "homepage": "https://www.softsky.com.ua",
   "author": {
-    "name": "Abdelkrim Boujraf",
-    "email": "abo+github@alt-f1.be",
-    "url": "http://www.alt-f1.be"
+    "name": "Arsen A. Gutsal",
+    "email": "a.gutsal@softsky.com.ua",
+    "url": "http://www.softsky.com.ua"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
   },
   "license": {
     "type": "MIT",
-    "url": "http://www.alt-f1.be"
+    "url": "https://www.softsky.com.ua"
   },
   "private": true,
   "scripts": {
@@ -47,7 +47,7 @@
     "passport-linkedin-oauth2": "^1.4.1",
     "pug": "^2.0.0-beta7",
     "seneca": "^2.1.0",
-    "seneca-redis-queue-transport": "^0.3.0",
+    "seneca-redis-queue-transport": "git+https://github.com/softsky/seneca-redis-queue-transport.git",
     "serve-favicon": "2.3.0",
     "webshot": "^0.18.0"
   },
