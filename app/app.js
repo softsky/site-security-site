@@ -19,7 +19,7 @@ var express = require('express'),
     _ = require('lodash'),
     passport = require('passport'),
     dotenv = require('dotenv').config({silent:true}),
-    redis_url = process.env.REDIS_PORT || process.env.REDIS_URL || 'tcp://redis:6379',
+    redis_url = process.env.REDIS_PORT || process.env.REDIS_URL || 'redis://localhost:6379',
     redis  = require('url').parse(redis_url);
 
 console.log(process.env);
