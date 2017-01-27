@@ -13,44 +13,47 @@ $(document).ready(() => {
     });
 
     $('input[name=url]').on('blur',(e)=>{
-        $(".slider-text").fadeOut('slow');
-        $("#details").removeClass('hidden');
+        $('#ajax-form-0').validator('validate'); // TODO fix validation
         const url = $('input[name=url]').val();
+        if(url && url != ''){
+            $(".slider-text").fadeOut('slow');
+            $("#details").removeClass('hidden');
 
-        $.ajax({
-            type: 'POST',
-            url: '/api/whois',
-            contentType:'application/x-www-form-urlencoded; charset=UTF-8',
-            data: `domain=${url}`
-        }).done((data) => {
-            let whois = $(data, 'pre').text().substring('version: ').match(/(.*)\:\s(.*)/gi);
-            $('#details .code').text(whois);
-        }).fail((xhr, status, errorThrown) => {
-            console.log(xhr, status, errorThrown);
-        });
-
-
-        $.ajax({
-            type: 'POST',
-            url: '/api/whatweb',
-            contentType:'application/x-www-form-urlencoded; charset=UTF-8',
-            data: `target=${url}`
-        }).done((data) => {
-            let r = data.match(/(.*)\s(\[\d*\])\s(.*)/);
-            let fa = r[3].split(/\,\s?/);
-
-            console.log(fa);
-            $("#details ul").html('');
-            $.each(fa, (idx, it) => {
-                var x = it.match(/(.*)\[(.*)\]/) || [it, it, it];
-                var e = $(`<li class="list-group-item"><span class='badge'>${x[2]}</span>${x[1]}</li>`);
-
-                $("#details ul").append(e);
+            $.ajax({
+                type: 'POST',
+                url: '/api/whois',
+                contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                data: `domain=${url}`
+            }).done((data) => {
+                let whois = $(data, 'pre').text().substring('version: ').match(/(.*)\:\s(.*)/gi);
+                $('#details .code').text(whois);
+            }).fail((xhr, status, errorThrown) => {
+                console.log(xhr, status, errorThrown);
             });
 
-        }).fail((xhr, status, errorThrown) => {
-            console.log(xhr, status, errorThrown);
-        });
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/whatweb',
+                contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                data: `target=${url}`
+            }).done((data) => {
+                let r = data.match(/(.*)\s(\[\d*\])\s(.*)/);
+                let fa = r[3].split(/\,\s?/);
+
+                console.log(fa);
+                $("#details ul").html('');
+                $.each(fa, (idx, it) => {
+                    var x = it.match(/(.*)\[(.*)\]/) || [it, it, it];
+                    var e = $(`<li class="list-group-item"><span class='badge'>${x[2]}</span>${x[1]}</li>`);
+
+                    $("#details ul").append(e);
+                });
+
+            }).fail((xhr, status, errorThrown) => {
+                console.log(xhr, status, errorThrown);
+            });
+        }
 
 
 
