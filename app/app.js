@@ -120,6 +120,7 @@ app.use('/scan/new', (req, res, next) => {
         .then(data => res.json(200, {status: 'scheduled'}))
         .catch(err => res.json(200, {status: 'queued', err: err}));
 });
+
 app.use('/', router);
 
 

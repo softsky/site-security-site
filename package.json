@@ -49,8 +49,7 @@
     "pug": "^2.0.0-beta7",
     "seneca": "^2.1.0",
     "seneca-redis-queue-transport": "git+https://github.com/softsky/seneca-redis-queue-transport.git",
-    "serve-favicon": "2.3.0",
-    "webshot": "^0.18.0"
+    "serve-favicon": "2.3.0"
   },
   "_commentdependencies": {
     "pug": "~1.0.2",

@@ -13,7 +13,7 @@ var express = require('express')
 , _ = require('lodash')
 , pug = require('pug')
 , fs = require('fs')
-, webshot = require('webshot')
+//, webshot = require('webshot')
 , marked = require('marked')
 , dotenv = require('dotenv').config({silent:true})
 , request = require('request')
@@ -59,12 +59,6 @@ module.exports = (function () {
         });
     });
 
-    router.get('/about', function (req, res) {
-        res.redirect('http://www.alt-f1.be');
-    });
-    router.get('/contact', function (req, res) {
-        res.redirect('http://www.alt-f1.be/contact-us.html');
-    });
     router.get('/template/:selectedTemplate', function (req, res) {
         res.render('bootstrap3-templates/' + req.params.selectedTemplate, {
             'pathToAssets': '/bootstrap-3.3.1',
@@ -109,39 +103,39 @@ module.exports = (function () {
     //     }
     // }));
 
-    router.get('/ws/:url', (req, res, next) => {
-        var url = req.params.url;
-        var fname = `${url}.png`;
-        var webshot = require('webshot');
-        var userAgent = req.headers['user-agent'];
-        console.log(userAgent, req.query.options);
-        var options = _.extend({
-             userAgent: userAgent
-        }, req.query.options?JSON.parse(req.query.options):{});
+    // router.get('/ws/:url', (req, res, next) => {
+    //     var url = req.params.url;
+    //     var fname = `${url}.png`;
+    //     var webshot = require('webshot');
+    //     var userAgent = req.headers['user-agent'];
+    //     console.log(userAgent, req.query.options);
+    //     var options = _.extend({
+    //          userAgent: userAgent
+    //     }, req.query.options?JSON.parse(req.query.options):{});
 
-        console.log('Capturing screenshot:', url, options);
-        // stream the file
-        var renderStream = webshot(url, options)
-        , screenshot = '';
+    //     console.log('Capturing screenshot:', url, options);
+    //     // stream the file
+    //     var renderStream = webshot(url, options)
+    //     , screenshot = '';
         
-        // Capture the streaming output from the screenshot
-        renderStream.on('data', function(data) {
-            screenshot += data.toString('binary');
-        });
+    //     // Capture the streaming output from the screenshot
+    //     renderStream.on('data', function(data) {
+    //         screenshot += data.toString('binary');
+    //     });
 
-        // Once the image capture is completed, write it out to the browser
-        renderStream.on('end', function() {
-            res.set('Content-Type', 'image/png');
-            res.end(screenshot, 'binary');
-        });
-    });
+    //     // Once the image capture is completed, write it out to the browser
+    //     renderStream.on('end', function() {
+    //         res.set('Content-Type', 'image/png');
+    //         res.end(screenshot, 'binary');
+    //     });
+    // });
 
     // Generic section
     router.get('/:section/:id', (req, res, next) => {
         var id = req.params.id
         , section = req.params.section;
 
-        if(['css','img','images','media','fonts','js'].indexOf(section) > -1){
+        if(['css','img','images','media','fonts','js','xml'].indexOf(section) > -1){
             next();
             return;
         }
