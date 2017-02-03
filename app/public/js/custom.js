@@ -4,10 +4,10 @@ $(document).ready(function () {
 /* Page Loader
 /*------------------------------*/
  
-$(window).load(function() {
+    $(window).on('load', function() {
 	$(".loader-item").delay(500).fadeOut();
 	$("#pageloader").delay(1000).fadeOut("slow");
-});
+    });
 
 
 
@@ -24,7 +24,7 @@ jQuery("#header").sticky({
 /* Home Slider
 /*------------------------------*/
 
-    $(window).load(function() {
+    $(window).on('load', function() {
 	$('.flexslider').flexslider({
 	    animation: "fade", 
 	    controlNav: false,

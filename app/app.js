@@ -17,7 +17,7 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     _ = require('lodash'),
-    passport = require('passport'),
+    //passport = require('passport'),
     dotenv = require('dotenv').config({silent:true}),
     redis_url = process.env.REDIS_PORT || process.env.REDIS_URL || 'redis://localhost:6379',
     redis  = require('url').parse(redis_url);
@@ -41,7 +41,7 @@ var Promise = require('bluebird')
 
 
 var appConfig = require('./config/appConfig.json');
-var router = require('./routes/index');
+//var router = require('./routes/index');
 var proxy = require('express-http-proxy');
 // 
 var app = express();
@@ -49,7 +49,7 @@ var app = express();
 // all environments
 app.set('port', PORT_LISTENER);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'pug');
+//app.set('view engine', 'pug');
 app.use(favicon(__dirname + '/public/bootstrap-3.3.1/docs/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser({ keepExtensions: true, uploadDir: path.join(__dirname, appConfig.directories.publicDir) }));
@@ -58,8 +58,8 @@ app.use(cookieParser('my v3ry s3cr3t C00k1e k3y d0nt y0u th1nk?'));
 app.use(session({ resave: true,
                   saveUninitialized: true,
                   secret: 'my l1ttl3 s3cret s3ss10n k3y isnt it?' }));
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+//app.use(passport.initialize());
+//oapp.use(passport.session()); // persistent login sessions
 
 
 
@@ -113,7 +113,7 @@ app.use(express.static(path.join(__dirname, appConfig.directories.publicDir)));
 
 
 //routes
-app.use('/oauth2', require('./routes/oauth2'));
+//app.use('/oauth2', require('./routes/oauth2'));
 app.use('/scan/new', (req, res, next) => {
     const data = _.extend(req.body, {timestamp: new Date()});
     seneca.actAsync('role:on,cmd:online-scan,action:start', {card: data})
@@ -121,7 +121,7 @@ app.use('/scan/new', (req, res, next) => {
         .catch(err => res.json(200, {status: 'queued', err: err}));
 });
 
-app.use('/', router);
+//app.use('/', router);
 
 
 
