@@ -1,70 +1,41 @@
-/**
- * Created with JetBrains WebStorm.
- * User: Abdelkrim
- * Date: 2013/08/21
- * Time: 00:00
- * Copyright (c) 2013 ALT-F1, We believe in the projects we work on™
- */
-/*
- * GET home page.
- */
+'use latest';
 
-var express = require('express')
-, _ = require('lodash')
-, pug = require('pug')
-, fs = require('fs')
-//, webshot = require('webshot')
-, marked = require('marked')
-, dotenv = require('dotenv').config({silent:true})
-, request = require('request')
-, MarkedMetaData = require('marked-metadata')
-, hljs = require('highlight.js')
+import express from 'express'
+import _ from 'lodash'
+import fs from 'fs'
+import {resolve} from 'path'
+import dotenv from 'dotenv'
+import requestProxy from 'express-request-proxy'
+import seneca from 'seneca'
 
-// , redis = require('redis')
-, requestProxy = require('express-request-proxy');
-// , seneca = require('seneca')();
-
-// require('redis-streams')(redis);
-
-marked.setOptions({
-    renderer: new marked.Renderer(),
-    header: false,
-    gfm: true,
-    tables: true,
-    // breaks: false,
-    // pedantic: false,
-    // sanitize: true,
-    // smartLists: true,
-    // smartypants: false
-    highlight: function (code) {
-        console.log('CODE:', code);
-        return hljs.highlightAuto(code).value;
-    }
-});
+import passport from 'passport'
+// marked.setOptions({
+//     renderer: new marked.Renderer(),
+//     header: false,
+//     gfm: true,
+//     tables: true,
+//     // breaks: false,
+//     // pedantic: false,
+//     // sanitize: true,
+//     // smartLists: true,
+//     // smartypants: false
+//     highlight: function (code) {
+//         console.log('CODE:', code)
+//         return hljs.highlightAuto(code).value
+//     }
+// })
+//app.use(passport.initialize());
+//oapp.use(passport.session()); // persistent login sessions
 
 module.exports = (function () {
-    'use strict';
-    var router = express.Router();
+    var router = express.Router()
+    
 
-    router.get('/', function (req, res) {
-        res.render('one',{ // FIXME temporarily displaying landing page
-            'carousel': pug.renderFile('app/views/carousel.pug')
-        });
-    });
-    router.get('/:id', function (req, res) {
-        res.render(req.params.id, {
-            'pathToAssets': '/bootstrap-3.3.1',
-            // FIXME: when remove carousel design gets smashed. Fix
-            'carousel': pug.renderFile('app/views/carousel.pug')
-        });
-    });
-
-    router.get('/template/:selectedTemplate', function (req, res) {
-        res.render('bootstrap3-templates/' + req.params.selectedTemplate, {
-            'pathToAssets': '/bootstrap-3.3.1',
-            'pathToSelectedTemplateWithinBootstrap' : '/bootstrap-3.3.1/docs/examples/' + req.params.selectedTemplate
-        });
-    });
+    // router.get('/', function (req, res) {
+    //     res.render('one',{ // FIXME temporarily displaying landing page
+    //         'carousel': pug.renderFile('app/views/carousel.pug')
+    //     })
+    // })
     
     // router.get('/security/report/:id', function (req, res) {
     //     // seneca.act({role:'web', cmd:'list', name:'ww', 'q.id':req.params.id}, function (err, msg){
@@ -110,56 +81,56 @@ module.exports = (function () {
     //     var userAgent = req.headers['user-agent'];
     //     console.log(userAgent, req.query.options);
     //     var options = _.extend({
-    //          userAgent: userAgent
+    //         userAgent: userAgent
     //     }, req.query.options?JSON.parse(req.query.options):{});
 
-    //     console.log('Capturing screenshot:', url, options);
-    //     // stream the file
-    //     var renderStream = webshot(url, options)
-    //     , screenshot = '';
+    //     //     console.log('Capturing screenshot:', url, options);
+    //     //     // stream the file
+    //     //     var renderStream = webshot(url, options)
+    //     //     , screenshot = '';
         
-    //     // Capture the streaming output from the screenshot
-    //     renderStream.on('data', function(data) {
-    //         screenshot += data.toString('binary');
-    //     });
+    //     //     // Capture the streaming output from the screenshot
+    //     //     renderStream.on('data', function(data) {
+    //     //         screenshot += data.toString('binary');
+    //     //     });
 
-    //     // Once the image capture is completed, write it out to the browser
-    //     renderStream.on('end', function() {
-    //         res.set('Content-Type', 'image/png');
-    //         res.end(screenshot, 'binary');
-    //     });
+    //     //     // Once the image capture is completed, write it out to the browser
+    //     //     renderStream.on('end', function() {
+    //     //         res.set('Content-Type', 'image/png');
+    //     //         res.end(screenshot, 'binary');
+    //     //     });
     // });
 
     // Generic section
-    router.get('/:section/:id', (req, res, next) => {
-        var id = req.params.id
-        , section = req.params.section;
+    // router.get('/:section/:id', (req, res, next) => {
+    //     var id = req.params.id
+    //     , section = req.params.section
 
-        if(['css','img','images','media','fonts','js','xml'].indexOf(section) > -1){
-            next();
-            return;
-        }
+    //     if(['css','img','images','media','fonts','js','xml'].indexOf(section) > -1){
+    //         next()
+    //         return
+    //     }
 
-        var md = {
-        }, mkmd = {};
-        if(fs.existsSync(`app/views/${section}/${id}.md`)){
-            mkmd = new MarkedMetaData(`app/views/${section}/${id}.md`);
-            try { 
-                md = mkmd.metadata();
-            }catch(e){
-                console.log('No metadata found');
-            }
-        }
+    //     var md = {
+    //         }, mkmd = {}
+    //     if(fs.existsSync(`app/views/${section}/${id}.md`)){
+    //         mkmd = new MarkedMetaData(`app/views/${section}/${id}.md`)
+    //         try { 
+    //             md = mkmd.metadata()
+    //         }catch(e){
+    //             console.log('No metadata found')
+    //         }
+    //     }
 
-        res.render(md.layout || 'section',{
-            title: md.title,
-            pathToAssets: '/bootstrap-3.3.1',
-            pathToSelectedTemplateWithinBootstrap : '/bootstrap-3.3.1/docs/examples/' + 'carousel',
-            carousel: pug.renderFile('app/views/carousel.pug'),
-            body: fs.existsSync(`app/views/${section}/${id}.pug`)?
-                pug.renderFile(`app/views/${section}/${id}.pug`):mkmd.markdown()
-        });
-    });
+    //     res.render(md.layout || 'section',{
+    //         title: md.title,
+    //         pathToAssets: '/bootstrap-3.3.1',
+    //         pathToSelectedTemplateWithinBootstrap : '/bootstrap-3.3.1/docs/examples/' + 'carousel',
+    //         carousel: pug.renderFile('app/views/carousel.pug'),
+    //         body: fs.existsSync(`app/views/${section}/${id}.pug`)?
+    //             pug.renderFile(`app/views/${section}/${id}.pug`):mkmd.markdown()
+    //     })
+    // })
 
-    return router;
-})();
+    return router
+})()

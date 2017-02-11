@@ -1,23 +1,22 @@
 $(document).ready(() => {
-    console.log('ready');
-    // making all client links opening in a new window
-    $('#clients a').attr('target', '_new');
+    // making alvl client links opening in a new window
+    $('#clients a').attr('target', '_new')
 
-    $("input[name=url]:eq(0)").focus();
+    $('input[name=url]:eq(0)').focus()
     
     // TODO add some initialization stuff here
     $('img[src*=class]').each((idx, it) => {
-        const clazz = $(it).attr('src').match(/class=([^$\&]*)/)[1];
-        $(it).addClass(clazz);
-        console.log(clazz);
-    });
+        const clazz = $(it).attr('src').match(/class=([^$\&]*)/)[1]
+        $(it).addClass(clazz)
+        console.log(clazz)
+    })
 
-    $('input[name=url]').on('blur',(e)=>{
-        $('#ajax-form-0').validator('validate'); // TODO fix validation
-        const url = $('input[name=url]').val();
+    $('input[name=url]').on('blur',()=>{
+        //$('#ajax-form-0').validator('validate') // TODO fix validation
+        const url = $('input[name=url]').val()
         if(url && url != ''){
-            $(".slider-text").fadeOut('slow');
-            $("#details").removeClass('hidden');
+            $('.slider-text').fadeOut('slow')
+            $('#details').removeClass('hidden')
 
             $.ajax({
                 type: 'POST',
@@ -25,11 +24,11 @@ $(document).ready(() => {
                 contentType:'application/x-www-form-urlencoded; charset=UTF-8',
                 data: `domain=${url}`
             }).done((data) => {
-                let whois = $(data, 'pre').text().substring('version: ').match(/(.*)\:\s(.*)/gi);
-                $('#details .code').text(whois);
+                let whois = $(data, 'pre').text().substring('version: ').match(/(.*)\:\s(.*)/gi)
+                $('#details .code').text(whois)
             }).fail((xhr, status, errorThrown) => {
-                console.log(xhr, status, errorThrown);
-            });
+                console.log(xhr, status, errorThrown)
+            })
 
 
             $.ajax({
@@ -38,21 +37,21 @@ $(document).ready(() => {
                 contentType:'application/x-www-form-urlencoded; charset=UTF-8',
                 data: `target=${url}`
             }).done((data) => {
-                let r = data.match(/(.*)\s(\[\d*\])\s(.*)/);
-                let fa = r[3].split(/\,\s?/);
+                let r = data.match(/(.*)\s(\[\d*\])\s(.*)/)
+                let fa = r[3].split(/\,\s?/)
 
-                console.log(fa);
-                $("#details ul").html('');
+                console.log(fa)
+                $('#details ul').html('')
                 $.each(fa, (idx, it) => {
-                    var x = it.match(/(.*)\[(.*)\]/) || [it, it, it];
-                    var e = $(`<li class="list-group-item"><span class='badge'>${x[2]}</span>${x[1]}</li>`);
+                    var x = it.match(/(.*)\[(.*)\]/) || [it, it, it]
+                    var e = $(`<li class='list-group-item'><span class='badge'>${x[2]}</span>${x[1]}</li>`)
 
-                    $("#details ul").append(e);
-                });
+                    $('#details ul').append(e)
+                })
 
             }).fail((xhr, status, errorThrown) => {
-                console.log(xhr, status, errorThrown);
-            });
+                console.log(xhr, status, errorThrown)
+            })
         }
 
 
@@ -69,7 +68,7 @@ $(document).ready(() => {
         //         console.log(data);
         //     }
         // });
-    });
+    })
 
 
     // $('#pricing a.btn').on('click',(e)=>{
@@ -78,4 +77,4 @@ $(document).ready(() => {
     //     data.subject && $('#contact input[name=subject]').val(data.subject);
     //     data.message && $('#contact input[name=message]').val(data.message);
     // });
-});
+})
