@@ -25,16 +25,16 @@ var express = require('express'),
 console.log(process.env);
 console.log(redis_url);
 
-var Promise = require('bluebird')
-, seneca = Promise.promisifyAll(require('seneca')({timeout: 3000}))
-        .use('redis-queue-transport', {
-            'redis-queue': {
-                timeout: 3000,
-                type: 'redis-queue',
-                url: redis_url
-            }
-        })
-        .client( {type:'redis-queue'} );
+//var Promise = require('bluebird')
+// , seneca = Promise.promisifyAll(require('seneca')({timeout: 3000}))
+//         .use('redis-queue-transport', {
+//             'redis-queue': {
+//                 timeout: 3000,
+//                 type: 'redis-queue',
+//                 url: redis_url
+//             }
+//         })
+//         .client( {type:'redis-queue'} );
 
         // .listen( {type:'redis', topic:'my-topic'} );
         //.client( {type:'rabbitmq'} );
@@ -114,12 +114,12 @@ app.use(express.static(path.join(__dirname, appConfig.directories.publicDir)));
 
 //routes
 //app.use('/oauth2', require('./routes/oauth2'));
-app.use('/scan/new', (req, res, next) => {
-    const data = _.extend(req.body, {timestamp: new Date()});
-    seneca.actAsync('role:on,cmd:online-scan,action:start', {card: data})
-        .then(data => res.json(200, {status: 'scheduled'}))
-        .catch(err => res.json(200, {status: 'queued', err: err}));
-});
+// app.use('/scan/new', (req, res, next) => {
+//     const data = _.extend(req.body, {timestamp: new Date()});
+//     seneca.actAsync('role:on,cmd:online-scan,action:start', {card: data})
+//         .then(data => res.json(200, {status: 'scheduled'}))
+//         .catch(err => res.json(200, {status: 'queued', err: err}));
+// });
 
 //app.use('/', router);
 

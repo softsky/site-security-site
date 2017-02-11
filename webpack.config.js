@@ -1,6 +1,9 @@
 module.exports = {
-    entry: ['bootstrap-loader', './app/app.js'],
+    entry: [
+        'bootstrap',
+        './app/app.js'
+    ],
     output: {
-        filename: 'bundle.js'
+        filename: 'app/public/bundle.js'
     }
 };

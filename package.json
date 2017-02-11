@@ -26,7 +26,7 @@
   "dependencies": {
     "bluebird": "^3.4.6",
     "body-parser": "~1.0.1",
-    "bootstrap-loader": "^2.0.0-beta.20",
+ "bootstrap-loader": "^2.0.0-beta.20",
     "cookie-parser": "1.4.1",
     "dotenv": "^2.0.0",
     "errorhandler": "1.4.3",
@@ -34,7 +34,6 @@
     "express-http-proxy": "^0.10.0",
     "express-request-proxy": "^2.0.0",
     "express-session": "^1.13.0",
-    "seneca": "^2.1.0",
     "seneca-redis-queue-transport": "git+https://github.com/softsky/seneca-redis-queue-transport.git",
     "serve-favicon": "2.3.0",
     "webpack": "^2.2.0"
