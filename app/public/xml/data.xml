@@ -1,16 +1,5 @@
-<?xml-stylesheet type='text/xsl' href='index.xsl'?>
-<page date="2014-06-15T15:30:49.521Z" ip="10.168.29.135">
-  <menu>home</menu>
-  <documentation>.. some text here ..</documentation>
-  <version>
-    <name>1.4</name>
-    <revision>5c7b5af</revision>
-    <date>2014-05-29 07:58</date>
-  </version>
-  <links>
-    <link href="..." rel="rexsl:google" type="text/xml"/>
-    <link href="..." rel="rexsl:github" type="text/xml"/>
-    <link href="..." rel="rexsl:facebook" type="text/xml"/>
-  </links>
-  <millis>70</millis>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type='text/xsl' href='/xsl/index.xsl'?>
+<page xmlns="http://some.ns" language="en">
+  <title>SOFTSKY - Information Security Audit</title>
 </page>
