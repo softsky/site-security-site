@@ -2,7 +2,7 @@
     "directories": {
         "appDir": "/app",
         "dataDir": "/data",
-        "publicDir": "/public",
+        "publicDir": "./public",
         "privateDir": "/private"
     },
     "app": {

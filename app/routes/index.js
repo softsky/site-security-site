@@ -1,4 +1,4 @@
-'use latest';
+'use latest'
 
 import express from 'express'
 import _ from 'lodash'
