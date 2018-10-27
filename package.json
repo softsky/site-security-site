@@ -25,17 +25,17 @@
   },
   "dependencies": {
     "bluebird": "^3.4.6",
-    "body-parser": "~1.0.1",
- "bootstrap-loader": "^2.0.0-beta.20",
+    "body-parser": "^1.18.3",
+    "bootstrap-loader": "^2.0.0-beta.20",
     "cookie-parser": "1.4.1",
     "dotenv": "^2.0.0",
     "errorhandler": "1.4.3",
-    "express": "~4.8.0",
+    "express": "^4.16.4",
     "express-http-proxy": "^0.10.0",
-    "express-request-proxy": "^2.0.0",
-    "express-session": "^1.13.0",
+    "express-request-proxy": "^2.2.2",
+    "express-session": "^1.15.6",
     "seneca-redis-queue-transport": "git+https://github.com/softsky/seneca-redis-queue-transport.git",
-    "serve-favicon": "2.3.0",
+    "serve-favicon": "^2.5.0",
     "webpack": "^2.2.0"
   },
   "_commentdependencies": {
@@ -51,7 +51,7 @@
     "Bootstrap 3.2.0"
   ],
   "devDependencies": {
-    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-es2015": "^6.24.1",
     "bootstrap": "^4.0.0-alpha.4",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
@@ -61,11 +61,11 @@
     "imports-loader": "^0.7.0",
     "method-override": "^2.3.7",
     "mocha": "^3.1.2",
-    "morgan": "^1.7.0",
-    "node-sass": "^4.3.0",
+    "morgan": "^1.9.1",
+    "node-sass": "^4.9.4",
     "resolve-url-loader": "^1.6.1",
     "sass-loader": "^4.1.1",
-    "selenium-webdriver": "^3.0.0-beta-3",
+    "selenium-webdriver": "^3.6.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7"
   }
