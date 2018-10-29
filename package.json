@@ -25,11 +25,11 @@
   },
   "dependencies": {
     "bluebird": "^3.4.6",
-    "body-parser": "~1.0.1",
+    "body-parser": "^1.18.3",
     "cookie-parser": "1.4.1",
     "dotenv": "^2.0.0",
     "errorhandler": "1.4.3",
-    "express": "~4.8.0",
+    "express": "^4.16.4",
     "express-http-proxy": "^0.10.0",
     "express-request-proxy": "^2.0.0",
     "express-session": "^1.13.0",
@@ -42,13 +42,13 @@
     "marked-metadata": "0.0.6",
     "matchdep": "~0.1.2",
     "method-override": "2.3.5",
-    "morgan": "1.7.0",
+    "morgan": "^1.9.1",
     "passport": "^0.3.2",
     "passport-linkedin-oauth2": "^1.4.1",
     "pug": "^2.0.0-beta7",
     "seneca": "^2.1.0",
     "seneca-redis-queue-transport": "git+https://github.com/softsky/seneca-redis-queue-transport.git",
-    "serve-favicon": "2.3.0"
+    "serve-favicon": "^2.5.0"
   },
   "_commentdependencies": {
     "pug": "~1.0.2",
@@ -75,7 +75,7 @@
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "~0.5.1",
     "grunt-jade-usemin": "^2.1.0",
-    "grunt-markdown": "~0.4.0",
+    "grunt-markdown": "^0.7.0",
     "grunt-nodemon": "~0.1.0",
     "grunt-open": "~0.2.2",
     "gruntify-eslint": "^3.1.0",
