@@ -39,7 +39,7 @@
     "grunt": "^1.0.4",
     "highlight": "^0.2.4",
     "highlight.js": "^9.6.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "marked": "^0.6.3",
     "marked-metadata": "0.0.6",
     "matchdep": "^2.0.0",
