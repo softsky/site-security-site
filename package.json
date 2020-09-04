@@ -40,7 +40,7 @@
     "highlight": "^0.2.4",
     "highlight.js": "^9.6.0",
     "lodash": "^4.17.11",
-    "marked": "^0.6.3",
+    "marked": "^0.7.0",
     "marked-metadata": "0.0.6",
     "matchdep": "^2.0.0",
     "method-override": "^3.0.0",
