@@ -38,7 +38,7 @@
     "googleapis": "^40.0.1",
     "grunt": "^1.0.4",
     "highlight": "^0.2.4",
-    "highlight.js": "^9.6.0",
+    "highlight.js": "^10.1.2",
     "lodash": "^4.17.11",
     "marked": "^0.6.3",
     "marked-metadata": "0.0.6",
