@@ -47,7 +47,7 @@
     "morgan": "^1.9.1",
     "passport": "^0.3.2",
     "passport-linkedin-oauth2": "^1.4.1",
-    "pug": "^2.0.0-beta7",
+    "pug": "^3.0.1",
     "remarkable": "1.7.0",
     "seneca": "^3.11.0",
     "seneca-redis-queue-transport": "git+https://github.com/softsky/seneca-redis-queue-transport.git",
